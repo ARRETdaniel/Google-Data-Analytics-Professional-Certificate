@@ -52,7 +52,9 @@ In addition to expert training and hands-on projects, you'll complete a case stu
 
 </details>
 
-- **Ask Questions to Make Data-Driven Decisions;**
+<details>
+  <summary>Ask Questions to Make Data-Driven Decisions</summary>
+
 <h6 align="left">
 This is the second course in the Google Data Analytics Certificate. These courses will equip you with the skills needed to apply to introductory-level data analyst jobs. You’ll build on your understanding of the topics that were introduced in the first Google Data Analytics Certificate course. The material will help you learn how to ask effective questions to make data-driven decisions, while connecting with stakeholders’ needs. Current Google data analysts will continue to instruct and provide you with hands-on ways to accomplish common data analyst tasks with the best tools and resources.
 
@@ -67,7 +69,11 @@ By the end of this course, you will:
 - Learn strategies for managing the expectations of stakeholders while establishing clear communication with a data analytics team to achieve business objectives.
 </h6>
 
-- **Prepare Data for Exploration;**
+</details>
+
+<details>
+  <summary>Prepare Data for Exploration</summary>
+
 <h6 align="left">
 This is the third course in the Google Data Analytics Certificate. These courses will equip you with the skills needed to apply to introductory-level data analyst jobs. As you continue to build on your understanding of the topics from the first two courses, you’ll also be introduced to new topics that will help you gain practical data analytics skills. You’ll learn how to use tools like spreadsheets and SQL to extract and make use of the right data for your objectives and how to organize and protect your data. Current Google data analysts will continue to instruct and provide you with hands-on ways to accomplish common data analyst tasks with the best tools and resources.
 
@@ -81,6 +87,8 @@ By the end of this course, you will:
  - Examine open data and the relationship between and importance of data ethics and data privacy.
  - Gain an understanding of how to access databases and extract, filter, and sort the data they contain.
  - Learn the best practices for organizing data and keeping it secure.
+
+</details>
 
 </h6>
 <h5 align="left">
