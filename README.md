@@ -88,15 +88,45 @@ By the end of this course, you will:
  - Gain an understanding of how to access databases and extract, filter, and sort the data they contain.
  - Learn the best practices for organizing data and keeping it secure.
 
+</h6>
 </details>
 
-</h6>
-<h5 align="left">
-</h5>
-<h5 align="left">
-</h5>
-<h5 align="left">
-</h5>
-<h5 align="left">
-</h5>
+<details>
+  <summary>course</summary>
+  <h6 align="left">
+
+  </h6>
+</details>
+
+<details>
+  <summary>course</summary>
+  <h6 align="left">
+
+  </h6>
+</details>
+
+<details>
+  <summary>course</summary>
+  <h6 align="left">
+
+  </h6>
+</details>
+
+<details>
+  <summary>course</summary>
+  <h6 align="left">
+
+  </h6>
+</details>
+
+<details>
+  <summary>course</summary>
+  <h6 align="left">
+
+  </h6>
+</details>
+
+
+
+
 <h3 align="left">Languages and Tools:</h3>
