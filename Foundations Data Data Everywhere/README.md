@@ -9,3 +9,7 @@
 - [Understanding the data analytics project life cycle - developed by Vignesh Prajapati](http://pingax.com/understanding-data-analytics-project-life-cycle/)
 
 - [Big Data Adoption and Planning Considerations - Authors Thomas Erl, Wajid Khattak, and Paul Buhler proposed a big data analytics life cycle in their book, Big Data Fundamentals: Concepts, Drivers & Techniques.](https://www.informit.com/articles/article.aspx?p=2473128&seqNum=11&ranMID=24808)
+
+### More
+
+- [Glossary: Terms and definitions  - We’ve covered a lot of terms—some of which you may have already known, and some of which are new.](https://docs.google.com/document/d/1yd3IZr2VupqaTPyjrlauxDLj4MsDHl9r9J3wmNf11mE/template/preview)
