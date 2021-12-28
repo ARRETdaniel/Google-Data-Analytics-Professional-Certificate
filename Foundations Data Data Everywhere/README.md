@@ -13,3 +13,5 @@
 ### More
 
 - [Glossary: Terms and definitions  - We’ve covered a lot of terms—some of which you may have already known, and some of which are new.](https://docs.google.com/document/d/1yd3IZr2VupqaTPyjrlauxDLj4MsDHl9r9J3wmNf11mE/template/preview)
+
+## Week 2
