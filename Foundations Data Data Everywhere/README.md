@@ -15,3 +15,7 @@
 - [Glossary: Terms and definitions  - We’ve covered a lot of terms—some of which you may have already known, and some of which are new.](https://docs.google.com/document/d/1yd3IZr2VupqaTPyjrlauxDLj4MsDHl9r9J3wmNf11mE/template/preview)
 
 ## Week 2
+
+- [Learning Log Template_ Explore data from your daily life](https://docs.google.com/document/d/1V7trFOoWavtEm1OV2sEFO-7K-6p9hbnhaczvhb49Hqg/template/preview)
+
+- [Just Ask “Why” Five Times  - The Five Whys process is used to reveal a root cause of a problem through the answer to the fifth question.](https://docs.google.com/document/d/1yd3IZr2VupqaTPyjrlauxDLj4MsDHl9r9J3wmNf11mE/template/preview)
