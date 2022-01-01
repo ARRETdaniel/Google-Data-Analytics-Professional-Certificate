@@ -18,4 +18,4 @@
 
 - [Learning Log Template_ Explore data from your daily life](https://docs.google.com/document/d/1V7trFOoWavtEm1OV2sEFO-7K-6p9hbnhaczvhb49Hqg/template/preview)
 
-- [Just Ask “Why” Five Times  - The Five Whys process is used to reveal a root cause of a problem through the answer to the fifth question.](https://docs.google.com/document/d/1yd3IZr2VupqaTPyjrlauxDLj4MsDHl9r9J3wmNf11mE/template/preview)
+- [Just Ask “Why” Five Times  - The Five Whys process is used to reveal a root cause of a problem through the answer to the fifth question.](https://www.fastcompany.com/1669738/to-get-to-the-root-of-a-hard-problem-just-ask-why-five-times)
