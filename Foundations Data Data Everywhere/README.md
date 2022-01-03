@@ -21,3 +21,18 @@
 - [Learning Log Template_ Reflect on your skills and expectations](https://docs.google.com/document/d/1Wf8-Cf8bEsS_I2ckXGZCoGLSBc3F38KiUn7vCI7M1ZI/template/preview)
 
 - [Just Ask “Why” Five Times  - The Five Whys process is used to reveal a root cause of a problem through the answer to the fifth question.](https://www.fastcompany.com/1669738/to-get-to-the-root-of-a-hard-problem-just-ask-why-five-times)
+
+### More
+
+- [Glossary: Terms and definitions  - We’ve covered a lot of terms—some of which you may have already known, and some of which are new.](https://docs.google.com/document/d/1NPfVEPe0X2l3d2v-XIaevT0I5OU5J4EYMGeetijKhAM/template/preview?resourcekey=0-bLCbJQfNZJ70tiFfxT2VXg)
+
+## Week 3
+
+- [ - ]()
+-
+- [ - ]()
+
+- [ - ]()
+### More
+
+- [ - ]()
