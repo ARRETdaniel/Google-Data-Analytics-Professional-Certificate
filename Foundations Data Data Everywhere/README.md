@@ -1,6 +1,7 @@
 # Adicional Resources
 
 ## Week 1
+#### Data Analytics Lifecycle:
 
 - [The Genesis of EMC's Data Analytics Lifecycle - created by David Dietrich, reflects the cyclical nature of real-world projects](http://pingax.com/understanding-data-analytics-project-life-cycle/)
 
@@ -28,11 +29,20 @@
 
 ## Week 3
 
-- [ - ]()
--
+#### Data Life Cycle:
+
+- [U.S. Fish and Wildlife Service - The U.S. Fish and Wildlife Service uses the following data life cycle: ](https://www.fws.gov/data/life-cycle)
+
+- [The U.S. Geological Survey (USGS) - The USGS uses the data life cycle](https://www.usgs.gov/products/data-and-tools/data-management/data-lifecycle)
+
+- [Financial institutions - Financial institutions may take a slightly different approach to the data life cycle as described in The Data Life Cycle, an article in Strategic Finance magazine:](https://sfmagazine.com/post-entry/july-2018-the-data-life-cycle/)
+
+- [Harvard Business School (HBS) - One final data life cycle informed by Harvard University research has eight stages:](https://online.hbs.edu/blog/post/data-life-cycle)
+
 - [ - ]()
 
 - [ - ]()
+
 ### More
 
 - [ - ]()
