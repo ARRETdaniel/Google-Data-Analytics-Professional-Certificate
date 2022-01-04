@@ -39,10 +39,13 @@
 
 - [Harvard Business School (HBS) - One final data life cycle informed by Harvard University research has eight stages:](https://online.hbs.edu/blog/post/data-life-cycle)
 
-- [ - ]()
+#### -
+
+- [How the data analysis process guides this program](https://d3c33hcgiwev3.cloudfront.net/XT8DBaLYTUC_AwWi2O1Asw_bed8d5f8f56e4f1c9ed1dbdc5917e4f1_DAC1-The-data-analysis-process.pdf?Expires=1641427200&Signature=abLMHk7JmkEj2IhLaqHKKURtYVPkteJ50-Xwt8ry~bFv47YFmIre-V92Ow2poVid~G82d79bODmPgUV0HJcsGa57XP~EYtGLxWL7FdZmzrf~aa~5CNJr-ry7--HxtCv4G~r8aeVKq4PrA~I3n6amw1nxsvOzTLE0hi2fCedONrs_&Key-Pair-Id=APKAJLTNE6QMUY6HBC5A)
+
+- [Learning Log Template_ Organize your data in a table](https://docs.google.com/document/d/1q7M9ZhQMaQGVMTW7iZxzLylE1Ap5DjGQHrZ1-aUcOYk/template/preview)
 
 - [ - ]()
-
 ### More
 
 - [ - ]()
