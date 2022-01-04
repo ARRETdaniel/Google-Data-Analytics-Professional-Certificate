@@ -17,15 +17,17 @@
 
 ## Week 2
 
-- [Learning Log Template_ Explore data from your daily life](https://docs.google.com/document/d/1V7trFOoWavtEm1OV2sEFO-7K-6p9hbnhaczvhb49Hqg/template/preview)
-
-- [Learning Log Template_ Reflect on your skills and expectations](https://docs.google.com/document/d/1Wf8-Cf8bEsS_I2ckXGZCoGLSBc3F38KiUn7vCI7M1ZI/template/preview)
+##### Useful
 
 - [Just Ask “Why” Five Times  - The Five Whys process is used to reveal a root cause of a problem through the answer to the fifth question.](https://www.fastcompany.com/1669738/to-get-to-the-root-of-a-hard-problem-just-ask-why-five-times)
 
 ### More
 
 - [Glossary: Terms and definitions  - We’ve covered a lot of terms—some of which you may have already known, and some of which are new.](https://docs.google.com/document/d/1NPfVEPe0X2l3d2v-XIaevT0I5OU5J4EYMGeetijKhAM/template/preview?resourcekey=0-bLCbJQfNZJ70tiFfxT2VXg)
+
+- [Learning Log Template_ Explore data from your daily life](https://docs.google.com/document/d/1V7trFOoWavtEm1OV2sEFO-7K-6p9hbnhaczvhb49Hqg/template/preview)
+
+- [Learning Log Template_ Reflect on your skills and expectations](https://docs.google.com/document/d/1Wf8-Cf8bEsS_I2ckXGZCoGLSBc3F38KiUn7vCI7M1ZI/template/preview)
 
 ## Week 3
 
@@ -39,13 +41,13 @@
 
 - [Harvard Business School (HBS) - One final data life cycle informed by Harvard University research has eight stages:](https://online.hbs.edu/blog/post/data-life-cycle)
 
-#### -
+##### Useful
 
 - [How the data analysis process guides this program](https://d3c33hcgiwev3.cloudfront.net/XT8DBaLYTUC_AwWi2O1Asw_bed8d5f8f56e4f1c9ed1dbdc5917e4f1_DAC1-The-data-analysis-process.pdf?Expires=1641427200&Signature=abLMHk7JmkEj2IhLaqHKKURtYVPkteJ50-Xwt8ry~bFv47YFmIre-V92Ow2poVid~G82d79bODmPgUV0HJcsGa57XP~EYtGLxWL7FdZmzrf~aa~5CNJr-ry7--HxtCv4G~r8aeVKq4PrA~I3n6amw1nxsvOzTLE0hi2fCedONrs_&Key-Pair-Id=APKAJLTNE6QMUY6HBC5A)
-
-- [Learning Log Template_ Organize your data in a table](https://docs.google.com/document/d/1q7M9ZhQMaQGVMTW7iZxzLylE1Ap5DjGQHrZ1-aUcOYk/template/preview)
 
 - [ - ]()
 ### More
 
+- [Learning Log Template_ Organize your data in a table](https://docs.google.com/document/d/1q7M9ZhQMaQGVMTW7iZxzLylE1Ap5DjGQHrZ1-aUcOYk/template/preview)
+-
 - [ - ]()
