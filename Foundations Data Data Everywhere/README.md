@@ -45,9 +45,12 @@
 
 - [How the data analysis process guides this program](https://d3c33hcgiwev3.cloudfront.net/XT8DBaLYTUC_AwWi2O1Asw_bed8d5f8f56e4f1c9ed1dbdc5917e4f1_DAC1-The-data-analysis-process.pdf?Expires=1641427200&Signature=abLMHk7JmkEj2IhLaqHKKURtYVPkteJ50-Xwt8ry~bFv47YFmIre-V92Ow2poVid~G82d79bODmPgUV0HJcsGa57XP~EYtGLxWL7FdZmzrf~aa~5CNJr-ry7--HxtCv4G~r8aeVKq4PrA~I3n6amw1nxsvOzTLE0hi2fCedONrs_&Key-Pair-Id=APKAJLTNE6QMUY6HBC5A)
 
-- [ - ]()
 ### More
 
 - [Learning Log Template_ Organize your data in a table](https://docs.google.com/document/d/1q7M9ZhQMaQGVMTW7iZxzLylE1Ap5DjGQHrZ1-aUcOYk/template/preview)
--
+
+- [Glossary: Terms and definitions - We’ve covered a lot of terms—some of which you may have already known, and some of which are new. To make it easy to remember what a word means, we created this glossary of terms and definitions.](https://docs.google.com/document/d/1HlHJkeCHI2_-dXYhZxacyFpsmFGt49HehhYaZgx-05M/template/preview?resourcekey=0-CX2FbmmO0dgLoD3O0kp1Tw)
+
+## Week 4
+
 - [ - ]()
