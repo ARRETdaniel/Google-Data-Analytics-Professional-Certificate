@@ -53,4 +53,4 @@
 
 ## Week 4
 
-- [ - ]()
+- [Data Chart Template](https://docs.google.com/spreadsheets/d/1LzvC2O2g9cu63lLVQM1Yu9c5wsDENky3s5F7VhQjMyU/template/preview)
