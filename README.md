@@ -132,5 +132,5 @@ By the end of this course, you will:
 <h3 align="left">Languages and Tools:</h3>
 
 <p align="left"> <a href="https://www.r-project.org/" target="_blank" rel="noreferrer"> <img src="https://www.r-project.org/Rlogo.png" alt="R" width="40" height="40"/> </a> </p>
-<p align="left"> <a href="https://jupyter.org/" target="_blank" rel="noreferrer"> <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/Jupyter_logo.svg/883px-Jupyter_logo.svg.png
+<p align="left"> <a href="https://jupyter.org/" target="_blank" rel="noreferrer"> <img src="https://jupyter.org/assets/try/jupyter.png
 " alt="JupyterLab" width="40" height="40"/> </a> </p>
