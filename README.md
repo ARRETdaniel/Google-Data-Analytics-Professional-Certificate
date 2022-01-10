@@ -131,5 +131,5 @@ By the end of this course, you will:
 
 <h3 align="left">Languages and Tools:</h3>
 
-<p align="left"> <a href="https://www.python.org" target="_blank" rel="noreferrer"> <img src="https://commons.wikimedia.org/wiki/File:R_logo.svg#/media/File:R_logo.svg" alt="python" width="40" height="40"/> </a> </p>
+<p align="left"> <a href="https://www.r-project.org/" target="_blank" rel="noreferrer"> <img src="https://commons.wikimedia.org/wiki/File:R_logo.svg" alt="R" width="40" height="40"/> </a> </p>
 
