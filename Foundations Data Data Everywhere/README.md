@@ -54,3 +54,18 @@
 ## Week 4
 
 - [Data Chart Template](https://docs.google.com/spreadsheets/d/1LzvC2O2g9cu63lLVQM1Yu9c5wsDENky3s5F7VhQjMyU/template/preview)
+
+### More spreadsheet resources
+
+- [Google Sheets Training and Help](https://support.google.com/a/users/answer/9282959?visit_id=637361702049227170-1815413770&rd=1)
+
+- [Google Sheets Cheat Sheet](https://support.google.com/a/users/answer/9300022)
+
+- [Microsoft Excel for Windows Training](https://support.microsoft.com/en-us/office/excel-for-windows-training-9bc05390-e94c-46af-a5b3-d7c22f6990bb)
+### SQL Resources
+
+- [W3Schools SQL Tutorial - If you would like to explore a detailed tutorial of SQL, this is the perfect place to start.](https://www.w3schools.com/sql/default.asp)
+
+- [SQL Cheat Sheet - For more advanced learners, go through this article for standard SQL syntax used in PostgreSQL.](https://towardsdatascience.com/sql-cheat-sheet-776f8e3189fa)
+
+- []()
