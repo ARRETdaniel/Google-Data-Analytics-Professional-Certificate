@@ -68,4 +68,25 @@
 
 - [SQL Cheat Sheet - For more advanced learners, go through this article for standard SQL syntax used in PostgreSQL.](https://towardsdatascience.com/sql-cheat-sheet-776f8e3189fa)
 
+### Visualization software
+
+- [Spreadsheets (Microsoft Excel or Google Sheets)]()
+
+- [Tableau - Tableau Public is free, easy to use, and full of helpful information. ](https://public.tableau.com/en-us/s/resources)
+
+- [Tableau beautiful visuals ranging)](https://public.tableau.com/app/discover/viz-of-the-day)
+
+- [Programming language (R with RStudio)](https://www.rstudio.com/)
+### More
+
+- [Glossary: Terms and definitions - We’ve covered a lot of terms—some of which you may have already known, and some of which are new. To make it easy to remember what a word means, we created this glossary of terms and definitions.](https://docs.google.com/document/d/1EBGVEVKBWj_uuUZaZ1IYaDfyQWeZXzOcwhWLG5A8mqc/template/preview?resourcekey=0-uEYx121Up84n0Abpn1uQnQ)
+
+## Week 5
+
+- []()
+
+### More
+
+- [Learning Log Template_ Reflect on the data analysis process](https://docs.google.com/document/d/1MCgIOQk2eW77ZBpJ6ygRcrkdJ1aLuQd3IrkqsMpys5c/template/preview)
+
 - []()
