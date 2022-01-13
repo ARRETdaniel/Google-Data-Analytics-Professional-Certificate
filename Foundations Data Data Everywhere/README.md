@@ -83,10 +83,11 @@
 
 ## Week 5
 
-- []()
+- [“The Quant Crunch: How the Demand for Data Science Skills is Disrupting the Job Market,” by Will Markow, Soumya Braganza, and Bledi Taska, with Steven M. Miller and Debbie Hughes.](https://www.youtube.com/watch?v=t2oOFs4WgI0&feature=emb_title)
 
+- [Beyond the Numbers: A Data Analyst Journey -  Anna Leach's TED talk on YouTube](https://www.ibm.com/downloads/cas/3RL3VXGA)
 ### More
 
 - [Learning Log Template_ Reflect on the data analysis process](https://docs.google.com/document/d/1MCgIOQk2eW77ZBpJ6ygRcrkdJ1aLuQd3IrkqsMpys5c/template/preview)
 
-- []()
+- [Glossary: Terms and definitions - We’ve covered a lot of terms—some of which you may have already known, and some of which are new.](https://docs.google.com/document/d/1kpvyM205cp_PmLz0tFOqusO9_wxGL_E0tDQNWwWhons/template/preview)
