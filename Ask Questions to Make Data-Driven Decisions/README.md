@@ -12,6 +12,9 @@
 
 ## Week 2
 
+- [How one retailer’s data strategy powers seamless customer experiences.](https://www.thinkwithgoogle.com/future-of-marketing/digital-transformation/crate-and-barrel-digital-customer-experiences/)
+
+- [How one of the world’s biggest marketers ripped up its playbook and learned to anticipate intent.](https://www.thinkwithgoogle.com/marketing-strategies/data-and-measurement/pepsi-digital-transformation/)
 ####
 
 - []()
