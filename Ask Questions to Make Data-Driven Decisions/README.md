@@ -15,13 +15,23 @@
 - [How one retailer’s data strategy powers seamless customer experiences.](https://www.thinkwithgoogle.com/future-of-marketing/digital-transformation/crate-and-barrel-digital-customer-experiences/)
 
 - [How one of the world’s biggest marketers ripped up its playbook and learned to anticipate intent.](https://www.thinkwithgoogle.com/marketing-strategies/data-and-measurement/pepsi-digital-transformation/)
-####
+#### Dashboard
 
-- []()
--
+- [Designing compelling dashboards](https://d3c33hcgiwev3.cloudfront.net/IfnpXnRlRhi56V50ZVYYow_3a87f3d18e444bdda63014571e0d9ef1_DAC2-Designing-compelling-dashboards.pdf?Expires=1642723200&Signature=kH5owdHuJMYwdiCdQ5CnSctbxwUj7UHonEoTCYrEcQNJxN2j7~~-MXMpeGyab-w-k-bMExLiBwuWjfnOdWBMGyK-SK0LyKcwNEdnurqyknLeOBRoAzgrvOk4Ue9c5KNF3Hwrk2f8GAa0s1gPj3c3iApmbpb33TTv~phxK~KzAgs_&Key-Pair-Id=APKAJLTNE6QMUY6HBC5A)
+
+- [6 real-world examples of business intelligence dashboards.](https://www.tableau.com/learn/articles/business-intelligence-dashboards-examples)
+
+- [Requirements Gathering Worksheet - effective questions.](https://s3.amazonaws.com/looker-elearning-resources/Requirements+Gathering+Worksheet.pdf)
+
+- [Tableau’s Viz Gallery](https://www.tableau.com/solutions/gallery)
+
+- [Tableau’s Viz of the Day](https://public.tableau.com/en-us/gallery/?tab=viz-of-the-day&type=viz-of-the-day)
+
+- [Filter Actions.](https://help.tableau.com/current/pro/desktop/en-us/actions_filter.htm)
 ### More
-
 - []()
+
+- [Learning Log Template_ Ask SMART questions about real life data sources](https://docs.google.com/document/d/1j6K2891rZLbNeUmPurfNv6b2d6MKgAedhxOrr6k_3Nw/template/preview)
 
 ## Week 3
 
