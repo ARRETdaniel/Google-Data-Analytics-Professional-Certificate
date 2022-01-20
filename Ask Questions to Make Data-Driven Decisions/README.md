@@ -29,9 +29,9 @@
 
 - [Filter Actions.](https://help.tableau.com/current/pro/desktop/en-us/actions_filter.htm)
 ### More
-- []()
 
 - [Learning Log Template_ Ask SMART questions about real life data sources](https://docs.google.com/document/d/1j6K2891rZLbNeUmPurfNv6b2d6MKgAedhxOrr6k_3Nw/template/preview)
+- [Course 2 Week 2 Glossary _ DA terms and definitions - We’ve covered a lot of terms—some of which you may have already known, and some of which are new. To make it easy to remember what a word means, we created this glossary of terms and definitions.](https://docs.google.com/document/d/1jjYX7LtWJxWC9qbI9pKHpoVqqlD0YuILDpyYENwYGvI/template/preview)
 
 ## Week 3
 
