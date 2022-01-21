@@ -35,18 +35,11 @@
 
 ## Week 3
 
-####
+#### Spreadsheet
 
 - [Google Sheets shortcuts](https://support.google.com/docs/answer/181110)
 
 - [Microsoft Excel shortcuts](https://support.microsoft.com/en-us/office/keyboard-shortcuts-in-excel-1798d9d5-842a-42b8-9c99-9b7213f0040f)
-### More
-
-- []()
-
-## Week 4
-
-#### Spreadsheet
 
 - [More about spreadsheet errors and fixes](https://d3c33hcgiwev3.cloudfront.net/fDHAQD8OQX6xwEA_DsF-tw_299c2bf89be04d0bae30bf763b606af1_DAC2-Spreadsheet-Errors-and-Fixes.pdf?Expires=1642896000&Signature=Gg60ZbE-B6okcHnfCXloqkUSkhihtz3Dq07KDfw5DyylMSFZR5jgTeGJPxNcqm8q0xoawJWvnJbF0qzQRewTCHWeoXKe87dhPpFEzRwkPdvABIXqUYICyKKrppwTptOQuwuAmCBL5DiQNPnAfpGiAcDsXSpV63Hq7Bt9NGCk~Qs_&Key-Pair-Id=APKAJLTNE6QMUY6HBC5A)
 
@@ -55,4 +48,16 @@
 - [DAC2 Keyboard functions 2](https://d3c33hcgiwev3.cloudfront.net/9gsOZ_tGTtOLDmf7Rh7T1Q_8a825edae2a94e5e81d880681270acf1_DAC2-Keyboard-functions-2.pdf?Expires=1642896000&Signature=dq14mzBq7UyMoFcixwChrxxBBpJxkPH-epSm6MgrI5q6Bqk40PiuVZwsVDWVNV3lAmFt7tUMBjSJHf0nrVcGfqWxsHLqaPIw2jIk64xUnOsAwUAaTdzhBRvRKV0BvT--OsAiS0gvcOq8SxkYXY9pYheg8wQJ9uIxDwT07i74e7s_&Key-Pair-Id=APKAJLTNE6QMUY6HBC5A)
 ### More
 
+- []()
+
+## Week 4
+
+#### 
+
+- []()
+
+### More
+
+- []()
+- []()
 - []()
