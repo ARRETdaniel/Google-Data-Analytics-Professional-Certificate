@@ -46,13 +46,17 @@
 - [DAC2 Keyboard functions 1](https://d3c33hcgiwev3.cloudfront.net/UbHnj9LnRlGx54_S5yZRJA_64a50a70b938476c852b172e826e9af1_DAC2-Keyboard-functions-1.pdf?Expires=1642896000&Signature=fQU502~PggkiJdW~FzZbbjhknh5mDVlO6tdrernljtj5sVCpaYVRieZyzRzT~Za4b3f~M2qylUcRDxk416rBUKDojvKIsRlhY6JnOkNeMnzdPoDV3vsibiIp9hVQSbZVU~qmEmoACzSE2~I2c7Xnn36ZU~NtW2Az8WErkyvTyMU_&Key-Pair-Id=APKAJLTNE6QMUY6HBC5A)
 
 - [DAC2 Keyboard functions 2](https://d3c33hcgiwev3.cloudfront.net/9gsOZ_tGTtOLDmf7Rh7T1Q_8a825edae2a94e5e81d880681270acf1_DAC2-Keyboard-functions-2.pdf?Expires=1642896000&Signature=dq14mzBq7UyMoFcixwChrxxBBpJxkPH-epSm6MgrI5q6Bqk40PiuVZwsVDWVNV3lAmFt7tUMBjSJHf0nrVcGfqWxsHLqaPIw2jIk64xUnOsAwUAaTdzhBRvRKV0BvT--OsAiS0gvcOq8SxkYXY9pYheg8wQJ9uIxDwT07i74e7s_&Key-Pair-Id=APKAJLTNE6QMUY6HBC5A)
+
+### Scope of work
+
+- [Data Analysis Project Scope-Of-Work (SOW) Template](https://docs.google.com/document/d/1zqfGwpjZyPAyERNPXNfIUM78YuBxYYj0atIE6_YopLA/template/preview?usp=sharing&resourcekey=0-o9cjeaxYBBm7ZyYe4bpImw)
+
+- [Data Analysis Project Scope-of-Work (SOW) Strong Example](https://docs.google.com/document/d/16x-E04Nr48Ww1Nlxwa0PNOXyaytKbVCxrF5yRJy6Y70/template/preview?resourcekey=0-X1a531fuUVbtlNKdIA11dQ)
+
 ### More
-
-- []()
-
 ## Week 4
 
-#### 
+####
 
 - []()
 
