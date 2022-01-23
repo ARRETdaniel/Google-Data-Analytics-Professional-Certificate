@@ -54,6 +54,10 @@
 - [Data Analysis Project Scope-of-Work (SOW) Strong Example](https://docs.google.com/document/d/16x-E04Nr48Ww1Nlxwa0PNOXyaytKbVCxrF5yRJy6Y70/template/preview?resourcekey=0-X1a531fuUVbtlNKdIA11dQ)
 
 ### More
+
+- [Learning Log Template_ Define problems and ask questions with data](https://docs.google.com/document/d/1kooOADIAtWrB6to-klZ_v5mWHXbQ8WJ_UsKFJtbGWuo/template/preview?resourcekey=0-DpVgA8sZGhn-s32LAzCIeA)
+
+- [Glossary: Terms and definitions - We’ve covered a lot of terms—some of which you may have already known, and some of which are new.](https://docs.google.com/document/d/1v1_vAc7R81IK2JL4QTIbkUdHVYXnIvithZ_gC_k--jw/template/preview)
 ## Week 4
 
 ####
