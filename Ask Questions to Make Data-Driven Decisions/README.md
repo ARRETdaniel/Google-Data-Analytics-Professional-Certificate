@@ -62,7 +62,7 @@
 
 ####
 
-- []()
+- [Why (Literally) Sketching Out Your Ideas Can Fix Your Team's Communication Problems - Your teams assume they're talking about the same thing--until they realize they're not.](https://www.inc.com/magazine/201809/jason-fried/illusion-agreement-team-project.html)
 
 ### More
 
