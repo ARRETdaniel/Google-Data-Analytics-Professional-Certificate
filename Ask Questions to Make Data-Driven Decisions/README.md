@@ -17,7 +17,7 @@
 - [How one of the world’s biggest marketers ripped up its playbook and learned to anticipate intent.](https://www.thinkwithgoogle.com/marketing-strategies/data-and-measurement/pepsi-digital-transformation/)
 #### Dashboard
 
-- [Designing compelling dashboards](https://d3c33hcgiwev3.cloudfront.net/IfnpXnRlRhi56V50ZVYYow_3a87f3d18e444bdda63014571e0d9ef1_DAC2-Designing-compelling-dashboards.pdf?Expires=1642723200&Signature=kH5owdHuJMYwdiCdQ5CnSctbxwUj7UHonEoTCYrEcQNJxN2j7~~-MXMpeGyab-w-k-bMExLiBwuWjfnOdWBMGyK-SK0LyKcwNEdnurqyknLeOBRoAzgrvOk4Ue9c5KNF3Hwrk2f8GAa0s1gPj3c3iApmbpb33TTv~phxK~KzAgs_&Key-Pair-Id=APKAJLTNE6QMUY6HBC5A)
+- [Designing compelling dashboards](https://d3c33hcgiwev3.cloudfront.net/IfnpXnRlRhi56V50ZVYYow_3a87f3d18e444bdda63014571e0d9ef1_DAC2-Designing-compelling-dashboards.pdf?Expires=1643155200&Signature=ZC~5b0qrLAoBb9HaQX0t6v~XxHtfxlp5c-oUbA9Pzmv0WB6Z~U~FWOBrJX--yxjetlXDJLupI1jWBo7y10jNS7Kc-3KwhgavikIuN-0BtQFcbnNl8YajtJzCjmu2iHyktRqb5Ry67fj~jTihZaofioMhK22n5VoUkpRe1q6g40M_&Key-Pair-Id=APKAJLTNE6QMUY6HBC5A)
 
 - [6 real-world examples of business intelligence dashboards.](https://www.tableau.com/learn/articles/business-intelligence-dashboards-examples)
 
@@ -66,6 +66,11 @@
 
 ### More
 
+- [Glossary: Terms and definitions - We’ve covered a lot of terms—some of which you may have already known, and some of which are new. To make it easy to remember what a word means, we created this glossary of terms and definitions. ](https://docs.google.com/document/d/1oZFmNXd3aXtTrfKULLEtCaRKlKEAMscFfqU2syf1bsw/template/preview)
+
+#### Challenge
 - []()
-- []()
-- []()
+- [Patel Events Plus dataset](https://docs.google.com/spreadsheets/d/1mHgcNViGB2wm8cxz0ZrrxWm1VvNxeqlfAuA3bd_aE6s/template/preview)
+- [CustomerSurvey - CustomerSurvey](https://docs.google.com/spreadsheets/d/1HbBfNTuHCmQyY0GJrsdj6OCOkmeA5sUAQ-jXx8bMdpY/template/preview)
+- [HistoricalSales - HistoricalSales](https://docs.google.com/spreadsheets/d/1HO8B-svc3Mmm3hlWycvX61Boxl9RQv6nKKWnkRig83E/template/preview)
+- [CustomerSurvey - CustomerSurvey](https://docs.google.com/spreadsheets/d/1HbBfNTuHCmQyY0GJrsdj6OCOkmeA5sUAQ-jXx8bMdpY/template/preview)
