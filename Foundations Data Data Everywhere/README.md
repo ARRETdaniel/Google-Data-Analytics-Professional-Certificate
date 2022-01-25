@@ -70,6 +70,8 @@
 
 ### Visualization software
 
+- [Planning a data visualization](week4/Planningadatavisualization.pdf)
+
 - [Spreadsheets (Microsoft Excel or Google Sheets)]()
 
 - [Tableau - Tableau Public is free, easy to use, and full of helpful information. ](https://public.tableau.com/en-us/s/resources)
