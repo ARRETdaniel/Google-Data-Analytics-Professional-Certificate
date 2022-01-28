@@ -44,10 +44,9 @@
 
 - [Dataset Search: The Dataset Search is a search engine designed specifically for data sets; you can use this to search for specific data sets. ](https://datasetsearch.research.google.com/)
 
-- []()
 ### More
 
-- []()
+- [Glossary: Terms and definitions - We’ve covered a lot of terms—some of which you may have already known, and some of which are new. To make it easy to remember what a word means, we created this glossary of terms and definitions.](https://docs.google.com/document/d/1TnFI_yFdhFSA2qWg4Ln24hHBjXsShxT1Jws6EwiHJtw/template/preview?resourcekey=0-h5EEEfy05Rg6M-Zbv9Xu9A)
 
 ## Week 3
 
