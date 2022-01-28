@@ -92,37 +92,87 @@ By the end of this course, you will:
 </details>
 
 <details>
-  <summary>course</summary>
+  <summary>Process Data from Dirty to Clean</summary>
   <h6 align="left">
+This is the fourth course in the Google Data Analytics Certificate. These courses will equip you with the skills needed to apply to introductory-level data analyst jobs. In this course, you’ll continue to build your understanding of data analytics and the concepts and tools that data analysts use in their work. You’ll learn how to check and clean your data using spreadsheets and SQL as well as how to verify and report your data cleaning results. Current Google data analysts will continue to instruct and provide you with hands-on ways to accomplish common data analyst tasks with the best tools and resources.
 
+Learners who complete this certificate program will be equipped to apply for introductory-level jobs as data analysts. No previous experience is necessary.
+
+By the end of this course, you will be able to do the following:
+ - Learn how to check for data integrity.
+ - Discover data cleaning techniques using spreadsheets. 
+ - Develop basic SQL queries for use on databases.
+ - Apply basic SQL functions for cleaning and transforming data.
+ - Gain an understanding of how to verify the results of cleaning data.
+ - Explore the elements and importance of data cleaning reports.
   </h6>
 </details>
 
 <details>
-  <summary>course</summary>
+  <summary>Analyze Data to Answer Questions</summary>
   <h6 align="left">
+This is the fifth course in the Google Data Analytics Certificate. These courses will equip you with the skills needed to apply to introductory-level data analyst jobs. In this course, you’ll explore the “analyze” phase of the data analysis process. You’ll take what you’ve learned to this point and apply it to your analysis to make sense of the data you’ve collected. You’ll learn how to organize and format your data using spreadsheets and SQL to help you look at and think about your data in different ways. You’ll also find out how to perform complex calculations on your data to complete business objectives. You’ll learn how to use formulas, functions, and SQL queries as you conduct your analysis. Current Google data analysts will continue to instruct and provide you with hands-on ways to accomplish common data analyst tasks with the best tools and resources.
 
+Learners who complete this certificate program will be equipped to apply for introductory-level jobs as data analysts. No previous experience is necessary.
+
+By the end of this course, you will:
+ - Learn how to organize data for analysis.
+ - Discover the processes for formatting and adjusting data. 
+ - Gain an understanding of how to aggregate data in spreadsheets and by using SQL.
+ - Use formulas and functions in spreadsheets for data calculations.
+ - Learn how to complete calculations using SQL queries.
   </h6>
 </details>
 
 <details>
-  <summary>course</summary>
+  <summary>Share Data Through the Art of Visualization</summary>
   <h6 align="left">
+This is the sixth course in the Google Data Analytics Certificate. These courses will equip you with the skills needed to apply to introductory-level data analyst jobs. You’ll learn how to visualize and present your data findings as you complete the data analysis process. This course will show you how data visualizations, such as visual dashboards, can help bring your data to life. You’ll also explore Tableau, a data visualization platform that will help you create effective visualizations for your presentations. Current Google data analysts will continue to instruct and provide you with hands-on ways to accomplish common data analyst tasks with the best tools and resources.
 
+Learners who complete this certificate program will be equipped to apply for introductory-level jobs as data analysts. No previous experience is necessary.
+
+By the end of this course, you will:
+ - Examine the importance of data visualization.
+ - Learn how to form a compelling narrative through data stories.
+ - Gain an understanding of how to use Tableau to create dashboards and dashboard filters.
+ - Discover how to use Tableau to create effective visualizations. 
+ - Explore the principles and practices involved with effective presentations.
+ - Learn how to consider potential limitations associated with the data in your presentations.
+ - Understand how to apply best practices to a Q&A with your audience.
   </h6>
 </details>
 
 <details>
-  <summary>course</summary>
+  <summary>Data Analysis with R Programming</summary>
   <h6 align="left">
+This course is the seventh course in the Google Data Analytics Certificate. These courses will equip you with the skills needed to apply to introductory-level data analyst jobs. In this course, you’ll learn about the programming language known as R. You’ll find out how to use RStudio, the environment that allows you to work with R. This course will also cover the software applications and tools that are unique to R, such as R packages. You’ll discover how R lets you clean, organize, analyze, visualize, and report data in new and more powerful ways.  Current Google data analysts will continue to instruct and provide you with hands-on ways to accomplish common data analyst tasks with the best tools and resources.
 
+Learners who complete this certificate program will be equipped to apply for introductory-level jobs as data analysts. No previous experience is necessary.
+
+By the end of this course, you will:
+ - Examine the benefits of using the R programming language.
+ - Discover how to use RStudio to apply R to your analysis. 
+ - Explore the fundamental concepts associated with programming in R. 
+ - Explore the contents and components of R packages including the Tidyverse package.
+ - Gain an understanding of dataframes and their use in R.
+ - Discover the options for generating visualizations in R.
+ - Learn about R Markdown for documenting R programming
   </h6>
 </details>
 
 <details>
-  <summary>course</summary>
+  <summary>Google Data Analytics Capstone: Complete a Case Study</summary>
   <h6 align="left">
+This course is the eighth course in the Google Data Analytics Certificate. You’ll have the opportunity to complete an optional case study, which will help prepare you for the data analytics job hunt. Case studies are commonly used by employers to assess analytical skills. For your case study, you’ll choose an analytics-based scenario. You’ll then ask questions, prepare, process, analyze, visualize and act on the data from the scenario. You’ll also learn other useful job hunt skills through videos with common interview questions and responses, helpful materials to build a portfolio online, and more. Current Google data analysts will continue to instruct and provide you with hands-on ways to accomplish common data analyst tasks with the best tools and resources.
 
+Learners who complete this certificate program will be equipped to apply for introductory-level jobs as data analysts. No previous experience is necessary.
+
+By the end of this course, you will:
+ - Learn the benefits and uses of case studies and portfolios in the job search.
+ - Explore real world job interview scenarios and common interview questions.
+ - Discover how case studies can be a part of the job interview process. 
+ - Examine and consider different case study scenarios. 
+ - Have the chance to complete your own case study for your portfolio.
   </h6>
 </details>
 
