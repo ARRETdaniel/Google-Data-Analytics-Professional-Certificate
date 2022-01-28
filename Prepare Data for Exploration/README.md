@@ -32,10 +32,19 @@
 
 ## Week 2
 
-###
+### Sites and resources for open data
+
+- [U.S. government data site: Data.gov is one of the most comprehensive data sources in the US. This resource gives users the data and tools that they need to do research, and even helps them develop web and mobile applications and design data visualizations. ](https://www.data.gov/)
+
+- [U.S. Census Bureau: This open data source offers demographic information from federal, state, and local governments, and commercial entities in the U.S. too.](https://www.census.gov/data.html)
+
+- [Open Data Network: This data source has a really powerful search engine and advanced filters. Here, you can find data on topics like finance, public safety, infrastructure, and housing and development.](https://www.opendatanetwork.com/)
+
+- [Google Cloud Public Datasets: There are a selection of public datasets available through the Google Cloud Public Dataset Program that you can find already loaded into BigQuery.](https://cloud.google.com/public-datasets)
+
+- [Dataset Search: The Dataset Search is a search engine designed specifically for data sets; you can use this to search for specific data sets. ](https://datasetsearch.research.google.com/)
 
 - []()
--
 ### More
 
 - []()
