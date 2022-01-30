@@ -52,7 +52,7 @@
 
 ###
 
-- []()
+- [Ice Cream Sales - Dataset - Inspecting a dataset: A guided, hands-on tour](https://docs.google.com/spreadsheets/d/1lZuzJT6to-yirPSU5hW4-IETAVddm4cfrV8zZ-kFZO8/edit?usp=sharing&resourcekey=0-RU8jlmHAenreRLvHOCUDPQ)
 -
 ### More
 
