@@ -50,7 +50,7 @@
 
 ## Week 3
 
-### Public datasets
+#### Public datasets
 
 - [The Google Cloud Public Datasets allow data analysts access to high-demand public datasets, and make it easy to uncover insights in the cloud. ](https://cloud.google.com/public-datasets)
 
@@ -92,13 +92,27 @@
 - [G​etting started with PostgreSQL: This is a tutorial to get started using PostgreSQL.](https://www.postgresql.org/docs/10/tutorial-start.html)
 - [Getting started with SQLite: This is a quick start guide for using SQLite.](https://www.sqlite.org/quickstart.html)
 
+### SQL
+
+- [In-depth guide: SQL best practices](week3/In-depth_guide_SQL_best_practices.pdf)
+
 ### More
 
 - [Ice Cream Sales - Dataset - Inspecting a dataset: A guided, hands-on tour](https://docs.google.com/spreadsheets/d/1lZuzJT6to-yirPSU5hW4-IETAVddm4cfrV8zZ-kFZO8/edit?usp=sharing&resourcekey=0-RU8jlmHAenreRLvHOCUDPQ)
-- []()
-- []()
+- [Glossary: Terms and definitions - We’ve covered a lot of terms—some of which you may have already known, and some of which are new. To make it easy to remember what a word means, we created this glossary of terms and definitions.](https://docs.google.com/document/d/1X15VQdgSqDHoNvd_CurxqQX1rRXAy-X0IQr8EVRI_68/template/preview?resourcekey=0-zN5Xla63PMRl40r9Wfc3Ow)
+
 
 ## Week 4
+
+###
+
+- []()
+-
+### More
+
+- []()
+
+## Week 5
 
 ###
 

@@ -26,3 +26,17 @@ WHERE start_station_id = 111 --can also use end_station_id
 SELECT COUNT(DISTINCT bike_id) AS num_of_bike_trips
 FROM `bigquery-public-data.london_bicycles.cycle_hire`
 WHERE duration > 2400 --schema indicates that trip duration is recorded in seconds
+
+--This query SELECTs the name and count columns from the names_2014 table. Using the WHERE clause, you are filtering for a specific gender for your results.
+-- Hands-On Activity: Create a custom table in BigQuery
+SELECT
+  name,
+  count
+FROM
+  `babynames.names_2014`
+WHERE
+  gender = 'M'
+ORDER BY
+  count DESC
+LIMIT
+  5
