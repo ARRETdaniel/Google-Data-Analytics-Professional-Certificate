@@ -103,21 +103,12 @@
 
 
 ## Week 4
-
-###
-
-- []()
--
 ### More
 
-- []()
+- [Glossary: Terms and definitions - We’ve covered a lot of terms—some of which you may have already known, and some of which are new. To make it easy to remember what a word means, we created this glossary of terms and definitions.](https://docs.google.com/document/d/1tlHbLlQffPfsh0aTHYFTH38HAI97KAAEwiRZ2QkRmYQ/template/preview?resourcekey=0-Y2f87SO-gb5T5nQCRbKFhg)
 
 ## Week 5
 
-###
-
-- []()
--
 ### More
 
-- []()
+- [Glossary: Terms and definitions - We’ve covered a lot of terms—some of which you may have already known, and some of which are new. To make it easy to remember what a word means, we created this glossary of terms and definitions.](https://docs.google.com/document/d/11LtgqGNCWGT4mxWx5Riq9ocagFHsXlbGXjeulf5_bD4/template/preview?resourcekey=0-KHWkLQ7UoKIY7J8aVwijRg)
