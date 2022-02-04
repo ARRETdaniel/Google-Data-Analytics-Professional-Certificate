@@ -2,6 +2,10 @@
 
 ## Week 1
 
+###
+
+- [Well-aligned objectives and data Transforming data VLOOKUP to look up the data, DATEDIF calculate the difference between the dates](week1/Well-aligned-objectives-and-data.pdf)
+
 ####
 
 - []()
