@@ -45,10 +45,18 @@
 - [Top ten ways to clean your data: Review an orderly guide to data cleaning in Microsoft Excel.](https://support.microsoft.com/en-us/office/top-ten-ways-to-clean-your-data-2844b620-677c-47a7-ac3e-c2e157d1db19)
 - [10 Google Workspace tips to clean up data: Learn best practices for data cleaning in Google Sheets.](https://support.google.com/a/users/answer/9604139?hl=en#zippy=)
 
--
+### Workflow automation
+
+- [Towards Data Science’s Automating Scientific Data Analysis](https://towardsdatascience.com/automating-scientific-data-analysis-part-1-c9979cd0817e)
+
+- [MIT News’ Automating Big-Data Analysis](https://news.mit.edu/2016/automating-big-data-analysis-1021)
+
+- [TechnologyAdvice’s 10 of the Best Options for Workflow Automation Software](https://technologyadvice.com/blog/information-technology/top-10-workflow-automation-software/)
+
 ### More
 
-- []()
+- [Glossary: Terms and definitions - We’ve covered a lot of terms—some of which you may have already known, and some of which are new. To make it easy to remember what a word means, we created this glossary of terms and definitions.](https://docs.google.com/document/d/1JC24x3TypcFdueCPEd5UAnKIzL9sM8UpOKaMHdibiq4/template/preview)
+
 
 ## Week 3
 
