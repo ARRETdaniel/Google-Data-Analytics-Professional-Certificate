@@ -34,20 +34,17 @@
 
 - [Is There a Difference Between Open Data and Public Data?](https://towardsdatascience.com/is-there-a-difference-between-open-data-and-public-data-6261cd7b5389)
 
-####
-
-- [Glossary: Terms and definitions
-]()
--
 ### More
 
 - [Glossary: Terms and definitions - We’ve covered a lot of terms—some of which you may have already known, and some of which are new. To make it easy to remember what a word means, we created this glossary of terms and definitions.](https://docs.google.com/document/d/1Ij-diqvlxXx7_GEA1pCovuars8d67iOWSFccrp3Vgv4/template/preview?resourcekey=0-ckHhfy9jV7IWpzJ7k5h20A)
 
 ## Week 2
 
-####
+### Data cleaning
 
-- []()
+- [Top ten ways to clean your data: Review an orderly guide to data cleaning in Microsoft Excel.](https://support.microsoft.com/en-us/office/top-ten-ways-to-clean-your-data-2844b620-677c-47a7-ac3e-c2e157d1db19)
+- [10 Google Workspace tips to clean up data: Learn best practices for data cleaning in Google Sheets.](https://support.google.com/a/users/answer/9604139?hl=en#zippy=)
+
 -
 ### More
 
