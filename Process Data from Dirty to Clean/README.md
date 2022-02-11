@@ -60,10 +60,16 @@
 
 ## Week 3
 
-####
+#### SQL dialects and their uses
 
-- []()
--
+
+- [LearnSQL’s blog, What Is a SQL Dialect, and Which One Should You Learn?](https://learnsql.com/blog/what-sql-dialect-to-learn/)
+- [Software Testing Help’s article, Differences Between SQL Vs MySQL vs SQL Server](https://www.softwaretestinghelp.com/sql-vs-mysql-vs-sql-server/)
+- [Datacamps blog, SQL Server, PostgreSQL, MySQL... whats the difference? Where do I start? Note that there is an error in this blog article.](https://www.datacamp.com/community/blog/sql-differences)
+- [The comparison table incorrectly states that SQlite uses subqueries instead of window functions. Refer to the SQLite Window Functions documentation for proper clarification.](https://sqlite.org/windowfunctions.html)
+- [SQL Tutorial’s tutorial, What is SQL](https://www.sqltutorial.org/what-is-sql/)
+
+
 ### More
 
 - []()
