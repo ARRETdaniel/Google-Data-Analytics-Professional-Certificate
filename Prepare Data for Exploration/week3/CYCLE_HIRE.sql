@@ -40,3 +40,14 @@ ORDER BY
   count DESC
 LIMIT
   5
+
+--you can use this query to update your table so that all Dodge gas sedans have four doors:
+
+UPDATE
+  cars.car_info
+SET
+  num_of_doors = "four"
+WHERE
+  make = "dodge"
+  AND fuel_type = "gas"
+  AND body_style = "sedan";

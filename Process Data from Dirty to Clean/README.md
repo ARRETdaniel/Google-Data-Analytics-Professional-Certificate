@@ -69,10 +69,17 @@
 - [The comparison table incorrectly states that SQlite uses subqueries instead of window functions. Refer to the SQLite Window Functions documentation for proper clarification.](https://sqlite.org/windowfunctions.html)
 - [SQL Tutorial’s tutorial, What is SQL](https://www.sqltutorial.org/what-is-sql/)
 
+### Clean data using SQL
+
+- [Hands-On Activity: Clean data using SQL](week3/Clean_data_using_SQL.pdf)
+
+- [Test your knowledge on SQL queries](week3/Test_your_knowledge_on_SQL_queries.pdf)
+
+- [Weekly challenge 3](week3/Weekly_challenge_3.pdf)
 
 ### More
 
-- []()
+- [Glossary: Terms and definitions - We’ve covered a lot of terms—some of which you may have already known, and some of which are new. To make it easy to remember what a word means, we created this glossary of terms and definitions.](https://docs.google.com/document/d/11qyveOPiz27RWNKfQa2xrJ2QwCHwNMHN_Z8_sBr0GNk/template/preview)
 
 ## Week 4
 
@@ -80,6 +87,28 @@
 
 - []()
 -
+### More
+
+- []()
+
+## Week 5
+
+####
+
+- []()
+-
+### More
+
+- []()
+
+## Week 6
+
+####
+
+- []()
+
+-
+
 ### More
 
 - []()
