@@ -83,13 +83,12 @@
 
 ## Week 4
 
-####
 
-- []()
--
+- [Advanced functions for speedy data cleaning](week4/Advanced_functions_for_speedy_data_cleaning.pdf)
+
 ### More
 
-- []()
+- [Glossary: Terms and definitions - We’ve covered a lot of terms—some of which you may have already known, and some of which are new. To make it easy to remember what a word means, we created this glossary of terms and definitions.](https://docs.google.com/document/d/1rYNIY-fDkA2lLCwrBrvhzNV5BzzHpjTcsiWwXou0bj4/template/preview)
 
 ## Week 5
 
