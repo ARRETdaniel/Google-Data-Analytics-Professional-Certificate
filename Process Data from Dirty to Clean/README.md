@@ -92,13 +92,22 @@
 
 ## Week 5
 
-####
+#### Build a resume
 
-- []()
--
-### More
+- [Link to template 1: Template Example 1](https://docs.google.com/document/d/1qn_zOg-0E7pca6bEk6BGIEBNBuIZdiPnwOTKm76Q-jA/template/preview)
 
-- []()
+- [Link to template 1: Template Example 2](https://docs.google.com/document/d/1l-aMPMNRxZ0zSOQcNGg4jMqQO5FW1coZiV2m7jz6CFw/template/preview)
+
+#### Portfolio & Resume
+
+- [How to Build a Compelling Data Science Portfolio & Resume | Kaggle](https://youtu.be/xrhPjE7wHas?list=PLqFaTIg4myu-dNobDHQZPrD2wH27PthCG)
+
+- [Overview of the Data Science Interview Process](https://www.youtube.com/watch?v=X6orAXDIrds&list=PLqFaTIg4myu-dNobDHQZPrD2wH27PthCG&index=5)
+- [Live Breakdown of Common Data Science Interview Questions](https://www.youtube.com/watch?v=aXUsrKPTBvY&list=PLqFaTIg4myu-dNobDHQZPrD2wH27PthCG&index=6)
+- [Am I a Good Fit? Identifying Your Best Data Science Job Opportunities](https://www.youtube.com/watch?v=0W0Zrc-m5r8&list=PLqFaTIg4myu-dNobDHQZPrD2wH27PthCG&index=2)
+- [Real Stories from a Panel of Successful Career Switchers](https://www.youtube.com/watch?v=iP0Fxg4oqUQ&list=PLqFaTIg4myu-dNobDHQZPrD2wH27PthCG&index=8)
+
+- [Adding soft skills to your resume](week5/Adding_soft_skills_to_your_resume.pdf)
 
 ## Week 6
 
@@ -110,4 +119,4 @@
 
 ### More
 
-- []()
+- [Glossary: Terms and definitions - We’ve covered a lot of terms—some of which you may have already known, and some of which are new. To make it easy to remember what a word means, we created this glossary of terms and definitions.](https://docs.google.com/document/d/1M5ECYjyOHafeVj-ryAE2rDXA8iYPSlxCyvPHPIlGdqk/template/preview)
