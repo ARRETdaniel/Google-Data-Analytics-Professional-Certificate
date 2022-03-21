@@ -23,5 +23,6 @@
 
 - [SQL functions: This is a comprehensive list of functions to get you started. Click on each function, where you will learn about the definition, usage, examples, and even be able to create and run your own query for practice. Try it out for yourself!](https://www.w3schools.com/sql/sql_ref_sqlserver.asp)
 - [SQL Keywords: This is a helpful SQL keywords reference to bookmark as you increase your knowledge of SQL. This list of keywords are reserved words that you will use as your need to perform different operations in the database grows.](<https://www.w3schools.com/sql/sql_ref_keywords.asp>)
-- []()
+
+- [Learning Log Template_ Start a data analysis checklist](https://docs.google.com/document/d/1kGV1lHh6Exnx6cLQfMyhG9nv6JXEMDvgJb_X_54_Y0o/template/preview?resourcekey=0-4VRGOrEcbl6PBMdZoZ7Fnw)
 - []()
