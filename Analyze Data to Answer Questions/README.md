@@ -25,4 +25,16 @@
 - [SQL Keywords: This is a helpful SQL keywords reference to bookmark as you increase your knowledge of SQL. This list of keywords are reserved words that you will use as your need to perform different operations in the database grows.](<https://www.w3schools.com/sql/sql_ref_keywords.asp>)
 
 - [Learning Log Template_ Start a data analysis checklist](https://docs.google.com/document/d/1kGV1lHh6Exnx6cLQfMyhG9nv6JXEMDvgJb_X_54_Y0o/template/preview?resourcekey=0-4VRGOrEcbl6PBMdZoZ7Fnw)
+
+
+## Week 3
+
 - []()
+
+### VLOOKUP resources for Microsoft Excel
+
+- [H​ow to use VLOOKUP in Excel: This tutorial includes a video to help you get a general understanding of how the VLOOKUP function works in Excel, as well as practical examples to look through.](<https://support.microsoft.com/en-us/office/vlookup-function-0bbc8083-26fe-4963-8ab8-93a18ad188a1>)
+- [VLOOKUP in Excel tutorial: Follow along in this video lesson and learn how to write a VLOOKUP formula in Excel and master time-saving useful tips and tricks.](<https://www.youtube.com/watch?v=d3BYVQ6xIE4>)
+- [23 things you should know about VLOOKUP in Excel: Explore this list of 23 VLOOKUP facts as well as challenges you might run into, and start to learn how to master them.](https://exceljet.net/things-you-should-know-about-vlookup)
+- [How to use Excel's VLOOKUP function: This article shares a specific example around how to apply VLOOKUP in your searches.](https://edu.gcfglobal.org/en/excel-tips/how-to-use-excels-vlookup-function/1/)
+- [VLOOKUP in Excel vs Google Sheets: This guide offers a VLOOKUP comparison of Excel and Google Sheets.](https://infoinspired.com/sheets-vs-excel-formula/vlookup-formula-in-excel-and-google-sheets/)
