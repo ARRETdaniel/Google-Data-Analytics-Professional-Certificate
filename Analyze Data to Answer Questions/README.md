@@ -47,3 +47,12 @@
 - [SQL JOINs: Bringing Data Together One Join at a Time: Not only does this resource have a detailed explanation of JOINs with examples, but it also provides example data that you can use to follow along with their step-by-step guide. This is a useful way to practice JOINs with some real data.](https://towardsdatascience.com/sql-join-8212e3eb9fde)
 - [SQL JOIN: This is another resource that provides a clear explanation of JOINs and uses examples to demonstrate how they work. The examples also combine JOINs with aliasing. This is a great opportunity to see how JOINs can be combined with other SQL concepts that you have been learning about in this course.](https://www.dofactory.com/sql/join)
 - []()
+
+### A​dditional resources Subqueries
+
+- [SQL subqueries: This detailed introduction includes the definition of a subquery, its purpose in SQL, when and how to use it, and what the results will be](https://www.w3resource.com/sql/subqueries/understanding-sql-subqueries.php)
+- [Writing subqueries in SQL: Explore the basics of subqueries in this interactive tutorial, including examples and practice problems that you can work through](https://mode.com/sql-tutorial/sql-sub-queries/)
+
+### Glossary: Terms and definitions
+
+- [We’ve covered a lot of terms—some of which you may have already known, and some of which are new. To make it easy to remember what a word means, we created this glossary of terms and definitions.](https://docs.google.com/document/d/1yEQYGFxETx1HFeoverfPy8SSh1BmwoQtk7SBa7XBTcY/template/preview?resourcekey=0-MrO5DNKd3vMu-_yuhnoDPA)
