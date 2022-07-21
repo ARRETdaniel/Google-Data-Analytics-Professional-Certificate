@@ -2,10 +2,16 @@
 
 ## Week 1
 
-####
+### From **data to visualization**; best way to represent your data
 
-- []()
--
+- [Best way to represent your datays](week1/best_way_to_represent_your_data.pdf)
+
+- [From data to visualization: This is an excellent analysis of a larger decision tree. With this comprehensive selection, you can search based on the kind of data you have or click on each  graphic example for a definition and proper usage.](https://www.data-to-viz.com/)
+
+- [Selecting the best chart: This two-part YouTube video can help take the guesswork out of data chart selection. Depending on the type of data you are aiming to illustrate, you will be guided through when to use, when to avoid, and several examples of best practices. Part 2 of this video provides even more examples of different charts, ensuring that there is a chart for every type of data out there.](https://www.youtube.com/watch?v=C07k0euBpr8)
+
+- [Part 2](https://www.youtube.com/watch?v=qGaIB-bRn-A)
+
 ### More
 
 - [Information is beautiful: Founded by McCandless himself, this site serves as a hub of sample visualizations that make use of the McCandless method. Explore data from the news, science, the economy, and so much more and learn how to make visual decisions based on facts from all kinds of sources.](https://informationisbeautiful.net/)
