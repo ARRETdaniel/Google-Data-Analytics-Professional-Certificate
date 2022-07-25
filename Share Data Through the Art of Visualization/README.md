@@ -4,13 +4,15 @@
 
 ### From **data to visualization**; best way to represent your data
 
-- [Best way to represent your datays](week1/best_way_to_represent_your_data.pdf)
+- [Best way to represent your data PDF](week1/best_way_to_represent_your_data.pdf)
 
 - [From data to visualization: This is an excellent analysis of a larger decision tree. With this comprehensive selection, you can search based on the kind of data you have or click on each  graphic example for a definition and proper usage.](https://www.data-to-viz.com/)
 
 - [Selecting the best chart: This two-part YouTube video can help take the guesswork out of data chart selection. Depending on the type of data you are aiming to illustrate, you will be guided through when to use, when to avoid, and several examples of best practices. Part 2 of this video provides even more examples of different charts, ensuring that there is a chart for every type of data out there.](https://www.youtube.com/watch?v=C07k0euBpr8)
 
 - [Part 2](https://www.youtube.com/watch?v=qGaIB-bRn-A)
+
+- [Design to create effective visualizations PDF](week1/design_to_create_effective_visualizations.pdf)
 
 ### More
 
