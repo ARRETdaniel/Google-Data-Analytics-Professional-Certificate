@@ -14,6 +14,14 @@
 
 - [Design to create effective visualizations PDF](week1/design_to_create_effective_visualizations.pdf)
 
+- [What makes a good visualization?](week1/What-Makes-a-Good-Infoviz.pdf)
+
+- [Data is beautiful](week1/data-is-beautiful.pdf)
+
+- [Data and Design Thinking: Why Use Data in the Design Process?](https://www.enginess.io/insights/data-and-design-thinking)
+
+- [Pro tips for highlighting key information](week1/pro-tips-for-highlighting-key-information-2022-08-01-16_58_23.pdf)
+
 ### More
 
 - [Information is beautiful: Founded by McCandless himself, this site serves as a hub of sample visualizations that make use of the McCandless method. Explore data from the news, science, the economy, and so much more and learn how to make visual decisions based on facts from all kinds of sources.](https://informationisbeautiful.net/)
