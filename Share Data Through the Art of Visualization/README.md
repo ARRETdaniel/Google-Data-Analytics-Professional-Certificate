@@ -42,11 +42,16 @@
 
 - [Data studio gallery: Information is vital, but information presented in a digestible way is even more useful. Browse through this interactive gallery and find examples of different types of data communicated visually. You can even use the data studio tool to create your own data-driven visual.](https://datastudio.google.com/gallery?category=visualization)
 
+- [Contrast & Color - Accessible visualizations -  Web Accessibility Guidelines](http://web-accessibility.carnegiemuseums.org/design/color/)
+
+- [Hands-On Activity: Making your own visualization](week1/hands-on-activity-making-your-own-visualization.pdf)
 
 ## Week 2
 
 ####
 
+- []()
+- []()
 - []()
 -
 ### More
