@@ -1,5 +1,7 @@
 # Adicional Resources
 
+# Get started with Tableau, data visualization.
+
 ## Week 1
 
 ### From **data to visualization**; best way to represent your data
@@ -48,9 +50,11 @@
 
 ## Week 2
 
-####
+#### Bonus Guide: Additional insights on selecting the right data visualization
 
-- []()
+- *How to choose* [Visualizations in spreadsheets and Tableau; use case](week1/visualizations-in-spreadsheets-and-tableau.pdf)
+-
+- [*How to choose* a data visualization](week2/How-to-choose-a-data-visualization.pdf)
 - []()
 - []()
 -
