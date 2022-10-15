@@ -64,12 +64,17 @@
 
 ## Week 3
 
-# Presentation (Sharing a narrative)
+
+## Week 4
+
+# Presentation (Data Presentation McCandless Method)
 
 ####
 
-- []()
--
+- [VIDEO - Messy example of a data presentation](week4/Messexampleofadatapresentation.mp4)
+- [VIDEO - Good example of a data presentation](week4/Goodexampleofadatapresentation.mp4)
+- <https://youtu.be/CzrCADdsXwE>
+
 ### More
 
 - []()
