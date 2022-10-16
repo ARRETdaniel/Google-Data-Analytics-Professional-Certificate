@@ -67,13 +67,15 @@
 
 ## Week 4
 
-# Presentation (Data Presentation McCandless Method)
+# Presentation (Data Presentation)
 
 ####
 
 - [VIDEO - Messy example of a data presentation](week4/Messexampleofadatapresentation.mp4)
 - [VIDEO - Good example of a data presentation](week4/Goodexampleofadatapresentation.mp4)
 - <https://youtu.be/CzrCADdsXwE>
+- [PRASENTATION EXEMPLE - Demystifying Value Presentation](week4/DemystifyingValuePresentation.pptx)
+- [PRASENTATION tips and tricks - Guide: Sharing data findings in presentations](week4/Sharing-your-data-findings-in-presentations-.pdf)
 
 ### More
 
