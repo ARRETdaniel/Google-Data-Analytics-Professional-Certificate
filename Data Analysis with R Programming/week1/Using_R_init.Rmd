@@ -1,0 +1,7 @@
+print("Hello world!")
+
+2+2
+
+6/4
+
+7*8
