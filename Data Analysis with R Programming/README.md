@@ -23,8 +23,14 @@ R offers convenient statistical features for data analysis and is useful for cre
 - [Download and Install R](https://cloud.r-project.org/)
 - [RStudio Desktop](https://www.rstudio.com/products/rstudio/download/#download)
 - [Hands-On Activity: Downloading and installing R](week1/optional-hands-on-activity-downloading-and-installing-r.pdf)
-- []()
+- [Hands-On Activity: Cloud access to RStudio](week1/hands-on-activity-cloud-access-to-rstudio.pdf)
+- [Optional Hands-On Activity: Get started in RStudio Desktop](week1/optional-hands-on-activity-get-started-in-rstudio-desktop.pdf)
+  -
+- [The Advantages of RStudio: This web page explains some of the reasons why RStudio is many analysts’ preferred choice for interfacing with R. You’ll learn about the advantages of using RStudio for data analysis, from ease of use to accessibility of graphics and more.](https://www.theanalysisfactor.com/the-advantages-of-rstudio/)
 
+- [Data analysis and R programming: This online introduction to data analysis and R programming is a good starting point for R and RStudio users. It also includes a list of detailed explanations about the advantages of using R and RStudio. You’ll also find a helpful guide for getting set up with RStudio.](<https://lgatto.github.io/2017_11_09_Rcourse_Jena/before-we-start.html>)
+- []()
+- []()
 - []()
 
 ### More
