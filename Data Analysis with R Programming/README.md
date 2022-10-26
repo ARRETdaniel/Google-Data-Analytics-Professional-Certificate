@@ -31,10 +31,10 @@ R offers convenient statistical features for data analysis and is useful for cre
 - [Data analysis and R programming: This online introduction to data analysis and R programming is a good starting point for R and RStudio users. It also includes a list of detailed explanations about the advantages of using R and RStudio. You’ll also find a helpful guide for getting set up with RStudio.](<https://lgatto.github.io/2017_11_09_Rcourse_Jena/before-we-start.html>)
 - []()
 - []()
-- []()
 
 ### More
 
+- [Glossary - Data Analytics - Terms and Definitions](https://docs.google.com/document/d/1eWQyXH14HmkZba6U291S_M48_kVRk7vwui_tYdjGcu8/template/preview)
 
 ## Week 2
 
