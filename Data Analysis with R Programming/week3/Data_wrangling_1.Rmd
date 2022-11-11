@@ -1,0 +1,127 @@
+---
+title:"Elementary data manipulations"
+output: html_document
+---
+
+Pick rows: filter()
+
+Pick columns: select()
+
+Sort rows: arrange()
+
+Count things: count()
+
+Make new columns: mutate()
+
+```{r}
+install.packages("palmerpenguins")
+library(palmerpenguins)
+data(package = "palmerpenguins")
+```
+
+%>% is pronounced "and then"
+
+# The pipe %>% feeds data into functions
+
+```{r}
+head(penguins)
+```
+
+```{r}
+# head(penguins)
+penguins %>%
+  head()
+```
+
+# The pipe %>% feeds data into functions
+
+```{r}
+ggplot(penguins, aes(bill_length_mm, bill_depth_mm, color = species)) +
+  geom_point()
+
+penguins |>
+  ggplot(aes(bill_length_mm, bill_depth_mm, color = species)) +
+  geom_point()
+```
+
+# Which to use? Native pipe or old-school pipe?
+|> is the future. If you can, use it.
+
+%>% works on older installations. It's the safe choice for now.
+
+We use %>% here because many people still run R 3.x or 4.0.
+```{r}
+
+penguins %>%
+  filter(species == "Gentoo")
+```
+# Pick columns species, island, and sex
+```{r}
+
+penguins %>%
+  select(species, island, sex)
+```
+# Sort the rows in a table: arrange()
+```{r}
+
+penguins %>%
+  arrange(desc(bill_length_mm))
+```
+# Count things
+```{r}
+
+penguins
+```
+
+```{r}
+
+penguins %>%
+  count(species)
+```
+
+```{r}
+
+penguins %>%
+  count(species, island)
+```
+
+# Use the pipe to build analysis pipelines
+
+```{r}
+
+penguins %>%
+  filter(species == "Adelie")
+```
+Use the pipe to build analysis pipelines
+```{r}
+
+penguins %>%
+  filter(species == "Adelie") %>%
+  select(island, sex) %>%
+  count(island, sex)
+```
+# Make a new table column: mutate()
+Example: flipper length in cm
+```{r}
+
+penguins %>%
+  select(species, island, flipper_length_mm)
+```
+```{r}
+
+penguins %>%
+  select(species, island, flipper_length_mm) %>%
+  mutate(flipper_length_cm = flipper_length_mm / 10)
+```
+
+Make multiple columns at once
+```{r}
+
+penguins %>%
+  select(species, island, flipper_length_mm) %>%
+  mutate(
+    flipper_length_cm = flipper_length_mm / 10, # <- notice the comma
+    flipper_length_in = flipper_length_mm / 25.4
+  )
+# https://wilkelab.org/SDS375/slides/data-wrangling-1.html#40
+```
