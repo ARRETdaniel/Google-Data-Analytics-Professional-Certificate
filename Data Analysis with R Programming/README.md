@@ -53,7 +53,14 @@ R offers convenient statistical features for data analysis and is useful for cre
 
 - [ggplot2 - ggplot2 is a system for declaratively creating graphics, based on The Grammar of Graphics. You provide the data, tell ggplot2 how to map variables to aesthetics, what graphical primitives to use, and it takes care of the details.](https://ggplot2.tidyverse.org/)
 
-# Presentation (Data Presentation)
+### ggplot2 - Aesthetic attributes
+
+
+- [Data visualization with ggplot2 cheat sheet: RStudio’s cheat sheet is a great reference to use while working with ggplot2. It has tons of helpful information, including explanations of how to use geoms and examples of the different visualizations that you can create.](https://ggplot2.tidyverse.org/)
+
+- [Stats Education’s Introduction to R: This resource is a great way to learn the basics of ggplot2 and how to apply aesthetic attributes to your plots. You can return to this tutorial as you work more with ggplot2 and your own data.](http://statseducation.com/Introduction-to-R/modules/graphics/aesthetics/)
+
+- [RDocumentation aes function: This guide describes the syntax of the aes function and explains what each argument does.](https://www.rdocumentation.org/packages/ggplot2/versions/3.3.3/topics/aes)
 
 ####
 
