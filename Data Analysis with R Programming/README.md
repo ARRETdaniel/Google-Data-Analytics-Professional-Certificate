@@ -70,6 +70,12 @@ R offers convenient statistical features for data analysis and is useful for cre
 
 - [*Visualizing data with ggplot2:* This comprehensive guide includes everything from the most basic uses for ggplot2 to creating complicated visualizations. It includes the filter() function in most of the examples so you can learn how to implement it in R to create data visualizations.](https://datacarpentry.org/dc_zurich/R-ecology/05-visualisation-ggplot2.html)
 
+- [*How to annotate a plot:* This R-Bloggers article includes explanations about how to annotate plots in ggplot2. It starts with basic concepts and covers more complicated information the further on you read.](https://www.r-bloggers.com/2017/02/how-to-annotate-a-plot-in-ggplot2/)
+
+- [*Text Annotations:* This resource focuses specifically on adding text annotations and labels to ggplot2 visualizations.](https://viz-ggplot2.rsquaredacademy.com/textann.html)
+
+- []()
+
 ####
 
 
