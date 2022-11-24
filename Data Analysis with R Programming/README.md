@@ -62,6 +62,14 @@ R offers convenient statistical features for data analysis and is useful for cre
 
 - [RDocumentation aes function: This guide describes the syntax of the aes function and explains what each argument does.](https://www.rdocumentation.org/packages/ggplot2/versions/3.3.3/topics/aes)
 
+- [Smoothing section in the Stats Education’s Introduction to R course. It includes detailed descriptions and examples of how to use the different types of smoothing in ggplot2. It also includes links to other lessons about ggplot2. You can explore these to get more familiar with plotting data in R.](http://statseducation.com/Introduction-to-R/modules/graphics/smoothing/)
+
+- [*Putting it all together: (dplyr+ggplot):* The RLadies of Sydney’s course on R uses real data to demonstrate R functions. This lesson focuses specifically on combining dplyr and ggplot to filter data before plotting it. The instructional video will guide you through every step in the process while you follow along with the data they have provided.](https://rladiessydney.org/courses/ryouwithme/03-vizwhiz-1/#1-4-putting-it-all-together-dplyr-ggplot)
+
+- [*Data transformation:* This resource focuses on how to use the filter() function in R, and demonstrates how to combine filter() with ggplot(). This is a useful resource if you are interested in learning more about how filter() can be used before plotting.](https://r4ds.had.co.nz/transform.html)
+
+- [*Visualizing data with ggplot2:* This comprehensive guide includes everything from the most basic uses for ggplot2 to creating complicated visualizations. It includes the filter() function in most of the examples so you can learn how to implement it in R to create data visualizations.](https://datacarpentry.org/dc_zurich/R-ecology/05-visualisation-ggplot2.html)
+
 ####
 
 

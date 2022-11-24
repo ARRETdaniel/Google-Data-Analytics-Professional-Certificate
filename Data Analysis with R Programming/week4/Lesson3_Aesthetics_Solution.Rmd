@@ -23,7 +23,7 @@ https://www.kaggle.com/jessemostipak/hotel-booking-demand
 Run the code below to read in the file 'hotel_bookings.csv' into a data frame:
 
 ```{r}
-hotel_bookings <- read.csv("hotel_bookings.csv")
+hotel_bookings <- read.csv("bookings.csv")
 ```
 
 ## Step 2: Refresh Your Memory
