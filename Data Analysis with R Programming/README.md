@@ -74,10 +74,14 @@ R offers convenient statistical features for data analysis and is useful for cre
 
 - [*Text Annotations:* This resource focuses specifically on adding text annotations and labels to ggplot2 visualizations.](https://viz-ggplot2.rsquaredacademy.com/textann.html)
 
+
+## Week 4
+
+### R Markdown: The Definitive Guide
+
+- [R Markdown: The Definitive Guide provides a comprehensive guide to the R Markdown ecosystem.](https://bookdown.org/yihui/rmarkdown/installation.html)
 - []()
-
-####
-
+- []()
 
 
 ### More
