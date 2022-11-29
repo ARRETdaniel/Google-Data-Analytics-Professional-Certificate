@@ -75,14 +75,20 @@ R offers convenient statistical features for data analysis and is useful for cre
 - [*Text Annotations:* This resource focuses specifically on adding text annotations and labels to ggplot2 visualizations.](https://viz-ggplot2.rsquaredacademy.com/textann.html)
 
 
-## Week 4
+## Week 5
 
 ### R Markdown: The Definitive Guide
 
 - [R Markdown: The Definitive Guide provides a comprehensive guide to the R Markdown ecosystem.](https://bookdown.org/yihui/rmarkdown/installation.html)
-- []()
-- []()
 
+### R packages with templates
+
+- [The **vitae** package contains templates for creating and maintaining a **résumé or curriculum vitae** (CV)](https://github.com/mitchelloharawild/vitae)
+- [The rticles package provides templates for various journals and publishers](<https://github.com/rstudio/rticles>)
+
+- [The learnr package makes it easy to turn any R Markdown document into an interactive tutorial](https://github.com/rstudio/learnr)
+- [The flexdashboard package lets you publish a group of related data visualizations as a dashboard](https://github.com/rstudio/flexdashboard)
+- []()
 
 ### More
 
