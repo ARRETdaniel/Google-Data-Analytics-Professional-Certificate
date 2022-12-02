@@ -1,0 +1,14 @@
+---
+title: 'Course challenge'
+output: html_document
+---
+
+
+
+```{r load data}
+bars_df <- read.csv("flavors_of_cacao.csv")
+```
+```{r}
+glimpse(flavors_df)
+```
+
