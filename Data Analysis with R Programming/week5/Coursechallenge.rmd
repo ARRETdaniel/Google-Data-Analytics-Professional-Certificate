@@ -8,7 +8,44 @@ output: html_document
 ```{r load data}
 bars_df <- read.csv("flavors_of_cacao.csv")
 ```
+
+
 ```{r}
 glimpse(flavors_df)
 ```
 
+```{r}
+
+select(Rating,Cocoa.Percent,Bean.Type)
+```
+You want to use the summarize() and sd() functions to find the standard deviation of the rating for your data. Add the code chunk that lets you find the standard deviation for the variable Rating.
+
+
+```{r}
+summarize(sd(Rating))
+
+
+```
+You want to apply the filter() function to the variables Cocoa.Percent and Rating. Add the code chunk that lets you filter the data frame for chocolate bars that contain at least 70% cocoa and have a rating of at least 3.5 points.
+```{r}
+
+filter(Cocoa.Percent >= 75, Rating >= 3.9)
+
+```
+You want to use the geom_bar() function to create a bar chart. Add the code chunk that lets you create a bar chart with the variable Company on the x-axis.
+```{r}
+
+geom_bar(mapping = aes(x = Company))
+
+```
+Add a code chunk to the second line of code to map the aesthetic color to the variable Rating.
+
+NOTE: the three dots (...) indicate where to add the code chunk.
+```{r}
+geom_bar(mapping = aes(x = Company.Location, fill = Rating))
+
+```
+```{r}
+
+
+```
