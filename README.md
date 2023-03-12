@@ -1,6 +1,11 @@
 # Google Data Analytics Professional Certificate
 
-[Google Data Analytics Professional Certificate](https://www.coursera.org/professional-certificates/google-data-analytics) Repository.
+- [Google Data Analytics Professional Certificate](https://www.coursera.org/professional-certificates/google-data-analytics) Personal Repository.
+- All assignments, challenges, and capstones have been done.
+- [Case Study Completed - Case Study 2: How can a wellness company play it smart?](https://github.com/ARRETdaniel/Google-Data-Analytics-Professional-Certificate/tree/master/Google%20Data%20Analytics%20Capstone%20Complete%20a%20Case%20Study/caseStudy2)
+
+
+
 
 ### SKILLS YOU WILL GAIN:
 - Spreadsheet
@@ -100,7 +105,7 @@ Learners who complete this certificate program will be equipped to apply for int
 
 By the end of this course, you will be able to do the following:
  - Learn how to check for data integrity.
- - Discover data cleaning techniques using spreadsheets. 
+ - Discover data cleaning techniques using spreadsheets.
  - Develop basic SQL queries for use on databases.
  - Apply basic SQL functions for cleaning and transforming data.
  - Gain an understanding of how to verify the results of cleaning data.
@@ -117,7 +122,7 @@ Learners who complete this certificate program will be equipped to apply for int
 
 By the end of this course, you will:
  - Learn how to organize data for analysis.
- - Discover the processes for formatting and adjusting data. 
+ - Discover the processes for formatting and adjusting data.
  - Gain an understanding of how to aggregate data in spreadsheets and by using SQL.
  - Use formulas and functions in spreadsheets for data calculations.
  - Learn how to complete calculations using SQL queries.
@@ -135,7 +140,7 @@ By the end of this course, you will:
  - Examine the importance of data visualization.
  - Learn how to form a compelling narrative through data stories.
  - Gain an understanding of how to use Tableau to create dashboards and dashboard filters.
- - Discover how to use Tableau to create effective visualizations. 
+ - Discover how to use Tableau to create effective visualizations.
  - Explore the principles and practices involved with effective presentations.
  - Learn how to consider potential limitations associated with the data in your presentations.
  - Understand how to apply best practices to a Q&A with your audience.
@@ -151,8 +156,8 @@ Learners who complete this certificate program will be equipped to apply for int
 
 By the end of this course, you will:
  - Examine the benefits of using the R programming language.
- - Discover how to use RStudio to apply R to your analysis. 
- - Explore the fundamental concepts associated with programming in R. 
+ - Discover how to use RStudio to apply R to your analysis.
+ - Explore the fundamental concepts associated with programming in R.
  - Explore the contents and components of R packages including the Tidyverse package.
  - Gain an understanding of dataframes and their use in R.
  - Discover the options for generating visualizations in R.
@@ -170,8 +175,8 @@ Learners who complete this certificate program will be equipped to apply for int
 By the end of this course, you will:
  - Learn the benefits and uses of case studies and portfolios in the job search.
  - Explore real world job interview scenarios and common interview questions.
- - Discover how case studies can be a part of the job interview process. 
- - Examine and consider different case study scenarios. 
+ - Discover how case studies can be a part of the job interview process.
+ - Examine and consider different case study scenarios.
  - Have the chance to complete your own case study for your portfolio.
   </h6>
 </details>
@@ -180,5 +185,5 @@ By the end of this course, you will:
 
 
 <h3 align="left">Languages and Tools:</h3>
-<p align="left"> <a href="https://www.r-project.org/" target="_blank" rel="noreferrer"> <img src="https://www.r-project.org/Rlogo.png" alt="R" width="40" height="40"/> </a> 
+<p align="left"> <a href="https://www.r-project.org/" target="_blank" rel="noreferrer"> <img src="https://www.r-project.org/Rlogo.png" alt="R" width="40" height="40"/> </a>
 <a href="https://jupyter.org/" target="_blank" rel="noreferrer"> <img src="https://jupyter.org/assets/try/jupyter.png" alt="JupyterLab" width="40" height="40"/> </p>
