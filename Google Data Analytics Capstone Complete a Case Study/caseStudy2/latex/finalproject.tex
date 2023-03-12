@@ -1,0 +1,1334 @@
+\chapter{Projeto Final - Fitbit Fitness Data}
+
+\section{Definição do problema.}
+
+Quais são algumas tendências no uso de dispositivos inteligentes?
+
+Os dados que iremos usar para responder essa pergunta é o FitBit Fitness
+Tracker Data(License CC0: Public Domain, disponível através do Mobius
+distribuído através do Amazon Mechanical Turk entre 12 de março de 2016
+e 12 de maio de 2016.)
+
+O conjunto de dados contém rastreamento de atividade física pessoal para
+33 usuários do Fitbit. Esses usuários qualificados do Fitbit concordaram
+com o envio de dados de rastreamento pessoal, incluindo minutos de
+desempenho de condicionamento físico, frequência cardíaca e
+monitoramento do sono.
+
+O aplicativo fornece aos usuários dados de saúde relacionados à
+atividade, sono, estresse, ciclo menstrual e hábitos de foco. Esses
+dados podem ajudar os usuários a entender melhor seus hábitos atuais e
+tomar decisões saudáveis. O aplicativo se conecta à sua linha de
+produtos de bem-estar inteligentes da empresa.
+
+Temos como \textbf{objetivo} nesse \textbf{projeto} analisar os dados de
+uso de dispositivos inteligentes para obter informações sobre como as
+pessoas já estão usando seus dispositivos e usar essas tendências para
+entendermos e identificar possiveis correlações e assim propor possiveis
+hypothesis para o frame de dados analisado.
+
+
+\subsection{Bibliotecas que iremos usar no nosso Projeto}
+
+\begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+    \prompt{In}{incolor}{1}{\boxspacing}
+    \begin{Verbatim}[commandchars=\\\{\}]
+        \PY{n+nf}{library}\PY{p}{(}\PY{n}{janitor}\PY{p}{)}\PY{+w}{ }\PY{c+c1}{\PYZsh{} janitor tem pequenas ferramentas simples para examinar e limpar dados sujos.}
+        \PY{n+nf}{library}\PY{p}{(}\PY{n}{arrow}\PY{p}{)}\PY{+w}{ }\PY{c+c1}{\PYZsh{} permite que os usuários leiam e gravem dados em vários formatos: Parquet, csv, JSON}
+        \PY{n+nf}{library}\PY{p}{(}\PY{n}{tidyverse}\PY{p}{)}\PY{+w}{ }\PY{c+c1}{\PYZsh{} você disse ciência de dados usando R?}
+        \PY{n+nf}{library}\PY{p}{(}\PY{n}{naniar}\PY{p}{)}\PY{+w}{ }\PY{c+c1}{\PYZsh{} lidando com valores NA}
+        \PY{n+nf}{library}\PY{p}{(}\PY{n}{ggsci}\PY{p}{)}\PY{+w}{ }\PY{c+c1}{\PYZsh{} Revista Científica e Tema Sci\PYZhy{}Fi Paletas de cores para ggplot2}
+        \PY{n+nf}{library}\PY{p}{(}\PY{n}{skimr}\PY{p}{)}\PY{+w}{ }\PY{c+c1}{\PYZsh{} Skim estatísticas de resumo úteis}
+        \PY{n+nf}{library}\PY{p}{(}\PY{n}{lubridate}\PY{p}{)}\PY{+w}{ }\PY{c+c1}{\PYZsh{} Lubridate fornece ferramentas que facilitam a análise e manipulação de datas. ymd\PYZus{}hms() week()}
+        \PY{n+nf}{library}\PY{p}{(}\PY{n}{ggpubr}\PY{p}{)}\PY{+w}{ }\PY{c+c1}{\PYZsh{} O pacote \PYZsq{}ggpubr\PYZsq{} fornece algumas funções fáceis de usar para criar e personalizar gráficos prontos para publicação baseados em \PYZsq{}ggplot2\PYZsq{}.stat\PYZus{}cor}
+    \end{Verbatim}
+\end{tcolorbox}
+
+\begin{Verbatim}[commandchars=\\\{\}]
+
+    Attaching package: ‘janitor’
+
+
+    The following objects are masked from ‘package:stats’:
+
+    chisq.test, fisher.test
+
+
+
+    Attaching package: ‘arrow’
+
+
+    The following object is masked from ‘package:utils’:
+
+    timestamp
+
+
+    ── \textbf{Attaching packages} ─────────────────────────────────────── tidyverse
+    1.3.2 ──
+    \textcolor{ansi-green}{✔} \textcolor{ansi-blue}{ggplot2} 3.4.0      \textcolor{ansi-green}{✔} \textcolor{ansi-blue}{purrr  } 1.0.1
+    \textcolor{ansi-green}{✔} \textcolor{ansi-blue}{tibble } 3.1.8      \textcolor{ansi-green}{✔} \textcolor{ansi-blue}{dplyr  } 1.0.10
+    \textcolor{ansi-green}{✔} \textcolor{ansi-blue}{tidyr  } 1.2.1      \textcolor{ansi-green}{✔} \textcolor{ansi-blue}{stringr} 1.5.0
+    \textcolor{ansi-green}{✔} \textcolor{ansi-blue}{readr  } 2.1.3      \textcolor{ansi-green}{✔} \textcolor{ansi-blue}{forcats} 0.5.2
+    ── \textbf{Conflicts} ──────────────────────────────────────────
+    tidyverse\_conflicts() ──
+    \textcolor{ansi-red}{✖} \textcolor{ansi-blue}{dplyr}::\textcolor{ansi-green}{filter()} masks \textcolor{ansi-blue}{stats}::filter()
+    \textcolor{ansi-red}{✖} \textcolor{ansi-blue}{dplyr}::\textcolor{ansi-green}{lag()}    masks \textcolor{ansi-blue}{stats}::lag()
+
+    Attaching package: ‘skimr’
+
+
+    The following object is masked from ‘package:naniar’:
+
+    n\_complete
+
+
+    Loading required package: timechange
+
+
+    Attaching package: ‘lubridate’
+
+
+    The following object is masked from ‘package:arrow’:
+
+    duration
+
+
+    The following objects are masked from ‘package:base’:
+
+    date, intersect, setdiff, union
+
+
+\end{Verbatim}
+
+\section{Apresentação dos dados}
+
+Como o objetivo é identificar tendências no uso de dispositivos
+inteligentes, decidimos trabalhar com os cinco dataframes a seguir:
+
+\begin{itemize}
+    \tightlist
+    \item
+          sleepDay\_merged.csv
+    \item
+          dailyActivity\_merged.csv
+    \item
+          dailyIntensities\_merged.csv
+    \item
+          hourlyIntensities\_merged.csv
+    \item
+          hourlyCalories\_merged.csv
+\end{itemize}
+
+\subsection{Lendo os arquivos .csv}
+
+\begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+    \prompt{In}{incolor}{2}{\boxspacing}
+    \begin{Verbatim}[commandchars=\\\{\}]
+        \PY{n}{sleep\PYZus{}day\PYZus{}file}\PY{+w}{ }\PY{o}{\PYZlt{}\PYZhy{}}\PY{+w}{ }\PY{n+nf}{read\PYZus{}csv}\PY{p}{(}\PY{l+s}{\PYZdq{}}\PY{l+s}{/kaggle/input/fitbit/Fitabase Data 4.12.16\PYZhy{}5.12.16/sleepDay\PYZus{}merged.csv\PYZdq{}}\PY{p}{)}
+        \PY{n}{daily\PYZus{}activity\PYZus{}file}\PY{+w}{ }\PY{o}{\PYZlt{}\PYZhy{}}\PY{+w}{ }\PY{n+nf}{read\PYZus{}csv}\PY{p}{(}\PY{l+s}{\PYZdq{}}\PY{l+s}{/kaggle/input/fitbit/Fitabase Data 4.12.16\PYZhy{}5.12.16/dailyActivity\PYZus{}merged.csv\PYZdq{}}\PY{p}{)}
+        \PY{n}{daily\PYZus{}intensities\PYZus{}file}\PY{+w}{ }\PY{o}{\PYZlt{}\PYZhy{}}\PY{+w}{ }\PY{n+nf}{read\PYZus{}csv}\PY{p}{(}\PY{l+s}{\PYZdq{}}\PY{l+s}{/kaggle/input/fitbit/Fitabase Data 4.12.16\PYZhy{}5.12.16/dailyIntensities\PYZus{}merged.csv\PYZdq{}}\PY{p}{)}
+        \PY{n}{hourly\PYZus{}intensities\PYZus{}file}\PY{+w}{ }\PY{o}{\PYZlt{}\PYZhy{}}\PY{+w}{ }\PY{n+nf}{read\PYZus{}csv}\PY{p}{(}\PY{l+s}{\PYZdq{}}\PY{l+s}{/kaggle/input/fitbit/Fitabase Data 4.12.16\PYZhy{}5.12.16/hourlyIntensities\PYZus{}merged.csv\PYZdq{}}\PY{p}{)}
+        \PY{n}{hourly\PYZus{}calories\PYZus{}file}\PY{+w}{ }\PY{o}{\PYZlt{}\PYZhy{}}\PY{+w}{ }\PY{n+nf}{read\PYZus{}csv}\PY{p}{(}\PY{l+s}{\PYZdq{}}\PY{l+s}{/kaggle/input/fitbit/Fitabase Data 4.12.16\PYZhy{}5.12.16/hourlyCalories\PYZus{}merged.csv\PYZdq{}}\PY{p}{)}
+    \end{Verbatim}
+\end{tcolorbox}
+
+\begin{Verbatim}[commandchars=\\\{\}]
+    \textbf{Rows: }\textcolor{ansi-blue}{413} \textbf{Columns: }\textcolor{ansi-blue}{5}
+    \textcolor{ansi-cyan}{──} \textbf{Column specification}
+    \textcolor{ansi-cyan}{────────────────────────────────────────────────────────}
+    \textbf{Delimiter:} ","
+    \textcolor{ansi-red}{chr} (1): SleepDay
+    \textcolor{ansi-green}{dbl} (4): Id, TotalSleepRecords, TotalMinutesAsleep, TotalTimeInBed
+
+    \textcolor{ansi-cyan}{ℹ} Use `spec()` to retrieve the full column specification for this
+    data.
+    \textcolor{ansi-cyan}{ℹ} Specify the column types or set `show\_col\_types = FALSE` to quiet
+    this message.
+    \textbf{Rows: }\textcolor{ansi-blue}{940} \textbf{Columns: }\textcolor{ansi-blue}{15}
+    \textcolor{ansi-cyan}{──} \textbf{Column specification}
+    \textcolor{ansi-cyan}{────────────────────────────────────────────────────────}
+    \textbf{Delimiter:} ","
+    \textcolor{ansi-red}{chr}  (1): ActivityDate
+    \textcolor{ansi-green}{dbl} (14): Id, TotalSteps, TotalDistance, TrackerDistance,
+    LoggedActivitiesDi{\ldots}
+
+    \textcolor{ansi-cyan}{ℹ} Use `spec()` to retrieve the full column specification for this
+    data.
+    \textcolor{ansi-cyan}{ℹ} Specify the column types or set `show\_col\_types = FALSE` to quiet
+    this message.
+    \textbf{Rows: }\textcolor{ansi-blue}{940} \textbf{Columns: }\textcolor{ansi-blue}{10}
+    \textcolor{ansi-cyan}{──} \textbf{Column specification}
+    \textcolor{ansi-cyan}{────────────────────────────────────────────────────────}
+    \textbf{Delimiter:} ","
+    \textcolor{ansi-red}{chr} (1): ActivityDay
+    \textcolor{ansi-green}{dbl} (9): Id, SedentaryMinutes, LightlyActiveMinutes,
+    FairlyActiveMinutes, Ve{\ldots}
+
+    \textcolor{ansi-cyan}{ℹ} Use `spec()` to retrieve the full column specification for this
+    data.
+    \textcolor{ansi-cyan}{ℹ} Specify the column types or set `show\_col\_types = FALSE` to quiet
+    this message.
+    \textbf{Rows: }\textcolor{ansi-blue}{22099} \textbf{Columns: }\textcolor{ansi-blue}{4}
+    \textcolor{ansi-cyan}{──} \textbf{Column specification}
+    \textcolor{ansi-cyan}{────────────────────────────────────────────────────────}
+    \textbf{Delimiter:} ","
+    \textcolor{ansi-red}{chr} (1): ActivityHour
+    \textcolor{ansi-green}{dbl} (3): Id, TotalIntensity, AverageIntensity
+
+    \textcolor{ansi-cyan}{ℹ} Use `spec()` to retrieve the full column specification for this
+    data.
+    \textcolor{ansi-cyan}{ℹ} Specify the column types or set `show\_col\_types = FALSE` to quiet
+    this message.
+    \textbf{Rows: }\textcolor{ansi-blue}{22099} \textbf{Columns: }\textcolor{ansi-blue}{3}
+    \textcolor{ansi-cyan}{──} \textbf{Column specification}
+    \textcolor{ansi-cyan}{────────────────────────────────────────────────────────}
+    \textbf{Delimiter:} ","
+    \textcolor{ansi-red}{chr} (1): ActivityHour
+    \textcolor{ansi-green}{dbl} (2): Id, Calories
+
+    \textcolor{ansi-cyan}{ℹ} Use `spec()` to retrieve the full column specification for this
+    data.
+    \textcolor{ansi-cyan}{ℹ} Specify the column types or set `show\_col\_types = FALSE` to quiet
+    this message.
+\end{Verbatim}
+
+\subsection{Convertendo os arquivos .csv em .parquet}
+
+A partir dessa conversão iremos ganhar desempenho em nossas análises
+
+O \href{https://www.upsolver.com/blog/apache-parquet-why-use}{Apache
+    Parquet} é um formato de arquivo projetado para oferecer suporte ao
+processamento rápido de dados complexos, com várias características
+notáveis: * Compressão * Evolução do esquema * Código aberto e não
+proprietário Mesmo que o uso do Parquet não seja necessário para o nosso
+conjunto de dados, pois não é um banco muito grande. Ainda sim nos trara
+um pouco mais de rapidez.
+
+\begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{finalproject_files/pa.png}
+\end{center}
+
+\href{https://blog.openbridge.com/how-to-be-a-hero-with-powerful-parquet-google-and-amazon-f2ae0f35ee04}{ref.}
+
+\begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+    \prompt{In}{incolor}{3}{\boxspacing}
+    \begin{Verbatim}[commandchars=\\\{\}]
+        \PY{n+nf}{write\PYZus{}parquet}\PY{p}{(}\PY{n}{sleep\PYZus{}day\PYZus{}file}\PY{p}{,}\PY{+w}{ }\PY{l+s}{\PYZdq{}}\PY{l+s}{/kaggle/working/sleepDay.parquet\PYZdq{}}\PY{p}{)}
+        \PY{n+nf}{write\PYZus{}parquet}\PY{p}{(}\PY{n}{daily\PYZus{}activity\PYZus{}file}\PY{p}{,}\PY{+w}{ }\PY{l+s}{\PYZdq{}}\PY{l+s}{/kaggle/working/dailyActivity.parquet\PYZdq{}}\PY{p}{)}
+        \PY{n+nf}{write\PYZus{}parquet}\PY{p}{(}\PY{n}{daily\PYZus{}intensities\PYZus{}file}\PY{p}{,}\PY{+w}{ }\PY{l+s}{\PYZdq{}}\PY{l+s}{/kaggle/working/dailyIntensities.parquet\PYZdq{}}\PY{p}{)}
+        \PY{n+nf}{write\PYZus{}parquet}\PY{p}{(}\PY{n}{hourly\PYZus{}intensities\PYZus{}file}\PY{p}{,}\PY{+w}{ }\PY{l+s}{\PYZdq{}}\PY{l+s}{/kaggle/working/hourly\PYZus{}intensities.parquet\PYZdq{}}\PY{p}{)}
+        \PY{n+nf}{write\PYZus{}parquet}\PY{p}{(}\PY{n}{hourly\PYZus{}calories\PYZus{}file}\PY{p}{,}\PY{+w}{ }\PY{l+s}{\PYZdq{}}\PY{l+s}{/kaggle/working/hourly\PYZus{}calories.parquet\PYZdq{}}\PY{p}{)}
+    \end{Verbatim}
+\end{tcolorbox}
+
+\subsection{Lendo os arquivos .parquet}
+
+\begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+    \prompt{In}{incolor}{4}{\boxspacing}
+    \begin{Verbatim}[commandchars=\\\{\}]
+        \PY{n}{sleep\PYZus{}day\PYZus{}file}\PY{+w}{ }\PY{o}{\PYZlt{}\PYZhy{}}\PY{+w}{ }\PY{n+nf}{read\PYZus{}parquet}\PY{p}{(}\PY{l+s}{\PYZdq{}}\PY{l+s}{/kaggle/working/sleepDay.parquet\PYZdq{}}\PY{p}{)}
+        \PY{n}{daily\PYZus{}activity\PYZus{}file}\PY{+w}{ }\PY{o}{\PYZlt{}\PYZhy{}}\PY{+w}{ }\PY{n+nf}{read\PYZus{}parquet}\PY{p}{(}\PY{l+s}{\PYZdq{}}\PY{l+s}{/kaggle/working/dailyActivity.parquet\PYZdq{}}\PY{p}{)}
+        \PY{n}{daily\PYZus{}intensities\PYZus{}file}\PY{+w}{ }\PY{o}{\PYZlt{}\PYZhy{}}\PY{+w}{ }\PY{n+nf}{read\PYZus{}parquet}\PY{p}{(}\PY{l+s}{\PYZdq{}}\PY{l+s}{/kaggle/working/dailyIntensities.parquet\PYZdq{}}\PY{p}{)}
+        \PY{n}{hourly\PYZus{}intensities\PYZus{}file}\PY{+w}{ }\PY{o}{\PYZlt{}\PYZhy{}}\PY{+w}{ }\PY{n+nf}{read\PYZus{}parquet}\PY{p}{(}\PY{l+s}{\PYZdq{}}\PY{l+s}{/kaggle/working/hourly\PYZus{}intensities.parquet\PYZdq{}}\PY{p}{)}
+        \PY{n}{hourly\PYZus{}calories\PYZus{}file}\PY{+w}{ }\PY{o}{\PYZlt{}\PYZhy{}}\PY{+w}{ }\PY{n+nf}{read\PYZus{}parquet}\PY{p}{(}\PY{l+s}{\PYZdq{}}\PY{l+s}{/kaggle/working/hourly\PYZus{}calories.parquet\PYZdq{}}\PY{p}{)}
+    \end{Verbatim}
+\end{tcolorbox}
+
+
+\subsection{Entendendo um pouco dos dados}
+
+Aqui teremos o nome primeiro contato com o formato, conjunto dos dados
+que iremos trabalhar no nosso projeto
+
+\begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+    \prompt{In}{incolor}{5}{\boxspacing}
+    \begin{Verbatim}[commandchars=\\\{\}]
+        \PY{c+c1}{\PYZsh{}skim\PYZus{}without\PYZus{}charts(sleep\PYZus{}day\PYZus{}file)}
+        \PY{c+c1}{\PYZsh{}skim\PYZus{}without\PYZus{}charts(daily\PYZus{}activity\PYZus{}file)}
+        \PY{c+c1}{\PYZsh{}skim\PYZus{}without\PYZus{}charts(daily\PYZus{}intensities\PYZus{}file)}
+        \PY{c+c1}{\PYZsh{}skim\PYZus{}without\PYZus{}charts(hourly\PYZus{}intensities\PYZus{}file)}
+        \PY{c+c1}{\PYZsh{}skim\PYZus{}without\PYZus{}charts(hourly\PYZus{}calories\PYZus{}file)}
+    \end{Verbatim}
+\end{tcolorbox}
+
+skim output foi comentado pois não estava permitindo o push no kaggle.
+Provavelmente, devido ao tamanho da saída.
+
+\begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+    \prompt{In}{incolor}{6}{\boxspacing}
+    \begin{Verbatim}[commandchars=\\\{\}]
+        \PY{n+nf}{glimpse}\PY{p}{(}\PY{n}{sleep\PYZus{}day\PYZus{}file}\PY{p}{)}
+        \PY{n+nf}{glimpse}\PY{p}{(}\PY{n}{daily\PYZus{}activity\PYZus{}file}\PY{p}{)}
+        \PY{n+nf}{glimpse}\PY{p}{(}\PY{n}{daily\PYZus{}intensities\PYZus{}file}\PY{p}{)}
+        \PY{n+nf}{glimpse}\PY{p}{(}\PY{n}{hourly\PYZus{}intensities\PYZus{}file}\PY{p}{)}
+        \PY{n+nf}{glimpse}\PY{p}{(}\PY{n}{hourly\PYZus{}calories\PYZus{}file}\PY{p}{)}
+    \end{Verbatim}
+\end{tcolorbox}
+
+\begin{Verbatim}[commandchars=\\\{\}]
+    Rows: 413
+    Columns: 5
+    \$ Id                 \textcolor{ansi-black-intense}{<dbl>} 1503960366, 1503960366,
+    1503960366, 1503960366, 150…
+    \$ SleepDay           \textcolor{ansi-black-intense}{<chr>} "4/12/2016 12:00:00 AM",
+    "4/13/2016 12:00:00 AM", "…
+    \$ TotalSleepRecords  \textcolor{ansi-black-intense}{<dbl>} 1, 2, 1, 2, 1, 1, 1, 1, 1, 1, 1,
+    1, 1, 1, 1, 1, 1, …
+    \$ TotalMinutesAsleep \textcolor{ansi-black-intense}{<dbl>} 327, 384, 412, 340, 700, 304, 360,
+    325, 361, 430, 2…
+    \$ TotalTimeInBed     \textcolor{ansi-black-intense}{<dbl>} 346, 407, 442, 367, 712, 320, 377,
+    364, 384, 449, 3…
+    Rows: 940
+    Columns: 15
+    \$ Id                       \textcolor{ansi-black-intense}{<dbl>} 1503960366, 1503960366,
+    1503960366, 150396036…
+    \$ ActivityDate             \textcolor{ansi-black-intense}{<chr>} "4/12/2016", "4/13/2016",
+    "4/14/2016", "4/15/…
+    \$ TotalSteps               \textcolor{ansi-black-intense}{<dbl>} 13162, 10735, 10460, 9762,
+    12669, 9705, 13019…
+    \$ TotalDistance            \textcolor{ansi-black-intense}{<dbl>} 8.50, 6.97, 6.74, 6.28,
+    8.16, 6.48, 8.59, 9.8…
+    \$ TrackerDistance          \textcolor{ansi-black-intense}{<dbl>} 8.50, 6.97, 6.74, 6.28,
+    8.16, 6.48, 8.59, 9.8…
+    \$ LoggedActivitiesDistance \textcolor{ansi-black-intense}{<dbl>} 0, 0, 0, 0, 0, 0, 0, 0, 0,
+    0, 0, 0, 0, 0, 0, …
+    \$ VeryActiveDistance       \textcolor{ansi-black-intense}{<dbl>} 1.88, 1.57, 2.44, 2.14,
+    2.71, 3.19, 3.25, 3.5…
+    \$ ModeratelyActiveDistance \textcolor{ansi-black-intense}{<dbl>} 0.55, 0.69, 0.40, 1.26,
+    0.41, 0.78, 0.64, 1.3…
+    \$ LightActiveDistance      \textcolor{ansi-black-intense}{<dbl>} 6.06, 4.71, 3.91, 2.83,
+    5.04, 2.51, 4.71, 5.0…
+    \$ SedentaryActiveDistance  \textcolor{ansi-black-intense}{<dbl>} 0, 0, 0, 0, 0, 0, 0, 0, 0,
+    0, 0, 0, 0, 0, 0, …
+    \$ VeryActiveMinutes        \textcolor{ansi-black-intense}{<dbl>} 25, 21, 30, 29, 36, 38, 42,
+    50, 28, 19, 66, 4…
+    \$ FairlyActiveMinutes      \textcolor{ansi-black-intense}{<dbl>} 13, 19, 11, 34, 10, 20, 16,
+    31, 12, 8, 27, 21…
+    \$ LightlyActiveMinutes     \textcolor{ansi-black-intense}{<dbl>} 328, 217, 181, 209, 221,
+    164, 233, 264, 205, …
+    \$ SedentaryMinutes         \textcolor{ansi-black-intense}{<dbl>} 728, 776, 1218, 726, 773,
+    539, 1149, 775, 818…
+    \$ Calories                 \textcolor{ansi-black-intense}{<dbl>} 1985, 1797, 1776, 1745,
+    1863, 1728, 1921, 203…
+    Rows: 940
+    Columns: 10
+    \$ Id                       \textcolor{ansi-black-intense}{<dbl>} 1503960366, 1503960366,
+    1503960366, 150396036…
+    \$ ActivityDay              \textcolor{ansi-black-intense}{<chr>} "4/12/2016", "4/13/2016",
+    "4/14/2016", "4/15/…
+    \$ SedentaryMinutes         \textcolor{ansi-black-intense}{<dbl>} 728, 776, 1218, 726, 773,
+    539, 1149, 775, 818…
+    \$ LightlyActiveMinutes     \textcolor{ansi-black-intense}{<dbl>} 328, 217, 181, 209, 221,
+    164, 233, 264, 205, …
+    \$ FairlyActiveMinutes      \textcolor{ansi-black-intense}{<dbl>} 13, 19, 11, 34, 10, 20, 16,
+    31, 12, 8, 27, 21…
+    \$ VeryActiveMinutes        \textcolor{ansi-black-intense}{<dbl>} 25, 21, 30, 29, 36, 38, 42,
+    50, 28, 19, 66, 4…
+    \$ SedentaryActiveDistance  \textcolor{ansi-black-intense}{<dbl>} 0, 0, 0, 0, 0, 0, 0, 0, 0,
+    0, 0, 0, 0, 0, 0, …
+    \$ LightActiveDistance      \textcolor{ansi-black-intense}{<dbl>} 6.06, 4.71, 3.91, 2.83,
+    5.04, 2.51, 4.71, 5.0…
+    \$ ModeratelyActiveDistance \textcolor{ansi-black-intense}{<dbl>} 0.55, 0.69, 0.40, 1.26,
+    0.41, 0.78, 0.64, 1.3…
+    \$ VeryActiveDistance       \textcolor{ansi-black-intense}{<dbl>} 1.88, 1.57, 2.44, 2.14,
+    2.71, 3.19, 3.25, 3.5…
+    Rows: 22,099
+    Columns: 4
+    \$ Id               \textcolor{ansi-black-intense}{<dbl>} 1503960366, 1503960366, 1503960366,
+    1503960366, 15039…
+    \$ ActivityHour     \textcolor{ansi-black-intense}{<chr>} "4/12/2016 12:00:00 AM", "4/12/2016
+    1:00:00 AM", "4/1…
+    \$ TotalIntensity   \textcolor{ansi-black-intense}{<dbl>} 20, 8, 7, 0, 0, 0, 0, 0, 13, 30, 29,
+    12, 11, 6, 36, 5…
+    \$ AverageIntensity \textcolor{ansi-black-intense}{<dbl>} 0.333333, 0.133333, 0.116667,
+    0.000000, 0.000000, 0.0…
+    Rows: 22,099
+    Columns: 3
+    \$ Id           \textcolor{ansi-black-intense}{<dbl>} 1503960366, 1503960366, 1503960366,
+    1503960366, 150396036…
+    \$ ActivityHour \textcolor{ansi-black-intense}{<chr>} "4/12/2016 12:00:00 AM", "4/12/2016
+    1:00:00 AM", "4/12/20…
+    \$ Calories     \textcolor{ansi-black-intense}{<dbl>} 81, 61, 59, 47, 48, 48, 48, 47, 68, 141,
+    99, 76, 73, 66, …
+\end{Verbatim}
+
+A partir desses resultados podemos identificar que não temos dados NA,
+dados faltantes em nosso conjuntos de dados. Assim como podemos ter uma
+média desses valores, e ver como as colunas estão organizadas.
+
+\subsubsection{Número de usuários únicos}
+
+\begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+    \prompt{In}{incolor}{7}{\boxspacing}
+    \begin{Verbatim}[commandchars=\\\{\}]
+        \PY{n+nf}{count}\PY{p}{(}\PY{n+nf}{distinct}\PY{p}{(}\PY{n}{sleep\PYZus{}day\PYZus{}file}\PY{p}{,}\PY{+w}{ }\PY{n}{Id}\PY{p}{)}\PY{p}{)}
+        \PY{n+nf}{count}\PY{p}{(}\PY{n+nf}{distinct}\PY{p}{(}\PY{n}{daily\PYZus{}activity\PYZus{}file}\PY{p}{,}\PY{+w}{ }\PY{n}{Id}\PY{p}{)}\PY{p}{)}
+        \PY{n+nf}{count}\PY{p}{(}\PY{n+nf}{distinct}\PY{p}{(}\PY{n}{daily\PYZus{}intensities\PYZus{}file}\PY{p}{,}\PY{+w}{ }\PY{n}{Id}\PY{p}{)}\PY{p}{)}
+        \PY{n+nf}{count}\PY{p}{(}\PY{n+nf}{distinct}\PY{p}{(}\PY{n}{hourly\PYZus{}intensities\PYZus{}file}\PY{p}{,}\PY{+w}{ }\PY{n}{Id}\PY{p}{)}\PY{p}{)}
+        \PY{n+nf}{count}\PY{p}{(}\PY{n+nf}{distinct}\PY{p}{(}\PY{n}{hourly\PYZus{}calories\PYZus{}file}\PY{p}{,}\PY{+w}{ }\PY{n}{Id}\PY{p}{)}\PY{p}{)}
+    \end{Verbatim}
+\end{tcolorbox}
+
+A tibble: 1 × 1
+\begin{tabular}{l}
+    n     \\
+    <int> \\
+    \hline
+    24    \\
+\end{tabular}
+
+
+
+A tibble: 1 × 1
+\begin{tabular}{l}
+    n     \\
+    <int> \\
+    \hline
+    33    \\
+\end{tabular}
+
+
+
+A tibble: 1 × 1
+\begin{tabular}{l}
+    n     \\
+    <int> \\
+    \hline
+    33    \\
+\end{tabular}
+
+
+
+A tibble: 1 × 1
+\begin{tabular}{l}
+    n     \\
+    <int> \\
+    \hline
+    33    \\
+\end{tabular}
+
+
+
+A tibble: 1 × 1
+\begin{tabular}{l}
+    n     \\
+    <int> \\
+    \hline
+    33    \\
+\end{tabular}
+
+
+
+\section{Preparação dos dados}
+
+\subsection{Limpeza dos Dados}
+
+\begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+    \prompt{In}{incolor}{8}{\boxspacing}
+    \begin{Verbatim}[commandchars=\\\{\}]
+        \PY{n+nf}{anyDuplicated}\PY{p}{(}\PY{n}{sleep\PYZus{}day\PYZus{}file}\PY{p}{)}
+        \PY{n+nf}{anyDuplicated}\PY{p}{(}\PY{n}{daily\PYZus{}activity\PYZus{}file}\PY{p}{)}
+        \PY{n+nf}{anyDuplicated}\PY{p}{(}\PY{n}{daily\PYZus{}intensities\PYZus{}file}\PY{p}{)}
+        \PY{n+nf}{anyDuplicated}\PY{p}{(}\PY{n}{hourly\PYZus{}intensities\PYZus{}file}\PY{p}{)}
+        \PY{n+nf}{anyDuplicated}\PY{p}{(}\PY{n}{hourly\PYZus{}calories\PYZus{}file}\PY{p}{)}
+    \end{Verbatim}
+\end{tcolorbox}
+
+162
+
+
+0
+
+
+0
+
+
+0
+
+
+0
+
+
+aqui podemos identificar que temos 162 duplicatas no sleep day file
+
+\subsubsection{Descartando NA e duplicatas}
+
+\begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+    \prompt{In}{incolor}{9}{\boxspacing}
+    \begin{Verbatim}[commandchars=\\\{\}]
+        \PY{n}{sleep\PYZus{}day\PYZus{}file}\PY{+w}{ }\PY{o}{\PYZlt{}\PYZhy{}}\PY{+w}{ }\PY{n}{sleep\PYZus{}day\PYZus{}file}\PY{+w}{ }\PY{o}{\PYZpc{}\PYZgt{}\PYZpc{}}
+        \PY{+w}{  }\PY{n+nf}{distinct}\PY{p}{(}\PY{p}{)}\PY{+w}{ }\PY{o}{\PYZpc{}\PYZgt{}\PYZpc{}}
+        \PY{+w}{  }\PY{n+nf}{drop\PYZus{}na}\PY{p}{(}\PY{p}{)}
+
+        \PY{n+nf}{anyDuplicated}\PY{p}{(}\PY{n}{sleep\PYZus{}day\PYZus{}file}\PY{p}{)}
+    \end{Verbatim}
+\end{tcolorbox}
+
+0
+
+
+Tratamentos dos dados feitos, e agora temos 0 dados duplicados. Esse
+tratamento é feito para evitar dados iguais esses dados duplicados podem
+trazer vieses para as nossas analises futuras.
+
+\subsubsection{Limpando os nomes para o formato usado nas aulas}
+
+\begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+    \prompt{In}{incolor}{10}{\boxspacing}
+    \begin{Verbatim}[commandchars=\\\{\}]
+        \PY{n}{sleep\PYZus{}day\PYZus{}file}\PY{+w}{ }\PY{o}{\PYZlt{}\PYZhy{}}\PY{+w}{ }\PY{n+nf}{clean\PYZus{}names}\PY{p}{(}\PY{n}{sleep\PYZus{}day\PYZus{}file}\PY{p}{)}
+        \PY{n}{daily\PYZus{}activity\PYZus{}file}\PY{+w}{ }\PY{o}{\PYZlt{}\PYZhy{}}\PY{+w}{ }\PY{n+nf}{clean\PYZus{}names}\PY{p}{(}\PY{n}{daily\PYZus{}activity\PYZus{}file}\PY{p}{)}
+        \PY{n}{daily\PYZus{}intensities\PYZus{}file}\PY{+w}{ }\PY{o}{\PYZlt{}\PYZhy{}}\PY{+w}{ }\PY{n+nf}{clean\PYZus{}names}\PY{p}{(}\PY{n}{daily\PYZus{}intensities\PYZus{}file}\PY{p}{)}
+        \PY{n}{hourly\PYZus{}intensities\PYZus{}file}\PY{+w}{ }\PY{o}{\PYZlt{}\PYZhy{}}\PY{+w}{ }\PY{n+nf}{clean\PYZus{}names}\PY{p}{(}\PY{n}{hourly\PYZus{}intensities\PYZus{}file}\PY{p}{)}
+        \PY{n}{hourly\PYZus{}calories\PYZus{}file}\PY{+w}{ }\PY{o}{\PYZlt{}\PYZhy{}}\PY{+w}{ }\PY{n+nf}{clean\PYZus{}names}\PY{p}{(}\PY{n}{hourly\PYZus{}calories\PYZus{}file}\PY{p}{)}
+    \end{Verbatim}
+\end{tcolorbox}
+
+agora temos os nossos nomes de colunas em um formato padronizado;
+name1\_name2 (lowcase,separado por \_)
+
+\subsubsection{Transformando as Datas}
+
+\begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+    \prompt{In}{incolor}{11}{\boxspacing}
+    \begin{Verbatim}[commandchars=\\\{\}]
+        \PY{n+nf}{glimpse}\PY{p}{(}\PY{n}{sleep\PYZus{}day\PYZus{}file}\PY{p}{)}
+        \PY{n+nf}{glimpse}\PY{p}{(}\PY{n}{daily\PYZus{}activity\PYZus{}file}\PY{p}{)}
+        \PY{n+nf}{glimpse}\PY{p}{(}\PY{n}{daily\PYZus{}intensities\PYZus{}file}\PY{p}{)}
+        \PY{n+nf}{glimpse}\PY{p}{(}\PY{n}{hourly\PYZus{}intensities\PYZus{}file}\PY{p}{)}
+        \PY{n+nf}{glimpse}\PY{p}{(}\PY{n}{hourly\PYZus{}calories\PYZus{}file}\PY{p}{)}
+    \end{Verbatim}
+\end{tcolorbox}
+
+\begin{Verbatim}[commandchars=\\\{\}]
+    Rows: 410
+    Columns: 5
+    \$ id                   \textcolor{ansi-black-intense}{<dbl>} 1503960366, 1503960366,
+    1503960366, 1503960366, 1…
+    \$ sleep\_day            \textcolor{ansi-black-intense}{<chr>} "4/12/2016 12:00:00 AM",
+    "4/13/2016 12:00:00 AM",…
+    \$ total\_sleep\_records  \textcolor{ansi-black-intense}{<dbl>} 1, 2, 1, 2, 1, 1, 1, 1, 1, 1, 1,
+    1, 1, 1, 1, 1, 1…
+    \$ total\_minutes\_asleep \textcolor{ansi-black-intense}{<dbl>} 327, 384, 412, 340, 700, 304,
+    360, 325, 361, 430,…
+    \$ total\_time\_in\_bed    \textcolor{ansi-black-intense}{<dbl>} 346, 407, 442, 367, 712, 320,
+    377, 364, 384, 449,…
+    Rows: 940
+    Columns: 15
+    \$ id                         \textcolor{ansi-black-intense}{<dbl>} 1503960366, 1503960366,
+    1503960366, 1503960…
+    \$ activity\_date              \textcolor{ansi-black-intense}{<chr>} "4/12/2016", "4/13/2016",
+    "4/14/2016", "4/1…
+    \$ total\_steps                \textcolor{ansi-black-intense}{<dbl>} 13162, 10735, 10460, 9762,
+    12669, 9705, 130…
+    \$ total\_distance             \textcolor{ansi-black-intense}{<dbl>} 8.50, 6.97, 6.74, 6.28,
+    8.16, 6.48, 8.59, 9…
+    \$ tracker\_distance           \textcolor{ansi-black-intense}{<dbl>} 8.50, 6.97, 6.74, 6.28,
+    8.16, 6.48, 8.59, 9…
+    \$ logged\_activities\_distance \textcolor{ansi-black-intense}{<dbl>} 0, 0, 0, 0, 0, 0, 0, 0, 0,
+    0, 0, 0, 0, 0, 0…
+    \$ very\_active\_distance       \textcolor{ansi-black-intense}{<dbl>} 1.88, 1.57, 2.44, 2.14,
+    2.71, 3.19, 3.25, 3…
+    \$ moderately\_active\_distance \textcolor{ansi-black-intense}{<dbl>} 0.55, 0.69, 0.40, 1.26,
+    0.41, 0.78, 0.64, 1…
+    \$ light\_active\_distance      \textcolor{ansi-black-intense}{<dbl>} 6.06, 4.71, 3.91, 2.83,
+    5.04, 2.51, 4.71, 5…
+    \$ sedentary\_active\_distance  \textcolor{ansi-black-intense}{<dbl>} 0, 0, 0, 0, 0, 0, 0, 0, 0,
+    0, 0, 0, 0, 0, 0…
+    \$ very\_active\_minutes        \textcolor{ansi-black-intense}{<dbl>} 25, 21, 30, 29, 36, 38,
+    42, 50, 28, 19, 66,…
+    \$ fairly\_active\_minutes      \textcolor{ansi-black-intense}{<dbl>} 13, 19, 11, 34, 10, 20,
+    16, 31, 12, 8, 27, …
+    \$ lightly\_active\_minutes     \textcolor{ansi-black-intense}{<dbl>} 328, 217, 181, 209, 221,
+    164, 233, 264, 205…
+    \$ sedentary\_minutes          \textcolor{ansi-black-intense}{<dbl>} 728, 776, 1218, 726, 773,
+    539, 1149, 775, 8…
+    \$ calories                   \textcolor{ansi-black-intense}{<dbl>} 1985, 1797, 1776, 1745,
+    1863, 1728, 1921, 2…
+    Rows: 940
+    Columns: 10
+    \$ id                         \textcolor{ansi-black-intense}{<dbl>} 1503960366, 1503960366,
+    1503960366, 1503960…
+    \$ activity\_day               \textcolor{ansi-black-intense}{<chr>} "4/12/2016", "4/13/2016",
+    "4/14/2016", "4/1…
+    \$ sedentary\_minutes          \textcolor{ansi-black-intense}{<dbl>} 728, 776, 1218, 726, 773,
+    539, 1149, 775, 8…
+    \$ lightly\_active\_minutes     \textcolor{ansi-black-intense}{<dbl>} 328, 217, 181, 209, 221,
+    164, 233, 264, 205…
+    \$ fairly\_active\_minutes      \textcolor{ansi-black-intense}{<dbl>} 13, 19, 11, 34, 10, 20,
+    16, 31, 12, 8, 27, …
+    \$ very\_active\_minutes        \textcolor{ansi-black-intense}{<dbl>} 25, 21, 30, 29, 36, 38,
+    42, 50, 28, 19, 66,…
+    \$ sedentary\_active\_distance  \textcolor{ansi-black-intense}{<dbl>} 0, 0, 0, 0, 0, 0, 0, 0, 0,
+    0, 0, 0, 0, 0, 0…
+    \$ light\_active\_distance      \textcolor{ansi-black-intense}{<dbl>} 6.06, 4.71, 3.91, 2.83,
+    5.04, 2.51, 4.71, 5…
+    \$ moderately\_active\_distance \textcolor{ansi-black-intense}{<dbl>} 0.55, 0.69, 0.40, 1.26,
+    0.41, 0.78, 0.64, 1…
+    \$ very\_active\_distance       \textcolor{ansi-black-intense}{<dbl>} 1.88, 1.57, 2.44, 2.14,
+    2.71, 3.19, 3.25, 3…
+    Rows: 22,099
+    Columns: 4
+    \$ id                \textcolor{ansi-black-intense}{<dbl>} 1503960366, 1503960366, 1503960366,
+    1503960366, 1503…
+    \$ activity\_hour     \textcolor{ansi-black-intense}{<chr>} "4/12/2016 12:00:00 AM", "4/12/2016
+    1:00:00 AM", "4/…
+    \$ total\_intensity   \textcolor{ansi-black-intense}{<dbl>} 20, 8, 7, 0, 0, 0, 0, 0, 13, 30,
+    29, 12, 11, 6, 36, …
+    \$ average\_intensity \textcolor{ansi-black-intense}{<dbl>} 0.333333, 0.133333, 0.116667,
+    0.000000, 0.000000, 0.…
+    Rows: 22,099
+    Columns: 3
+    \$ id            \textcolor{ansi-black-intense}{<dbl>} 1503960366, 1503960366, 1503960366,
+    1503960366, 15039603…
+    \$ activity\_hour \textcolor{ansi-black-intense}{<chr>} "4/12/2016 12:00:00 AM", "4/12/2016
+    1:00:00 AM", "4/12/2…
+    \$ calories      \textcolor{ansi-black-intense}{<dbl>} 81, 61, 59, 47, 48, 48, 48, 47, 68,
+    141, 99, 76, 73, 66,…
+\end{Verbatim}
+
+iremos fazer a transformação das colunas que tratam de \textbf{horas e
+    datas} para facilicar no momento das nossas analises.
+
+\begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+    \prompt{In}{incolor}{12}{\boxspacing}
+    \begin{Verbatim}[commandchars=\\\{\}]
+        \PY{n}{sleep\PYZus{}day\PYZus{}file}\PY{o}{\PYZdl{}}\PY{n}{sleep\PYZus{}day}\PY{+w}{ }\PY{o}{\PYZlt{}\PYZhy{}}\PY{+w}{ }\PY{n+nf}{mdy\PYZus{}hms}\PY{p}{(}\PY{n}{sleep\PYZus{}day\PYZus{}file}\PY{o}{\PYZdl{}}\PY{n}{sleep\PYZus{}day}\PY{p}{)}
+        \PY{n}{daily\PYZus{}activity\PYZus{}file}\PY{o}{\PYZdl{}}\PY{n}{activity\PYZus{}date}\PY{+w}{ }\PY{o}{\PYZlt{}\PYZhy{}}\PY{+w}{ }\PY{n+nf}{mdy}\PY{p}{(}\PY{n}{daily\PYZus{}activity\PYZus{}file}\PY{o}{\PYZdl{}}\PY{n}{activity\PYZus{}date}\PY{p}{)}
+        \PY{n}{daily\PYZus{}intensities\PYZus{}file}\PY{o}{\PYZdl{}}\PY{n}{activity\PYZus{}day}\PY{+w}{ }\PY{o}{\PYZlt{}\PYZhy{}}\PY{+w}{ }\PY{n+nf}{mdy}\PY{p}{(}\PY{n}{daily\PYZus{}intensities\PYZus{}file}\PY{o}{\PYZdl{}}\PY{n}{activity\PYZus{}day}\PY{p}{)}
+        \PY{n}{hourly\PYZus{}intensities\PYZus{}file}\PY{o}{\PYZdl{}}\PY{n}{activity\PYZus{}hour}\PY{+w}{ }\PY{o}{\PYZlt{}\PYZhy{}}\PY{+w}{ }\PY{n+nf}{mdy\PYZus{}hms}\PY{p}{(}\PY{n}{hourly\PYZus{}intensities\PYZus{}file}\PY{o}{\PYZdl{}}\PY{n}{activity\PYZus{}hour}\PY{p}{)}
+        \PY{n}{hourly\PYZus{}calories\PYZus{}file}\PY{o}{\PYZdl{}}\PY{n}{activity\PYZus{}hour}\PY{+w}{ }\PY{o}{\PYZlt{}\PYZhy{}}\PY{+w}{ }\PY{n+nf}{mdy\PYZus{}hms}\PY{p}{(}\PY{n}{hourly\PYZus{}calories\PYZus{}file}\PY{o}{\PYZdl{}}\PY{n}{activity\PYZus{}hour}\PY{p}{)}
+    \end{Verbatim}
+\end{tcolorbox}
+
+A partir do \textbf{glimpse()} podemos identificar que as colunas
+referentes a hora e datas agora estão nos seguintes formatos de dados:
+\textbf{dttm,date}. Esse processamento é possível a partir da biblioteca
+\textbf{\emph{lubridate}} que nos da as funções e argumentos para tratar
+esse tipo de situações e muito mais.
+
+\subsubsubsection{Transformações extras}
+
+tratando dados para fazer o grafico de total de
+\hyperref[subsection4-four]{Total de Passos diários Vs. Total de Minutos de Sono}
+
+\begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+    \prompt{In}{incolor}{13}{\boxspacing}
+    \begin{Verbatim}[commandchars=\\\{\}]
+        \PY{n+nf}{glimpse}\PY{p}{(}\PY{n}{sleep\PYZus{}day\PYZus{}file}\PY{p}{)}
+        \PY{n+nf}{glimpse}\PY{p}{(}\PY{n}{daily\PYZus{}activity\PYZus{}file}\PY{p}{)}
+    \end{Verbatim}
+\end{tcolorbox}
+
+\begin{Verbatim}[commandchars=\\\{\}]
+    Rows: 410
+    Columns: 5
+    \$ id                   \textcolor{ansi-black-intense}{<dbl>} 1503960366, 1503960366,
+    1503960366, 1503960366, 1…
+    \$ sleep\_day            \textcolor{ansi-black-intense}{<dttm>} 2016-04-12, 2016-04-13,
+    2016-04-15, 2016-04-16, …
+    \$ total\_sleep\_records  \textcolor{ansi-black-intense}{<dbl>} 1, 2, 1, 2, 1, 1, 1, 1, 1, 1, 1,
+    1, 1, 1, 1, 1, 1…
+    \$ total\_minutes\_asleep \textcolor{ansi-black-intense}{<dbl>} 327, 384, 412, 340, 700, 304,
+    360, 325, 361, 430,…
+    \$ total\_time\_in\_bed    \textcolor{ansi-black-intense}{<dbl>} 346, 407, 442, 367, 712, 320,
+    377, 364, 384, 449,…
+    Rows: 940
+    Columns: 15
+    \$ id                         \textcolor{ansi-black-intense}{<dbl>} 1503960366, 1503960366,
+    1503960366, 1503960…
+    \$ activity\_date              \textcolor{ansi-black-intense}{<date>} 2016-04-12, 2016-04-13,
+    2016-04-14, 2016-0…
+    \$ total\_steps                \textcolor{ansi-black-intense}{<dbl>} 13162, 10735, 10460, 9762,
+    12669, 9705, 130…
+    \$ total\_distance             \textcolor{ansi-black-intense}{<dbl>} 8.50, 6.97, 6.74, 6.28,
+    8.16, 6.48, 8.59, 9…
+    \$ tracker\_distance           \textcolor{ansi-black-intense}{<dbl>} 8.50, 6.97, 6.74, 6.28,
+    8.16, 6.48, 8.59, 9…
+    \$ logged\_activities\_distance \textcolor{ansi-black-intense}{<dbl>} 0, 0, 0, 0, 0, 0, 0, 0, 0,
+    0, 0, 0, 0, 0, 0…
+    \$ very\_active\_distance       \textcolor{ansi-black-intense}{<dbl>} 1.88, 1.57, 2.44, 2.14,
+    2.71, 3.19, 3.25, 3…
+    \$ moderately\_active\_distance \textcolor{ansi-black-intense}{<dbl>} 0.55, 0.69, 0.40, 1.26,
+    0.41, 0.78, 0.64, 1…
+    \$ light\_active\_distance      \textcolor{ansi-black-intense}{<dbl>} 6.06, 4.71, 3.91, 2.83,
+    5.04, 2.51, 4.71, 5…
+    \$ sedentary\_active\_distance  \textcolor{ansi-black-intense}{<dbl>} 0, 0, 0, 0, 0, 0, 0, 0, 0,
+    0, 0, 0, 0, 0, 0…
+    \$ very\_active\_minutes        \textcolor{ansi-black-intense}{<dbl>} 25, 21, 30, 29, 36, 38,
+    42, 50, 28, 19, 66,…
+    \$ fairly\_active\_minutes      \textcolor{ansi-black-intense}{<dbl>} 13, 19, 11, 34, 10, 20,
+    16, 31, 12, 8, 27, …
+    \$ lightly\_active\_minutes     \textcolor{ansi-black-intense}{<dbl>} 328, 217, 181, 209, 221,
+    164, 233, 264, 205…
+    \$ sedentary\_minutes          \textcolor{ansi-black-intense}{<dbl>} 728, 776, 1218, 726, 773,
+    539, 1149, 775, 8…
+    \$ calories                   \textcolor{ansi-black-intense}{<dbl>} 1985, 1797, 1776, 1745,
+    1863, 1728, 1921, 2…
+\end{Verbatim}
+
+Para dar merge() os dados diários de sono e atividade com base em ID e
+data, precisaremos padronizar os nomes das colunas de ID e Data.
+
+Renomeando a coluna que exibe as datas para que possa ser usada como uma
+das chaves durante a merge() de dados:
+
+\begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+    \prompt{In}{incolor}{14}{\boxspacing}
+    \begin{Verbatim}[commandchars=\\\{\}]
+        \PY{n}{daily\PYZus{}activity\PYZus{}file}\PY{+w}{ }\PY{o}{\PYZlt{}\PYZhy{}}\PY{+w}{ }\PY{n}{daily\PYZus{}activity\PYZus{}file}\PY{+w}{ }\PY{o}{\PYZpc{}\PYZgt{}\PYZpc{}}\PY{+w}{ }\PY{n+nf}{rename}\PY{p}{(}\PY{n}{date}\PY{+w}{ }\PY{o}{=}\PY{+w}{ }\PY{n}{activity\PYZus{}date}\PY{p}{)}
+        \PY{n}{sleep\PYZus{}day\PYZus{}file}\PY{+w}{ }\PY{o}{\PYZlt{}\PYZhy{}}\PY{+w}{ }\PY{n}{sleep\PYZus{}day\PYZus{}file}\PY{+w}{ }\PY{o}{\PYZpc{}\PYZgt{}\PYZpc{}}\PY{+w}{ }\PY{n+nf}{rename}\PY{p}{(}\PY{n}{date}\PY{+w}{ }\PY{o}{=}\PY{+w}{ }\PY{n}{sleep\PYZus{}day}\PY{p}{)}
+    \end{Verbatim}
+\end{tcolorbox}
+
+Merge() os subconjuntos `sleep' e `activity' para criar o conjunto de
+dados `activity\_sleep', usando ``id'' e ``date'' como chaves:
+
+\begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+    \prompt{In}{incolor}{15}{\boxspacing}
+    \begin{Verbatim}[commandchars=\\\{\}]
+        \PY{n}{activity\PYZus{}sleep}\PY{+w}{ }\PY{o}{\PYZlt{}\PYZhy{}}\PY{+w}{ }\PY{n+nf}{merge}\PY{p}{(}\PY{n}{daily\PYZus{}activity\PYZus{}file}\PY{p}{,}\PY{+w}{ }\PY{n}{sleep\PYZus{}day\PYZus{}file}\PY{p}{,}\PY{+w}{ }\PY{n}{by}\PY{o}{=}\PY{n+nf}{c}\PY{p}{(}\PY{l+s}{\PYZdq{}}\PY{l+s}{id\PYZdq{}}\PY{p}{,}\PY{+w}{ }\PY{l+s}{\PYZdq{}}\PY{l+s}{date\PYZdq{}}\PY{p}{)}\PY{p}{)}
+
+
+        \PY{n+nf}{glimpse}\PY{p}{(}\PY{n}{activity\PYZus{}sleep}\PY{p}{)}
+    \end{Verbatim}
+\end{tcolorbox}
+
+\begin{Verbatim}[commandchars=\\\{\}]
+    Rows: 410
+    Columns: 18
+    \$ id                         \textcolor{ansi-black-intense}{<dbl>} 1503960366, 1503960366,
+    1503960366, 1503960…
+    \$ date                       \textcolor{ansi-black-intense}{<date>} 2016-04-12, 2016-04-13,
+    2016-04-15, 2016-0…
+    \$ total\_steps                \textcolor{ansi-black-intense}{<dbl>} 13162, 10735, 9762, 12669,
+    9705, 15506, 105…
+    \$ total\_distance             \textcolor{ansi-black-intense}{<dbl>} 8.50, 6.97, 6.28, 8.16,
+    6.48, 9.88, 6.68, 6…
+    \$ tracker\_distance           \textcolor{ansi-black-intense}{<dbl>} 8.50, 6.97, 6.28, 8.16,
+    6.48, 9.88, 6.68, 6…
+    \$ logged\_activities\_distance \textcolor{ansi-black-intense}{<dbl>} 0, 0, 0, 0, 0, 0, 0, 0, 0,
+    0, 0, 0, 0, 0, 0…
+    \$ very\_active\_distance       \textcolor{ansi-black-intense}{<dbl>} 1.88, 1.57, 2.14, 2.71,
+    3.19, 3.53, 1.96, 1…
+    \$ moderately\_active\_distance \textcolor{ansi-black-intense}{<dbl>} 0.55, 0.69, 1.26, 0.41,
+    0.78, 1.32, 0.48, 0…
+    \$ light\_active\_distance      \textcolor{ansi-black-intense}{<dbl>} 6.06, 4.71, 2.83, 5.04,
+    2.51, 5.03, 4.24, 4…
+    \$ sedentary\_active\_distance  \textcolor{ansi-black-intense}{<dbl>} 0, 0, 0, 0, 0, 0, 0, 0, 0,
+    0, 0, 0, 0, 0, 0…
+    \$ very\_active\_minutes        \textcolor{ansi-black-intense}{<dbl>} 25, 21, 29, 36, 38, 50,
+    28, 19, 41, 39, 73,…
+    \$ fairly\_active\_minutes      \textcolor{ansi-black-intense}{<dbl>} 13, 19, 34, 10, 20, 31,
+    12, 8, 21, 5, 14, 2…
+    \$ lightly\_active\_minutes     \textcolor{ansi-black-intense}{<dbl>} 328, 217, 209, 221, 164,
+    264, 205, 211, 262…
+    \$ sedentary\_minutes          \textcolor{ansi-black-intense}{<dbl>} 728, 776, 726, 773, 539,
+    775, 818, 838, 732…
+    \$ calories                   \textcolor{ansi-black-intense}{<dbl>} 1985, 1797, 1745, 1863,
+    1728, 2035, 1786, 1…
+    \$ total\_sleep\_records        \textcolor{ansi-black-intense}{<dbl>} 1, 2, 1, 2, 1, 1, 1, 1, 1,
+    1, 1, 1, 1, 1, 1…
+    \$ total\_minutes\_asleep       \textcolor{ansi-black-intense}{<dbl>} 327, 384, 412, 340, 700,
+    304, 360, 325, 361…
+    \$ total\_time\_in\_bed          \textcolor{ansi-black-intense}{<dbl>} 346, 407, 442, 367, 712,
+    320, 377, 364, 384…
+\end{Verbatim}
+
+\textbf{Abaixo} trataremos os dados para o
+\hyperref[subsection4-three]{Grafico - Calorias x intensidade}. Vamos
+colocar as datas em dia para conseguiremos agrupar por esse conjunto de
+dados, e vamos dar um \textbf{cbind()} nos valores de calorias essa
+função pega uma sequência de argumentos de vetor, matriz ou quadro de
+dados e combine por colunas ou linhas, respectivamente.
+
+\begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+    \prompt{In}{incolor}{16}{\boxspacing}
+    \begin{Verbatim}[commandchars=\\\{\}]
+        \PY{n}{hourly\PYZus{}intensities\PYZus{}file}\PY{o}{\PYZdl{}}\PY{n}{day}\PY{+w}{ }\PY{o}{\PYZlt{}\PYZhy{}}\PY{+w}{ }\PY{n+nf}{format}\PY{p}{(}\PY{n}{hourly\PYZus{}intensities\PYZus{}file}\PY{o}{\PYZdl{}}\PY{n}{activity\PYZus{}hour}\PY{p}{,}\PY{+w}{ }\PY{n}{format}\PY{+w}{ }\PY{o}{=}\PY{+w}{ }\PY{l+s}{\PYZdq{}}\PY{l+s}{\PYZpc{}Y \PYZpc{}m \PYZpc{}d\PYZdq{}}\PY{p}{)}
+        \PY{n}{hourly\PYZus{}intensities\PYZus{}file}\PY{o}{\PYZdl{}}\PY{n}{calories}\PY{+w}{ }\PY{o}{\PYZlt{}\PYZhy{}}\PY{+w}{ }\PY{n+nf}{cbind}\PY{p}{(}\PY{n}{hourly\PYZus{}calories\PYZus{}file}\PY{o}{\PYZdl{}}\PY{n}{calories}\PY{p}{)}
+        \PY{n+nf}{glimpse}\PY{p}{(}\PY{n}{hourly\PYZus{}intensities\PYZus{}file}\PY{p}{)}
+    \end{Verbatim}
+\end{tcolorbox}
+
+\begin{Verbatim}[commandchars=\\\{\}]
+    Rows: 22,099
+    Columns: 6
+    \$ id                \textcolor{ansi-black-intense}{<dbl>} 1503960366, 1503960366, 1503960366,
+    1503960366, 1503…
+    \$ activity\_hour     \textcolor{ansi-black-intense}{<dttm>} 2016-04-12 00:00:00, 2016-04-12
+    01:00:00, 2016-04-1…
+    \$ total\_intensity   \textcolor{ansi-black-intense}{<dbl>} 20, 8, 7, 0, 0, 0, 0, 0, 13, 30,
+    29, 12, 11, 6, 36, …
+    \$ average\_intensity \textcolor{ansi-black-intense}{<dbl>} 0.333333, 0.133333, 0.116667,
+    0.000000, 0.000000, 0.…
+    \$ day               \textcolor{ansi-black-intense}{<chr>} "2016 04 12", "2016 04 12", "2016
+    04 12", "2016 04 1…
+    \$ calories          \textcolor{ansi-black-intense}{<dbl[,1]>} <matrix[26 x 1]>
+\end{Verbatim}
+
+\textbf{Abaixo} adicionaremos dias da semana aos conjuntos de dados para
+auxiliar nas análises refentes ao gráfico
+\hyperref[subsection4-five]{Tempo de sono}
+
+\begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+    \prompt{In}{incolor}{17}{\boxspacing}
+    \begin{Verbatim}[commandchars=\\\{\}]
+        \PY{n}{sleep\PYZus{}day\PYZus{}file}\PY{+w}{ }\PY{o}{\PYZlt{}\PYZhy{}}\PY{+w}{ }\PY{n}{sleep\PYZus{}day\PYZus{}file}\PY{+w}{ }\PY{o}{\PYZpc{}\PYZgt{}\PYZpc{}}\PY{+w}{ }\PY{n+nf}{mutate}\PY{p}{(}\PY{n}{day\PYZus{}of\PYZus{}week}\PY{+w}{ }\PY{o}{=}\PY{+w}{ }\PY{n+nf}{weekdays}\PY{p}{(}\PY{n}{date}\PY{p}{)}\PY{p}{)}
+        \PY{c+c1}{\PYZsh{} sleep\PYZus{}day\PYZus{}file\PYZdl{}weekday \PYZlt{}\PYZhy{} weekdays(sleep\PYZus{}day\PYZus{}file\PYZdl{}sleep\PYZus{}day) }
+        \PY{n}{sleep\PYZus{}day\PYZus{}file}\PY{o}{\PYZdl{}}\PY{n}{day\PYZus{}of\PYZus{}week}\PY{+w}{ }\PY{o}{\PYZlt{}\PYZhy{}}\PY{+w}{ }\PY{n+nf}{factor}\PY{p}{(}\PY{n}{sleep\PYZus{}day\PYZus{}file}\PY{o}{\PYZdl{}}\PY{n}{day\PYZus{}of\PYZus{}week}\PY{p}{,}\PY{n}{levels}\PY{+w}{ }\PY{o}{=}\PY{+w}{ }\PY{n+nf}{c}\PY{p}{(}\PY{l+s}{\PYZdq{}}\PY{l+s}{Monday\PYZdq{}}\PY{p}{,}\PY{+w}{ }\PY{l+s}{\PYZdq{}}\PY{l+s}{Tuesday\PYZdq{}}\PY{p}{,}\PY{+w}{ }\PY{l+s}{\PYZdq{}}\PY{l+s}{Wednesday\PYZdq{}}\PY{p}{,}\PY{+w}{ }\PY{l+s}{\PYZdq{}}\PY{l+s}{Thursday\PYZdq{}}\PY{p}{,}\PY{+w}{ }\PY{l+s}{\PYZdq{}}\PY{l+s}{Friday\PYZdq{}}\PY{p}{,}\PY{+w}{ }\PY{l+s}{\PYZdq{}}\PY{l+s}{Saturday\PYZdq{}}\PY{p}{,}\PY{+w}{ }\PY{l+s}{\PYZdq{}}\PY{l+s}{Sunday\PYZdq{}}\PY{p}{)}\PY{p}{)}
+    \end{Verbatim}
+\end{tcolorbox}
+
+Aqui fizemos um mutate para adicionar a coluna referente a dias da
+semana. Passamos \emph{date} para a \emph{função} weekdays para assim
+termos os dias da semana refentes as data do nosso dataframe. Em
+seguida, fazemos um \emph{factor} para que os dias da semana sejam
+organizadas da ordem passada no vetor \emph{c} em \emph{levels}.
+
+\begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+    \prompt{In}{incolor}{18}{\boxspacing}
+    \begin{Verbatim}[commandchars=\\\{\}]
+        \PY{n+nf}{unique}\PY{p}{(}\PY{n}{sleep\PYZus{}day\PYZus{}file}\PY{o}{\PYZdl{}}\PY{n}{day\PYZus{}of\PYZus{}week}\PY{p}{)}
+    \end{Verbatim}
+\end{tcolorbox}
+
+\begin{enumerate*}
+    \item Tuesday
+    \item Wednesday
+    \item Friday
+    \item Saturday
+    \item Sunday
+    \item Thursday
+    \item Monday
+\end{enumerate*}
+
+\emph{Levels}: \begin{enumerate*}
+    \item 'Monday'
+    \item 'Tuesday'
+    \item 'Wednesday'
+    \item 'Thursday'
+    \item 'Friday'
+    \item 'Saturday'
+    \item 'Sunday'
+\end{enumerate*}
+
+
+
+testando para ver se temos os dias referentes a todos os dias da semana
+
+\textbf{Abaixo} vamos fazer o somatório para o gráfico
+\hyperref[subsection4-six]{Uso diário dos dispositivos} que nós
+apresenta a quantidade de horas que os nossos usuários passam usando os
+aparelhos inteligentes.
+
+\begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+    \prompt{In}{incolor}{19}{\boxspacing}
+    \begin{Verbatim}[commandchars=\\\{\}]
+        \PY{n}{daily\PYZus{}activity\PYZus{}file}\PY{o}{\PYZdl{}}\PY{n}{total\PYZus{}time}\PY{+w}{ }\PY{o}{=}\PY{+w}{ }\PY{n+nf}{rowSums}\PY{p}{(}\PY{n}{daily\PYZus{}activity\PYZus{}file}\PY{p}{[}\PY{n+nf}{c}\PY{p}{(}\PY{l+s}{\PYZdq{}}\PY{l+s}{very\PYZus{}active\PYZus{}minutes\PYZdq{}}\PY{p}{,}
+        \PY{+w}{                                                               }\PY{l+s}{\PYZdq{}}\PY{l+s}{fairly\PYZus{}active\PYZus{}minutes\PYZdq{}}\PY{p}{,}
+        \PY{+w}{                                                               }\PY{l+s}{\PYZdq{}}\PY{l+s}{lightly\PYZus{}active\PYZus{}minutes\PYZdq{}}\PY{p}{,}
+        \PY{+w}{                                                               }\PY{l+s}{\PYZdq{}}\PY{l+s}{sedentary\PYZus{}minutes\PYZdq{}}\PY{p}{)}\PY{p}{]}\PY{p}{)}
+        \PY{n+nf}{glimpse}\PY{p}{(}\PY{n}{daily\PYZus{}activity\PYZus{}file}\PY{p}{)}
+    \end{Verbatim}
+\end{tcolorbox}
+
+\begin{Verbatim}[commandchars=\\\{\}]
+    Rows: 940
+    Columns: 16
+    \$ id                         \textcolor{ansi-black-intense}{<dbl>} 1503960366, 1503960366,
+    1503960366, 1503960…
+    \$ date                       \textcolor{ansi-black-intense}{<date>} 2016-04-12, 2016-04-13,
+    2016-04-14, 2016-0…
+    \$ total\_steps                \textcolor{ansi-black-intense}{<dbl>} 13162, 10735, 10460, 9762,
+    12669, 9705, 130…
+    \$ total\_distance             \textcolor{ansi-black-intense}{<dbl>} 8.50, 6.97, 6.74, 6.28,
+    8.16, 6.48, 8.59, 9…
+    \$ tracker\_distance           \textcolor{ansi-black-intense}{<dbl>} 8.50, 6.97, 6.74, 6.28,
+    8.16, 6.48, 8.59, 9…
+    \$ logged\_activities\_distance \textcolor{ansi-black-intense}{<dbl>} 0, 0, 0, 0, 0, 0, 0, 0, 0,
+    0, 0, 0, 0, 0, 0…
+    \$ very\_active\_distance       \textcolor{ansi-black-intense}{<dbl>} 1.88, 1.57, 2.44, 2.14,
+    2.71, 3.19, 3.25, 3…
+    \$ moderately\_active\_distance \textcolor{ansi-black-intense}{<dbl>} 0.55, 0.69, 0.40, 1.26,
+    0.41, 0.78, 0.64, 1…
+    \$ light\_active\_distance      \textcolor{ansi-black-intense}{<dbl>} 6.06, 4.71, 3.91, 2.83,
+    5.04, 2.51, 4.71, 5…
+    \$ sedentary\_active\_distance  \textcolor{ansi-black-intense}{<dbl>} 0, 0, 0, 0, 0, 0, 0, 0, 0,
+    0, 0, 0, 0, 0, 0…
+    \$ very\_active\_minutes        \textcolor{ansi-black-intense}{<dbl>} 25, 21, 30, 29, 36, 38,
+    42, 50, 28, 19, 66,…
+    \$ fairly\_active\_minutes      \textcolor{ansi-black-intense}{<dbl>} 13, 19, 11, 34, 10, 20,
+    16, 31, 12, 8, 27, …
+    \$ lightly\_active\_minutes     \textcolor{ansi-black-intense}{<dbl>} 328, 217, 181, 209, 221,
+    164, 233, 264, 205…
+    \$ sedentary\_minutes          \textcolor{ansi-black-intense}{<dbl>} 728, 776, 1218, 726, 773,
+    539, 1149, 775, 8…
+    \$ calories                   \textcolor{ansi-black-intense}{<dbl>} 1985, 1797, 1776, 1745,
+    1863, 1728, 1921, 2…
+    \$ total\_time                 \textcolor{ansi-black-intense}{<dbl>} 1094, 1033, 1440, 998,
+    1040, 761, 1440, 112…
+\end{Verbatim}
+
+Fizemos o somatório das colunas \emph{very\_active\_minutes},
+\emph{fairly\_active\_minutes}, \emph{lightly\_active\_minutes},
+\emph{sedentary\_minutes} usando a função \textbf{rowSums()}
+
+\section{Análise dos dados}
+
+\subsection{Analisando}
+
+Nessa parte do projeto iremos dar nossas primeira olhada nos gráficos
+possiveis para o nosso BD.
+
+\subsubsection{Calorias x Passos}
+
+Agora vamos dar uma olhada nas calorias gastas pelos usuários e fazer
+uns graficos na tentativa de buscar alguma compreensão do que está
+acontecendo.
+
+\begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+    \prompt{In}{incolor}{20}{\boxspacing}
+    \begin{Verbatim}[commandchars=\\\{\}]
+        \PY{n}{daily\PYZus{}activity\PYZus{}file}\PY{+w}{ }\PY{o}{\PYZpc{}\PYZgt{}\PYZpc{}}
+        \PY{+w}{  }\PY{n+nf}{ggplot}\PY{p}{(}\PY{p}{)}\PY{+w}{ }\PY{o}{+}
+        \PY{+w}{  }\PY{p}{(}\PY{n}{mapping}\PY{+w}{ }\PY{o}{=}\PY{+w}{ }\PY{n+nf}{aes}\PY{p}{(}\PY{n}{x}\PY{+w}{ }\PY{o}{=}\PY{+w}{ }\PY{n}{total\PYZus{}steps}\PY{p}{,}\PY{+w}{ }\PY{n}{y}\PY{+w}{ }\PY{o}{=}\PY{+w}{ }\PY{n}{calories}\PY{p}{)}\PY{p}{)}\PY{+w}{ }\PY{o}{+}
+        \PY{+w}{  }\PY{n+nf}{geom\PYZus{}jitter}\PY{p}{(}\PY{p}{)}\PY{+w}{ }\PY{o}{+}
+        \PY{+w}{  }\PY{n+nf}{geom\PYZus{}smooth}\PY{p}{(}\PY{p}{)}\PY{+w}{ }\PY{o}{+}
+        \PY{+w}{  }\PY{n+nf}{stat\PYZus{}cor}\PY{p}{(}\PY{n}{method}\PY{+w}{ }\PY{o}{=}\PY{+w}{ }\PY{l+s}{\PYZdq{}}\PY{l+s}{pearson\PYZdq{}}\PY{p}{,}\PY{+w}{ }\PY{n}{label.x}\PY{+w}{ }\PY{o}{=}\PY{+w}{ }\PY{l+m}{20000}\PY{p}{,}\PY{+w}{ }\PY{n}{label.y}\PY{+w}{ }\PY{o}{=}\PY{+w}{ }\PY{l+m}{4800}\PY{p}{)}\PY{+w}{ }\PY{o}{+}
+        \PY{+w}{  }\PY{n+nf}{scale\PYZus{}color\PYZus{}igv}\PY{p}{(}\PY{p}{)}\PY{+w}{ }\PY{o}{+}
+        \PY{+w}{  }\PY{n+nf}{scale\PYZus{}fill\PYZus{}igv}\PY{p}{(}\PY{p}{)}\PY{+w}{ }\PY{o}{+}
+        \PY{+w}{  }\PY{n+nf}{theme\PYZus{}grey}\PY{p}{(}\PY{p}{)}\PY{+w}{ }\PY{o}{+}
+        \PY{+w}{  }\PY{n+nf}{labs}\PY{p}{(}
+        \PY{+w}{    }\PY{n}{title}\PY{+w}{ }\PY{o}{=}\PY{+w}{ }\PY{l+s}{\PYZdq{}}\PY{l+s}{Passos diários vs. calorias\PYZdq{}}\PY{p}{,}
+        \PY{+w}{    }\PY{n}{subtitle}\PY{+w}{ }\PY{o}{=}\PY{+w}{ }\PY{l+s}{\PYZdq{}}\PY{l+s}{Coeficiente de correlação de Pearson (r)\PYZdq{}}\PY{p}{,}
+        \PY{+w}{    }\PY{n}{x}\PY{+w}{ }\PY{o}{=}\PY{+w}{ }\PY{l+s}{\PYZdq{}}\PY{l+s}{Passos diários\PYZdq{}}\PY{p}{,}
+        \PY{+w}{    }\PY{n}{y}\PY{+w}{ }\PY{o}{=}\PY{+w}{ }\PY{l+s}{\PYZdq{}}\PY{l+s}{Calorias Queimadas\PYZdq{}}
+        \PY{+w}{  }\PY{p}{)}
+    \end{Verbatim}
+\end{tcolorbox}
+
+\begin{Verbatim}[commandchars=\\\{\}]
+    `geom\_smooth()` using method = 'loess' and formula = 'y \textasciitilde{} x'
+\end{Verbatim}
+
+\begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{finalproject_files/finalproject_53_1.png}
+\end{center}
+{ \hspace*{\fill} \\}
+
+A escala do coeficiente de
+\href{https://www.scribbr.com/statistics/pearson-correlation-coefficient/}{Correlação
+    de Pearson} (r = 0,59)
+\href{https://www.researchgate.net/figure/The-scale-of-Pearsons-Correlation-Coefficient_tbl1_345693737}{(correlação
+    moderada)}, entre 0 e 1 é uma correlação positiva. Podemos identificar
+que temos uma correlação moderada isso nos diz que outros fatores podem
+estar afetando/colaborando para tal projeção do nosso conjunto de dados,
+fatores como: passos mais rápidos dos usuários\ldots{}
+
+Vamos dar uma olhada na intensidade x calorias para identificamos se
+haverá uma correlação entre esses dados.
+
+\subsection{Calorias x Intensidade}
+
+\begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+    \prompt{In}{incolor}{21}{\boxspacing}
+    \begin{Verbatim}[commandchars=\\\{\}]
+        \PY{n}{graph\PYZus{}intensidade\PYZus{}calorias}\PY{+w}{ }\PY{o}{\PYZlt{}\PYZhy{}}\PY{+w}{ }\PY{n}{hourly\PYZus{}intensities\PYZus{}file}\PY{+w}{ }\PY{o}{\PYZpc{}\PYZgt{}\PYZpc{}}
+        \PY{+w}{  }\PY{n+nf}{group\PYZus{}by}\PY{p}{(}\PY{n}{day}\PY{p}{)}\PY{+w}{ }\PY{o}{\PYZpc{}\PYZgt{}\PYZpc{}}
+        \PY{+w}{  }\PY{n+nf}{summarise}\PY{p}{(}\PY{n}{total\PYZus{}int}\PY{+w}{ }\PY{o}{=}\PY{+w}{ }\PY{n}{total\PYZus{}intensity}\PY{p}{,}\PY{+w}{ }\PY{n}{total\PYZus{}cal}\PY{+w}{ }\PY{o}{=}\PY{+w}{ }\PY{n}{calories}\PY{p}{)}\PY{+w}{ }\PY{o}{\PYZpc{}\PYZgt{}\PYZpc{}}
+        \PY{+w}{  }\PY{n+nf}{ggplot}\PY{p}{(}\PY{p}{)}\PY{+w}{ }\PY{o}{+}
+        \PY{+w}{  }\PY{p}{(}\PY{n}{mapping}\PY{+w}{ }\PY{o}{=}\PY{+w}{ }\PY{n+nf}{aes}\PY{p}{(}\PY{n}{x}\PY{+w}{ }\PY{o}{=}\PY{+w}{ }\PY{n}{total\PYZus{}int}\PY{p}{,}\PY{+w}{ }\PY{n}{y}\PY{+w}{ }\PY{o}{=}\PY{+w}{ }\PY{n}{total\PYZus{}cal}\PY{p}{)}\PY{p}{)}\PY{+w}{ }\PY{o}{+}
+        \PY{+w}{  }\PY{n+nf}{geom\PYZus{}jitter}\PY{p}{(}\PY{p}{)}\PY{+w}{ }\PY{o}{+}
+        \PY{+w}{  }\PY{n+nf}{geom\PYZus{}smooth}\PY{p}{(}\PY{p}{)}\PY{+w}{ }\PY{o}{+}
+        \PY{+w}{  }\PY{n+nf}{stat\PYZus{}cor}\PY{p}{(}\PY{n}{method}\PY{+w}{ }\PY{o}{=}\PY{+w}{ }\PY{l+s}{\PYZdq{}}\PY{l+s}{pearson\PYZdq{}}\PY{p}{,}\PY{+w}{ }\PY{n}{label.x}\PY{+w}{ }\PY{o}{=}\PY{+w}{ }\PY{l+m}{50}\PY{p}{,}\PY{+w}{ }\PY{n}{label.y}\PY{+w}{ }\PY{o}{=}\PY{+w}{ }\PY{l+m}{750}\PY{p}{)}\PY{+w}{ }\PY{o}{+}
+        \PY{+w}{  }\PY{n+nf}{labs}\PY{p}{(}
+        \PY{+w}{    }\PY{n}{title}\PY{+w}{ }\PY{o}{=}\PY{+w}{ }\PY{l+s}{\PYZdq{}}\PY{l+s}{Horárias de Intensidade vs. Calorias\PYZdq{}}\PY{p}{,}
+        \PY{+w}{    }\PY{n}{x}\PY{+w}{ }\PY{o}{=}\PY{+w}{ }\PY{l+s}{\PYZdq{}}\PY{l+s}{Horárias de Intensidade\PYZdq{}}\PY{p}{,}
+        \PY{+w}{    }\PY{n}{y}\PY{+w}{ }\PY{o}{=}\PY{+w}{ }\PY{l+s}{\PYZdq{}}\PY{l+s}{Calorias\PYZdq{}}
+        \PY{+w}{  }\PY{p}{)}
+        \PY{n}{graph\PYZus{}intensidade\PYZus{}calorias}
+    \end{Verbatim}
+\end{tcolorbox}
+
+\begin{Verbatim}[commandchars=\\\{\}]
+    `summarise()` has grouped output by 'day'. You can override using the
+    `.groups`
+    argument.
+    `geom\_smooth()` using method = 'gam' and formula = 'y \textasciitilde{} s(x, bs =
+    "cs")'
+\end{Verbatim}
+
+\begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{finalproject_files/finalproject_57_1.png}
+\end{center}
+{ \hspace*{\fill} \\}
+
+Agora podemos notar uma correlação muito alta; (R = 0,9). Quando uma
+variável muda, a outra variável muda na mesma direção.
+
+\subsection{Total de Passos diários Vs. Total de Minutos de Sono}
+
+\begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+    \prompt{In}{incolor}{22}{\boxspacing}
+    \begin{Verbatim}[commandchars=\\\{\}]
+        \PY{n}{graph\PYZus{}passos\PYZus{}sono}\PY{+w}{ }\PY{o}{\PYZlt{}\PYZhy{}}\PY{+w}{ }\PY{n}{activity\PYZus{}sleep}\PY{+w}{ }\PY{o}{\PYZpc{}\PYZgt{}\PYZpc{}}\PY{+w}{ }
+        \PY{+w}{    }\PY{n+nf}{ggplot}\PY{p}{(}
+        \PY{+w}{     }\PY{n}{mapping}\PY{+w}{ }\PY{o}{=}\PY{+w}{ }\PY{n+nf}{aes}\PY{p}{(}\PY{n}{x}\PY{+w}{ }\PY{o}{=}\PY{+w}{ }\PY{n}{total\PYZus{}steps}\PY{p}{,}\PY{+w}{ }\PY{n}{y}\PY{+w}{ }\PY{o}{=}\PY{+w}{ }\PY{n}{total\PYZus{}minutes\PYZus{}asleep}\PY{o}{/}\PY{l+m}{60}\PY{p}{)}\PY{p}{)}\PY{+w}{ }\PY{o}{+}
+        \PY{+w}{      }\PY{n+nf}{scale\PYZus{}y\PYZus{}continuous}\PY{p}{(}\PY{n}{breaks}\PY{+w}{ }\PY{o}{=}\PY{+w}{ }\PY{n+nf}{c}\PY{p}{(}\PY{l+m}{0}\PY{o}{:}\PY{l+m}{24}\PY{p}{)}\PY{p}{)}\PY{+w}{ }\PY{o}{+}
+        \PY{+w}{      }\PY{n+nf}{geom\PYZus{}point}\PY{p}{(}\PY{p}{)}\PY{+w}{ }\PY{o}{+}
+        \PY{+w}{      }\PY{n+nf}{geom\PYZus{}smooth}\PY{p}{(}\PY{p}{)}\PY{+w}{ }\PY{o}{+}
+        \PY{+w}{      }\PY{n+nf}{geom\PYZus{}jitter}\PY{p}{(}\PY{p}{)}\PY{+w}{ }\PY{o}{+}
+        \PY{+w}{      }\PY{n+nf}{geom\PYZus{}smooth}\PY{p}{(}\PY{p}{)}\PY{+w}{ }\PY{o}{+}
+        \PY{+w}{      }\PY{n+nf}{stat\PYZus{}cor}\PY{p}{(}\PY{n}{method}\PY{+w}{ }\PY{o}{=}\PY{+w}{ }\PY{l+s}{\PYZdq{}}\PY{l+s}{pearson\PYZdq{}}\PY{p}{,}\PY{+w}{ }\PY{n}{label.x}\PY{+w}{ }\PY{o}{=}\PY{+w}{ }\PY{l+m}{16000}\PY{p}{,}\PY{+w}{ }\PY{n}{label.y}\PY{+w}{ }\PY{o}{=}\PY{+w}{ }\PY{l+m}{8}\PY{p}{)}\PY{+w}{ }\PY{o}{+}
+        \PY{+w}{      }\PY{n+nf}{scale\PYZus{}color\PYZus{}igv}\PY{p}{(}\PY{p}{)}\PY{+w}{ }\PY{o}{+}
+        \PY{+w}{      }\PY{n+nf}{scale\PYZus{}fill\PYZus{}igv}\PY{p}{(}\PY{p}{)}\PY{+w}{ }\PY{o}{+}
+        \PY{+w}{      }\PY{n+nf}{theme\PYZus{}grey}\PY{p}{(}\PY{p}{)}\PY{+w}{ }\PY{o}{+}
+        \PY{+w}{      }\PY{n+nf}{labs}\PY{p}{(}
+        \PY{+w}{        }\PY{n}{title}\PY{+w}{ }\PY{o}{=}\PY{+w}{ }\PY{l+s}{\PYZdq{}}\PY{l+s}{Passos diários Vs. Horas de Sono\PYZdq{}}\PY{p}{,}
+        \PY{+w}{        }\PY{n}{subtitle}\PY{+w}{ }\PY{o}{=}\PY{+w}{ }\PY{l+s}{\PYZdq{}}\PY{l+s}{Coeficiente de locomoção de Pearson (r)\PYZdq{}}\PY{p}{,}
+        \PY{+w}{        }\PY{n}{x}\PY{+w}{ }\PY{o}{=}\PY{+w}{ }\PY{l+s}{\PYZdq{}}\PY{l+s}{Passos diários\PYZdq{}}\PY{p}{,}
+        \PY{+w}{        }\PY{n}{y}\PY{+w}{ }\PY{o}{=}\PY{+w}{ }\PY{l+s}{\PYZdq{}}\PY{l+s}{Horas Dormindo\PYZdq{}}
+        \PY{+w}{      }\PY{p}{)}
+        \PY{n}{graph\PYZus{}passos\PYZus{}sono}
+    \end{Verbatim}
+\end{tcolorbox}
+
+\begin{Verbatim}[commandchars=\\\{\}]
+    `geom\_smooth()` using method = 'loess' and formula = 'y \textasciitilde{} x'
+    `geom\_smooth()` using method = 'loess' and formula = 'y \textasciitilde{} x'
+\end{Verbatim}
+
+\begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{finalproject_files/finalproject_60_1.png}
+\end{center}
+{ \hspace*{\fill} \\}
+
+Diferentemente do gráfico de passos e calorias queimadas, em que quanto
+mais passos forem dados mais calorias podem ser queimadas.
+
+Neste gráfico de passos e a quantidade de minutos que os usuários dormem
+por dia não há correlação entre as variáveis.
+
+\subsection{Tempo de sono}
+
+\begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+    \prompt{In}{incolor}{23}{\boxspacing}
+    \begin{Verbatim}[commandchars=\\\{\}]
+        \PY{n}{graph\PYZus{}sono\PYZus{}medio}\PY{+w}{ }\PY{o}{\PYZlt{}\PYZhy{}}\PY{+w}{ }\PY{n}{sleep\PYZus{}day\PYZus{}file}\PY{+w}{ }\PY{o}{\PYZpc{}\PYZgt{}\PYZpc{}}\PY{+w}{ }
+        \PY{+w}{  }\PY{n+nf}{group\PYZus{}by}\PY{p}{(}\PY{n}{day\PYZus{}of\PYZus{}week}\PY{p}{)}\PY{+w}{ }\PY{o}{\PYZpc{}\PYZgt{}\PYZpc{}}\PY{+w}{ }
+        \PY{+w}{  }\PY{n+nf}{summarise}\PY{p}{(}\PY{n}{avg\PYZus{}sleep}\PY{+w}{ }\PY{o}{=}\PY{+w}{ }\PY{n+nf}{mean}\PY{p}{(}\PY{n}{total\PYZus{}minutes\PYZus{}asleep}\PY{+w}{ }\PY{p}{)}\PY{o}{/}\PY{l+m}{60}\PY{p}{)}\PY{+w}{ }\PY{o}{\PYZpc{}\PYZgt{}\PYZpc{}}\PY{+w}{ }
+        \PY{+w}{  }\PY{n+nf}{ggplot}\PY{p}{(}\PY{p}{)}\PY{+w}{ }\PY{o}{+}
+        \PY{+w}{  }\PY{n+nf}{scale\PYZus{}y\PYZus{}continuous}\PY{p}{(}\PY{n}{breaks}\PY{+w}{ }\PY{o}{=}\PY{+w}{ }\PY{n+nf}{c}\PY{p}{(}\PY{l+m}{0}\PY{o}{:}\PY{l+m}{24}\PY{p}{)}\PY{p}{)}\PY{+w}{ }\PY{o}{+}
+        \PY{+w}{  }\PY{n+nf}{geom\PYZus{}col}\PY{p}{(}\PY{n}{mapping}\PY{+w}{ }\PY{o}{=}\PY{+w}{ }\PY{n+nf}{aes}\PY{p}{(}\PY{n}{x}\PY{o}{=}\PY{+w}{ }\PY{n}{day\PYZus{}of\PYZus{}week}\PY{p}{,}\PY{+w}{ }\PY{n}{y}\PY{+w}{ }\PY{o}{=}\PY{+w}{ }\PY{n}{avg\PYZus{}sleep}\PY{p}{)}\PY{p}{,}\PY{+w}{ }\PY{n}{fill}\PY{+w}{ }\PY{o}{=}\PY{+w}{ }\PY{l+s}{\PYZdq{}}\PY{l+s}{darkgreen\PYZdq{}}\PY{p}{)}\PY{+w}{ }\PY{o}{+}
+        \PY{+w}{  }\PY{n+nf}{geom\PYZus{}hline}\PY{p}{(}\PY{n+nf}{aes}\PY{p}{(}\PY{n}{yintercept}\PY{+w}{ }\PY{o}{=}\PY{+w}{ }\PY{l+m}{7}\PY{p}{)}\PY{p}{)}\PY{+w}{ }\PY{o}{+}
+        \PY{+w}{  }\PY{n+nf}{annotate}\PY{p}{(}\PY{n}{geom}\PY{o}{=}\PY{l+s}{\PYZdq{}}\PY{l+s}{text\PYZdq{}}\PY{p}{,}\PY{+w}{ }\PY{n}{x}\PY{o}{=}\PY{l+m}{2.5}\PY{p}{,}\PY{+w}{ }\PY{n}{y}\PY{o}{=}\PY{+w}{ }\PY{l+m}{7.5}\PY{p}{,}\PY{+w}{ }\PY{n}{label}\PY{o}{=}\PY{l+s}{\PYZdq{}}\PY{l+s}{7 horas de sono necessárias\PYZdq{}}\PY{p}{,}
+        \PY{+w}{           }\PY{n}{color}\PY{o}{=}\PY{l+s}{\PYZdq{}}\PY{l+s}{darkgreen\PYZdq{}}\PY{p}{)}\PY{+w}{ }\PY{o}{+}
+        \PY{+w}{  }\PY{n+nf}{theme}\PY{p}{(}\PY{n}{axis.text.x}\PY{+w}{ }\PY{o}{=}\PY{+w}{ }\PY{n+nf}{element\PYZus{}text}\PY{p}{(}\PY{n}{angle}\PY{+w}{ }\PY{o}{=}\PY{+w}{ }\PY{l+m}{90}\PY{p}{)}\PY{p}{)}\PY{+w}{ }\PY{o}{+}
+        \PY{+w}{  }\PY{n+nf}{labs}\PY{p}{(}\PY{n}{title}\PY{o}{=}\PY{l+s}{\PYZdq{}}\PY{l+s}{Tempo médio de sono\PYZdq{}}\PY{p}{,}
+        \PY{+w}{       }\PY{n}{y}\PY{o}{=}\PY{l+s}{\PYZdq{}}\PY{l+s}{Horas\PYZdq{}}\PY{p}{,}
+        \PY{+w}{      }\PY{n}{x}\PY{+w}{ }\PY{o}{=}\PY{+w}{ }\PY{l+s}{\PYZdq{}}\PY{l+s}{Dias da semana\PYZdq{}}\PY{p}{)}
+        \PY{n}{graph\PYZus{}sono\PYZus{}medio}
+    \end{Verbatim}
+\end{tcolorbox}
+
+\begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{finalproject_files/finalproject_63_0.png}
+\end{center}
+{ \hspace*{\fill} \\}
+
+Parece que os usuários nem sempre dormem pelo menos 7 horas por dia.
+Sabendo que nossos usuários são adultos devido a necessidade de
+consentimento para a cessão dos dados. Podemos induzir que esses
+usuários precisariam de 7 ou mais horas por noite, por estarem no
+parâmetro 18--60 anos (adultos) como sugerido pela CDC.
+
+Última revisão: 14 de setembro de 2022 Fonte:
+\href{https://www.cdc.gov/sleep/about_sleep/how_much_sleep.html}{National
+    Center for Chronic Disease Prevention and Health Promotion, Division of
+    Population Health}
+
+\subsubsection{Apenas brincando com os gráficos}
+
+\subsubsubsection{Uso diário dos dispositivos}
+
+Vamos dar uma espiada de como esses dados se comportam em um gráfico.
+
+\begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+    \prompt{In}{incolor}{24}{\boxspacing}
+    \begin{Verbatim}[commandchars=\\\{\}]
+        \PY{n}{daily\PYZus{}activity\PYZus{}file}\PY{+w}{ }\PY{o}{\PYZpc{}\PYZgt{}\PYZpc{}}
+        \PY{+w}{  }\PY{n+nf}{group\PYZus{}by}\PY{p}{(}\PY{n}{id}\PY{p}{)}\PY{+w}{ }\PY{o}{\PYZpc{}\PYZgt{}\PYZpc{}}
+        \PY{+w}{  }\PY{n+nf}{summarise}\PY{p}{(}\PY{n}{daily\PYZus{}usage\PYZus{}hour}\PY{+w}{ }\PY{o}{=}\PY{+w}{ }\PY{n+nf}{mean}\PY{p}{(}\PY{n}{total\PYZus{}time}\PY{+w}{ }\PY{o}{/}\PY{+w}{ }\PY{l+m}{60}\PY{p}{)}\PY{p}{)}\PY{+w}{ }\PY{o}{\PYZpc{}\PYZgt{}\PYZpc{}}
+        \PY{+w}{  }\PY{n+nf}{ggplot}\PY{p}{(}\PY{n+nf}{aes}\PY{p}{(}\PY{n}{x}\PY{+w}{ }\PY{o}{=}\PY{+w}{ }\PY{n}{daily\PYZus{}usage\PYZus{}hour}\PY{p}{)}\PY{p}{)}\PY{+w}{ }\PY{o}{+}
+        \PY{+w}{  }\PY{n+nf}{geom\PYZus{}histogram}\PY{p}{(}
+        \PY{+w}{    }\PY{n}{color}\PY{+w}{ }\PY{o}{=}\PY{+w}{ }\PY{l+s}{\PYZdq{}}\PY{l+s}{black\PYZdq{}}\PY{p}{,}\PY{+w}{ }\PY{n}{fill}\PY{+w}{ }\PY{o}{=}\PY{+w}{ }\PY{l+s}{\PYZdq{}}\PY{l+s}{\PYZsh{}008b3a\PYZdq{}}
+        \PY{+w}{  }\PY{p}{)}\PY{+w}{ }\PY{o}{+}
+        \PY{+w}{  }\PY{n+nf}{scale\PYZus{}color\PYZus{}igv}\PY{p}{(}\PY{p}{)}\PY{+w}{ }\PY{o}{+}
+        \PY{+w}{  }\PY{n+nf}{scale\PYZus{}fill\PYZus{}igv}\PY{p}{(}\PY{p}{)}\PY{+w}{ }\PY{o}{+}
+        \PY{+w}{  }\PY{n+nf}{theme\PYZus{}grey}\PY{p}{(}\PY{p}{)}\PY{+w}{ }\PY{o}{+}
+        \PY{+w}{  }\PY{n+nf}{scale\PYZus{}x\PYZus{}continuous}\PY{p}{(}\PY{n}{breaks}\PY{+w}{ }\PY{o}{=}\PY{+w}{ }\PY{n+nf}{c}\PY{p}{(}\PY{l+m}{1}\PY{o}{:}\PY{l+m}{24}\PY{p}{)}\PY{p}{)}\PY{+w}{ }\PY{o}{+}
+        \PY{+w}{  }\PY{n+nf}{labs}\PY{p}{(}
+        \PY{+w}{    }\PY{n}{title}\PY{+w}{ }\PY{o}{=}\PY{+w}{ }\PY{l+s}{\PYZdq{}}\PY{l+s}{Tempo médio diário de uso do dispositivo\PYZdq{}}\PY{p}{,}
+        \PY{+w}{    }\PY{n}{subtitle}\PY{+w}{ }\PY{o}{=}\PY{+w}{ }\PY{l+s}{\PYZdq{}}\PY{l+s}{Escala só irá conter a media do total de tempo de uso\PYZdq{}}\PY{p}{,}
+        \PY{+w}{    }\PY{n}{x}\PY{+w}{ }\PY{o}{=}\PY{+w}{ }\PY{l+s}{\PYZdq{}}\PY{l+s}{Tempo de uso diário (horas)\PYZdq{}}\PY{p}{,}
+        \PY{+w}{    }\PY{n}{y}\PY{+w}{ }\PY{o}{=}\PY{+w}{ }\PY{l+s}{\PYZdq{}}\PY{l+s}{Contagem\PYZdq{}}
+        \PY{+w}{  }\PY{p}{)}
+    \end{Verbatim}
+\end{tcolorbox}
+
+\begin{Verbatim}[commandchars=\\\{\}]
+    `stat\_bin()` using `bins = 30`. Pick better value with `binwidth`.
+\end{Verbatim}
+
+\begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{finalproject_files/finalproject_68_1.png}
+\end{center}
+{ \hspace*{\fill} \\}
+
+podemos identificar no gráfico a media de tempo que os usuarios passam
+usando o dispositivo inteligente.
+
+\emph{foi usado so pipes antifos \%\textgreater\% pois o kaggle nao
+    estava identificando os novos \textbar\textgreater{}}
+
+\subsubsubsection{Multi gráficos}
+
+\begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+    \prompt{In}{incolor}{25}{\boxspacing}
+    \begin{Verbatim}[commandchars=\\\{\}]
+        \PY{n}{curr\PYZus{}locale}\PY{+w}{ }\PY{o}{\PYZlt{}\PYZhy{}}\PY{+w}{ }\PY{n+nf}{Sys.getlocale}\PY{p}{(}\PY{l+s}{\PYZdq{}}\PY{l+s}{LC\PYZus{}TIME\PYZdq{}}\PY{p}{)}
+        \PY{n+nf}{Sys.setlocale}\PY{p}{(}\PY{l+s}{\PYZdq{}}\PY{l+s}{LC\PYZus{}TIME\PYZdq{}}\PY{p}{,}\PY{l+s}{\PYZdq{}}\PY{l+s}{pt\PYZus{}BR\PYZdq{}}\PY{p}{)}
+
+        \PY{c+c1}{\PYZsh{}\PYZlt{}specific code for graph generation\PYZgt{}}
+
+        \PY{c+c1}{\PYZsh{}Sys.setlocale(\PYZdq{}LC\PYZus{}TIME\PYZdq{},curr\PYZus{}locale)}
+    \end{Verbatim}
+\end{tcolorbox}
+
+\begin{Verbatim}[commandchars=\\\{\}]
+    Warning message in Sys.setlocale("LC\_TIME", "pt\_BR"):
+    “OS reports request to set locale to "pt\_BR" cannot be honored”
+\end{Verbatim}
+
+''
+
+
+tentativa de mudar a localização para fazer uso da função weekdays em
+português. Entretanto, não foi possível.
+
+\begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+    \prompt{In}{incolor}{26}{\boxspacing}
+    \begin{Verbatim}[commandchars=\\\{\}]
+        \PY{n}{weekday\PYZus{}steps\PYZus{}sleep}\PY{+w}{ }\PY{o}{\PYZlt{}\PYZhy{}}\PY{+w}{ }\PY{n}{activity\PYZus{}sleep}\PY{+w}{ }\PY{o}{\PYZpc{}\PYZgt{}\PYZpc{}}
+        \PY{+w}{  }\PY{n+nf}{mutate}\PY{p}{(}\PY{n}{day\PYZus{}of\PYZus{}week}\PY{+w}{ }\PY{o}{=}\PY{+w}{ }\PY{n+nf}{weekdays}\PY{p}{(}\PY{n}{date}\PY{p}{)}\PY{p}{)}
+
+
+        \PY{n}{weekday\PYZus{}steps\PYZus{}sleep}\PY{o}{\PYZdl{}}\PY{n}{day\PYZus{}of\PYZus{}week}\PY{+w}{ }\PY{o}{\PYZlt{}\PYZhy{}}\PY{n+nf}{ordered}\PY{p}{(}\PY{n}{weekday\PYZus{}steps\PYZus{}sleep}\PY{o}{\PYZdl{}}\PY{n}{day\PYZus{}of\PYZus{}week}\PY{p}{,}\PY{+w}{ }\PY{n}{levels}\PY{o}{=}\PY{n+nf}{c}\PY{p}{(}\PY{l+s}{\PYZdq{}}\PY{l+s}{Monday\PYZdq{}}\PY{p}{,}\PY{+w}{ }\PY{l+s}{\PYZdq{}}\PY{l+s}{Tuesday\PYZdq{}}\PY{p}{,}\PY{+w}{ }\PY{l+s}{\PYZdq{}}\PY{l+s}{Wednesday\PYZdq{}}\PY{p}{,}\PY{+w}{ }\PY{l+s}{\PYZdq{}}\PY{l+s}{Thursday\PYZdq{}}\PY{p}{,}
+        \PY{l+s}{\PYZdq{}}\PY{l+s}{Friday\PYZdq{}}\PY{p}{,}\PY{+w}{ }\PY{l+s}{\PYZdq{}}\PY{l+s}{Saturday\PYZdq{}}\PY{p}{,}\PY{+w}{ }\PY{l+s}{\PYZdq{}}\PY{l+s}{Sunday\PYZdq{}}\PY{p}{)}\PY{p}{)}
+
+        \PY{+w}{ }\PY{n}{weekday\PYZus{}steps\PYZus{}sleep}\PY{+w}{ }\PY{o}{\PYZlt{}\PYZhy{}}\PY{+w}{ }\PY{n}{weekday\PYZus{}steps\PYZus{}sleep}\PY{+w}{ }\PY{o}{\PYZpc{}\PYZgt{}\PYZpc{}}
+        \PY{+w}{  }\PY{n+nf}{group\PYZus{}by}\PY{p}{(}\PY{n}{day\PYZus{}of\PYZus{}week}\PY{p}{)}\PY{+w}{ }\PY{o}{\PYZpc{}\PYZgt{}\PYZpc{}}
+        \PY{+w}{  }\PY{n+nf}{summarize }\PY{p}{(}\PY{n}{daily\PYZus{}steps}\PY{+w}{ }\PY{o}{=}\PY{+w}{ }\PY{n+nf}{mean}\PY{p}{(}\PY{n}{total\PYZus{}steps}\PY{p}{)}\PY{p}{,}\PY{+w}{ }\PY{n}{daily\PYZus{}sleep\PYZus{}hour}\PY{+w}{ }\PY{o}{=}\PY{+w}{ }\PY{n+nf}{mean}\PY{p}{(}\PY{n}{total\PYZus{}minutes\PYZus{}asleep}\PY{p}{)}\PY{o}{/}\PY{l+m}{60}\PY{p}{)}
+
+        \PY{n+nf}{head}\PY{p}{(}\PY{n}{weekday\PYZus{}steps\PYZus{}sleep}\PY{p}{)}
+
+        \PY{n}{weekday\PYZus{}steps\PYZus{}sleep}\PY{o}{\PYZdl{}}\PY{n}{day\PYZus{}of\PYZus{}week}\PY{+w}{ }\PY{o}{\PYZlt{}\PYZhy{}}\PY{+w}{ }\PY{n+nf}{c}\PY{p}{(}\PY{l+s}{\PYZdq{}}\PY{l+s}{Segunda\PYZdq{}}\PY{p}{,}\PY{+w}{ }\PY{l+s}{\PYZdq{}}\PY{l+s}{Terca\PYZdq{}}\PY{p}{,}\PY{+w}{ }\PY{l+s}{\PYZdq{}}\PY{l+s}{Quarta\PYZdq{}}\PY{p}{,}\PY{+w}{ }\PY{l+s}{\PYZdq{}}\PY{l+s}{Quinta\PYZdq{}}\PY{p}{,}
+        \PY{l+s}{\PYZdq{}}\PY{l+s}{Sexta\PYZdq{}}\PY{p}{,}\PY{+w}{ }\PY{l+s}{\PYZdq{}}\PY{l+s}{Sabado\PYZdq{}}\PY{p}{,}\PY{+w}{ }\PY{l+s}{\PYZdq{}}\PY{l+s}{Domingo\PYZdq{}}\PY{p}{)}
+        \PY{n}{weekday\PYZus{}steps\PYZus{}sleep}\PY{o}{\PYZdl{}}\PY{n}{day\PYZus{}of\PYZus{}week}\PY{+w}{ }\PY{o}{\PYZlt{}\PYZhy{}}\PY{n+nf}{ordered}\PY{p}{(}\PY{n}{weekday\PYZus{}steps\PYZus{}sleep}\PY{o}{\PYZdl{}}\PY{n}{day\PYZus{}of\PYZus{}week}\PY{p}{,}\PY{+w}{ }\PY{n}{levels}\PY{o}{=}\PY{n+nf}{c}\PY{p}{(}\PY{l+s}{\PYZdq{}}\PY{l+s}{Segunda\PYZdq{}}\PY{p}{,}\PY{+w}{ }\PY{l+s}{\PYZdq{}}\PY{l+s}{Terca\PYZdq{}}\PY{p}{,}\PY{+w}{ }\PY{l+s}{\PYZdq{}}\PY{l+s}{Quarta\PYZdq{}}\PY{p}{,}\PY{+w}{ }\PY{l+s}{\PYZdq{}}\PY{l+s}{Quinta\PYZdq{}}\PY{p}{,}
+        \PY{l+s}{\PYZdq{}}\PY{l+s}{Sexta\PYZdq{}}\PY{p}{,}\PY{+w}{ }\PY{l+s}{\PYZdq{}}\PY{l+s}{Sabado\PYZdq{}}\PY{p}{,}\PY{+w}{ }\PY{l+s}{\PYZdq{}}\PY{l+s}{Domingo\PYZdq{}}\PY{p}{)}\PY{p}{)}
+
+
+        \PY{n+nf}{head}\PY{p}{(}\PY{n}{weekday\PYZus{}steps\PYZus{}sleep}\PY{p}{)}
+    \end{Verbatim}
+\end{tcolorbox}
+
+A tibble: 6 × 3
+\begin{tabular}{lll}
+    day\_of\_week & daily\_steps & daily\_sleep\_hour \\
+    <ord>         & <dbl>        & <dbl>              \\
+    \hline
+    Monday        & 9273.217     & 6.991667           \\
+    Tuesday       & 9182.692     & 6.742308           \\
+    Wednesday     & 8022.864     & 7.244697           \\
+    Thursday      & 8183.516     & 6.688281           \\
+    Friday        & 7901.404     & 6.757018           \\
+    Saturday      & 9871.123     & 6.984503           \\
+\end{tabular}
+
+
+
+A tibble: 6 × 3
+\begin{tabular}{lll}
+    day\_of\_week & daily\_steps & daily\_sleep\_hour \\
+    <ord>         & <dbl>        & <dbl>              \\
+    \hline
+    Segunda       & 9273.217     & 6.991667           \\
+    Terca         & 9182.692     & 6.742308           \\
+    Quarta        & 8022.864     & 7.244697           \\
+    Quinta        & 8183.516     & 6.688281           \\
+    Sexta         & 7901.404     & 6.757018           \\
+    Sabado        & 9871.123     & 6.984503           \\
+\end{tabular}
+
+
+
+\begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+    \prompt{In}{incolor}{27}{\boxspacing}
+    \begin{Verbatim}[commandchars=\\\{\}]
+        \PY{n+nf}{ggarrange}\PY{p}{(}
+        \PY{+w}{    }
+        \PY{+w}{    }\PY{n+nf}{ggplot}\PY{p}{(}\PY{n}{weekday\PYZus{}steps\PYZus{}sleep}\PY{p}{)}\PY{+w}{ }\PY{o}{+}
+        \PY{+w}{      }\PY{n+nf}{geom\PYZus{}col}\PY{p}{(}\PY{n+nf}{aes}\PY{p}{(}\PY{n}{day\PYZus{}of\PYZus{}week}\PY{p}{,}\PY{+w}{ }\PY{n}{daily\PYZus{}steps}\PY{p}{)}\PY{p}{,}\PY{+w}{ }\PY{n}{fill}\PY{+w}{ }\PY{o}{=}\PY{+w}{ }\PY{l+s}{\PYZdq{}}\PY{l+s}{\PYZsh{}006699\PYZdq{}}\PY{p}{)}\PY{+w}{ }\PY{o}{+}
+        \PY{+w}{      }\PY{n+nf}{geom\PYZus{}hline}\PY{p}{(}\PY{n}{yintercept}\PY{+w}{ }\PY{o}{=}\PY{+w}{ }\PY{l+m}{7500}\PY{p}{)}\PY{+w}{ }\PY{o}{+}
+        \PY{+w}{      }\PY{n+nf}{labs}\PY{p}{(}\PY{n}{title}\PY{+w}{ }\PY{o}{=}\PY{+w}{ }\PY{l+s}{\PYZdq{}}\PY{l+s}{Passos diários por dia da semana\PYZdq{}}\PY{p}{,}\PY{+w}{ }\PY{n}{x}\PY{o}{=}\PY{+w}{ }\PY{l+s}{\PYZdq{}}\PY{l+s}{\PYZdq{}}\PY{p}{,}\PY{+w}{ }\PY{n}{y}\PY{+w}{ }\PY{o}{=}\PY{+w}{ }\PY{l+s}{\PYZdq{}}\PY{l+s}{\PYZdq{}}\PY{p}{)}\PY{+w}{ }\PY{o}{+}
+        \PY{+w}{      }\PY{n+nf}{theme}\PY{p}{(}\PY{n}{axis.text.x}\PY{+w}{ }\PY{o}{=}\PY{+w}{ }\PY{n+nf}{element\PYZus{}text}\PY{p}{(}\PY{n}{angle}\PY{+w}{ }\PY{o}{=}\PY{+w}{ }\PY{l+m}{45}\PY{p}{,}\PY{n}{vjust}\PY{+w}{ }\PY{o}{=}\PY{+w}{ }\PY{l+m}{0.5}\PY{p}{,}\PY{+w}{ }\PY{n}{hjust}\PY{+w}{ }\PY{o}{=}\PY{+w}{ }\PY{l+m}{1}\PY{p}{)}\PY{p}{)}\PY{p}{,}
+        \PY{+w}{    }
+        \PY{+w}{    }\PY{n+nf}{ggplot}\PY{p}{(}\PY{n}{weekday\PYZus{}steps\PYZus{}sleep}\PY{p}{,}\PY{+w}{ }\PY{n+nf}{aes}\PY{p}{(}\PY{n}{day\PYZus{}of\PYZus{}week}\PY{p}{,}\PY{+w}{ }\PY{n}{daily\PYZus{}sleep\PYZus{}hour}\PY{p}{)}\PY{p}{)}\PY{+w}{ }\PY{o}{+}
+        \PY{+w}{      }\PY{n+nf}{geom\PYZus{}col}\PY{p}{(}\PY{n}{fill}\PY{+w}{ }\PY{o}{=}\PY{+w}{ }\PY{l+s}{\PYZdq{}}\PY{l+s}{\PYZsh{}85e0e0\PYZdq{}}\PY{p}{)}\PY{+w}{ }\PY{o}{+}
+        \PY{+w}{      }\PY{n+nf}{scale\PYZus{}y\PYZus{}continuous}\PY{p}{(}\PY{n}{breaks}\PY{+w}{ }\PY{o}{=}\PY{+w}{ }\PY{n+nf}{c}\PY{p}{(}\PY{l+m}{0}\PY{o}{:}\PY{l+m}{24}\PY{p}{)}\PY{p}{)}\PY{+w}{ }\PY{o}{+}
+        \PY{+w}{      }\PY{n+nf}{geom\PYZus{}hline}\PY{p}{(}\PY{n}{yintercept}\PY{+w}{ }\PY{o}{=}\PY{+w}{ }\PY{l+m}{7}\PY{p}{)}\PY{+w}{ }\PY{o}{+}
+        \PY{+w}{      }\PY{n+nf}{labs}\PY{p}{(}\PY{n}{title}\PY{+w}{ }\PY{o}{=}\PY{+w}{ }\PY{l+s}{\PYZdq{}}\PY{l+s}{Horas de sono por dia da semana\PYZdq{}}\PY{p}{,}\PY{+w}{ }\PY{n}{x}\PY{o}{=}\PY{+w}{ }\PY{l+s}{\PYZdq{}}\PY{l+s}{\PYZdq{}}\PY{p}{,}\PY{+w}{ }\PY{n}{y}\PY{+w}{ }\PY{o}{=}\PY{+w}{ }\PY{l+s}{\PYZdq{}}\PY{l+s}{\PYZdq{}}\PY{p}{)}\PY{+w}{ }\PY{o}{+}
+        \PY{+w}{      }\PY{n+nf}{theme}\PY{p}{(}\PY{n}{axis.text.x}\PY{+w}{ }\PY{o}{=}\PY{+w}{ }\PY{n+nf}{element\PYZus{}text}\PY{p}{(}\PY{n}{angle}\PY{+w}{ }\PY{o}{=}\PY{+w}{ }\PY{l+m}{45}\PY{p}{,}\PY{n}{vjust}\PY{+w}{ }\PY{o}{=}\PY{+w}{ }\PY{l+m}{0.5}\PY{p}{,}\PY{+w}{ }\PY{n}{hjust}\PY{+w}{ }\PY{o}{=}\PY{+w}{ }\PY{l+m}{1}\PY{p}{)}\PY{p}{)}
+        \PY{+w}{  }\PY{p}{)}\PY{+w}{ }\PY{o}{\PYZhy{}\PYZgt{}}\PY{+w}{ }\PY{n}{bar\PYZus{}weekday\PYZus{}steps\PYZus{}sleep}
+
+        \PY{n}{bar\PYZus{}weekday\PYZus{}steps\PYZus{}sleep}
+    \end{Verbatim}
+\end{tcolorbox}
+
+\begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{finalproject_files/finalproject_74_0.png}
+\end{center}
+{ \hspace*{\fill} \\}
+
+\begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+    \prompt{In}{incolor}{28}{\boxspacing}
+    \begin{Verbatim}[commandchars=\\\{\}]
+        \PY{n+nf}{max}\PY{p}{(}\PY{n}{activity\PYZus{}sleep}\PY{o}{\PYZdl{}}\PY{n}{total\PYZus{}minutes\PYZus{}asleep}\PY{o}{/}\PY{l+m}{60}\PY{p}{)}
+    \end{Verbatim}
+\end{tcolorbox}
+
+13.2666666666667
+
+
+\begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+    \prompt{In}{incolor}{29}{\boxspacing}
+    \begin{Verbatim}[commandchars=\\\{\}]
+        \PY{n+nf}{ggarrange}\PY{p}{(}
+        \PY{n+nf}{ggplot}\PY{p}{(}\PY{n}{activity\PYZus{}sleep}\PY{p}{,}\PY{+w}{ }\PY{n+nf}{aes}\PY{p}{(}\PY{n}{x}\PY{o}{=}\PY{n}{total\PYZus{}steps}\PY{p}{,}\PY{+w}{ }\PY{n}{y}\PY{o}{=}\PY{n}{total\PYZus{}minutes\PYZus{}asleep}\PY{o}{/}\PY{l+m}{60}\PY{p}{)}\PY{p}{)}\PY{o}{+}
+        \PY{+w}{  }\PY{n+nf}{scale\PYZus{}y\PYZus{}continuous}\PY{p}{(}\PY{n}{breaks}\PY{+w}{ }\PY{o}{=}\PY{+w}{ }\PY{n+nf}{c}\PY{p}{(}\PY{l+m}{0}\PY{o}{:}\PY{l+m}{24}\PY{p}{)}\PY{p}{)}\PY{+w}{ }\PY{o}{+}
+        \PY{+w}{  }\PY{n+nf}{geom\PYZus{}jitter}\PY{p}{(}\PY{p}{)}\PY{+w}{ }\PY{o}{+}
+        \PY{+w}{  }\PY{n+nf}{geom\PYZus{}smooth}\PY{p}{(}\PY{n}{color}\PY{+w}{ }\PY{o}{=}\PY{+w}{ }\PY{l+s}{\PYZdq{}}\PY{l+s}{red\PYZdq{}}\PY{p}{)}\PY{+w}{ }\PY{o}{+}\PY{+w}{ }
+        \PY{+w}{  }\PY{n+nf}{labs}\PY{p}{(}\PY{n}{title}\PY{+w}{ }\PY{o}{=}\PY{+w}{ }\PY{l+s}{\PYZdq{}}\PY{l+s}{Passos diários vs Horas dormindo\PYZdq{}}\PY{p}{,}
+        \PY{+w}{       }\PY{n}{x}\PY{+w}{ }\PY{o}{=}\PY{+w}{ }\PY{l+s}{\PYZdq{}}\PY{l+s}{Passos diários\PYZdq{}}\PY{p}{,}
+        \PY{+w}{       }\PY{n}{y}\PY{o}{=}\PY{+w}{ }\PY{l+s}{\PYZdq{}}\PY{l+s}{Horas dormindo\PYZdq{}}\PY{p}{)}\PY{+w}{ }\PY{o}{+}
+        \PY{+w}{   }\PY{n+nf}{theme}\PY{p}{(}\PY{n}{panel.background}\PY{+w}{ }\PY{o}{=}\PY{+w}{ }\PY{n+nf}{element\PYZus{}blank}\PY{p}{(}\PY{p}{)}\PY{p}{,}
+        \PY{+w}{        }\PY{n}{plot.title}\PY{+w}{ }\PY{o}{=}\PY{+w}{ }\PY{n+nf}{element\PYZus{}text}\PY{p}{(}\PY{+w}{ }\PY{n}{size}\PY{o}{=}\PY{l+m}{14}\PY{p}{)}\PY{p}{)}\PY{p}{,}\PY{+w}{ }
+        \PY{n+nf}{ggplot}\PY{p}{(}\PY{n}{activity\PYZus{}sleep}\PY{p}{,}\PY{+w}{ }\PY{n+nf}{aes}\PY{p}{(}\PY{n}{x}\PY{o}{=}\PY{n}{total\PYZus{}steps}\PY{p}{,}\PY{+w}{ }\PY{n}{y}\PY{o}{=}\PY{n}{calories}\PY{p}{)}\PY{p}{)}\PY{o}{+}
+        \PY{+w}{  }\PY{n+nf}{geom\PYZus{}jitter}\PY{p}{(}\PY{p}{)}\PY{+w}{ }\PY{o}{+}
+        \PY{+w}{  }\PY{n+nf}{geom\PYZus{}smooth}\PY{p}{(}\PY{n}{color}\PY{+w}{ }\PY{o}{=}\PY{+w}{ }\PY{l+s}{\PYZdq{}}\PY{l+s}{red\PYZdq{}}\PY{p}{)}\PY{+w}{ }\PY{o}{+}\PY{+w}{ }
+        \PY{+w}{  }\PY{n+nf}{labs}\PY{p}{(}\PY{n}{title}\PY{+w}{ }\PY{o}{=}\PY{+w}{ }\PY{l+s}{\PYZdq{}}\PY{l+s}{Passos diários vs Calorias\PYZdq{}}\PY{p}{,}
+        \PY{+w}{       }\PY{n}{x}\PY{+w}{ }\PY{o}{=}\PY{+w}{ }\PY{l+s}{\PYZdq{}}\PY{l+s}{Passos diários\PYZdq{}}\PY{p}{,}
+        \PY{+w}{       }\PY{n}{y}\PY{o}{=}\PY{+w}{ }\PY{l+s}{\PYZdq{}}\PY{l+s}{Calorias\PYZdq{}}\PY{p}{)}\PY{+w}{ }\PY{o}{+}
+        \PY{+w}{   }\PY{n+nf}{theme}\PY{p}{(}\PY{n}{panel.background}\PY{+w}{ }\PY{o}{=}\PY{+w}{ }\PY{n+nf}{element\PYZus{}blank}\PY{p}{(}\PY{p}{)}\PY{p}{,}
+        \PY{+w}{        }\PY{n}{plot.title}\PY{+w}{ }\PY{o}{=}\PY{+w}{ }\PY{n+nf}{element\PYZus{}text}\PY{p}{(}\PY{+w}{ }\PY{n}{size}\PY{o}{=}\PY{l+m}{14}\PY{p}{)}\PY{p}{)}
+        \PY{p}{)}\PY{+w}{ }\PY{o}{\PYZhy{}\PYZgt{}}\PY{+w}{ }\PY{n}{jitter\PYZus{}steps\PYZus{}sleep\PYZus{}calories}
+        \PY{n}{jitter\PYZus{}steps\PYZus{}sleep\PYZus{}calories}
+    \end{Verbatim}
+\end{tcolorbox}
+
+\begin{Verbatim}[commandchars=\\\{\}]
+    `geom\_smooth()` using method = 'loess' and formula = 'y \textasciitilde{} x'
+    `geom\_smooth()` using method = 'loess' and formula = 'y \textasciitilde{} x'
+\end{Verbatim}
+
+\begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{finalproject_files/finalproject_76_1.png}
+\end{center}
+{ \hspace*{\fill} \\}
+
+\section{Conclusão}
+
+Quais são algumas tendências no uso de dispositivos inteligentes?
+
+\subsection{Achados}
+
+\subsubsection{Qualidade de sono}
+
+Com base em nossos resultados, podemos ver que os usuários dormem menos
+de 8 horas por dia. Esse grupo de pessoas poderiam definir em nosso
+aplicativo um horário desejado para dormir e receber uma notificação
+minutos antes para se prepararem para dormir. O aplicativo poderia fazer
+sugestões de atitudes a serem tomadas para que os usuários melhorem a
+qualidade de seu sono. Por exemplo: Não comer muito (2-3 horas) antes de
+antes de ir dormir (ref.
+\href{https://health.clevelandclinic.org/is-eating-before-bed-bad-for-you}{1}),
+evitar luzes fortes no período da noite especialemte luzes do teto e
+celulares entre 22:00 e 04:00 (ref.
+\href{https://youtu.be/h2aWYjSA1Jc?t=3733}{Sleep Toolkit: Tools for
+    Optimizing Sleep \& Sleep-Wake Timing}); exercícios leves (caminhada,
+ciclismo, corrida) ao ar livre no final da tarde pode ajudar a mitigar
+os problema com o sono oriundos do uso de aparelhos eletrônicos na parte
+da noite (ref. \href{https://youtu.be/nm1TxQj9IsQ?t=2614}{Master Your
+    Sleep \& Be More Alert When Awake},
+\href{https://youtu.be/h2aWYjSA1Jc?t=3858}{Sleep Toolkit: Tools for
+    Optimizing Sleep \& Sleep-Wake Timing}), evitar o consumo de cafeina na
+parte da tarde e noite (de 8 a 10 horas antes de dormir) (ref.
+\href{https://youtu.be/h2aWYjSA1Jc?t=2272}{Sleep Toolkit: Tools for
+    Optimizing Sleep \& Sleep-Wake Timing}), recomendar a pratica de
+meditações que ajudem a relaxar e músicas para ajudar a cair no sono
+(ref.
+\href{https://hubermanlab.com/sleep-toolkit-tools-for-optimizing-sleep-and-sleep-wake-timing/}{Sleep
+    Toolkit: Tools for Optimizing Sleep \& Sleep-Wake Timing},
+\href{https://youtu.be/gbQFSMayJxk}{Dr.~Matthew Walker: The Science \&
+    Practice of Perfecting Your Sleep}) e ver a luz do sol saindo de casa 30
+a 60 minutos depois de acordar (ref.
+\href{https://hubermanlab.com/toolkit-for-sleep/}{Toolkit for Sleep}).
+
+\subsubsection{Calorias e Intensidade}
+
+Apesar de trivial foi possível identificar, através de nossas análises,
+que a \emph{Intensidade} da atividade do usuário refletiu na quantidade
+de \emph{Calorias} queimadas. Existindo uma forte correlação entre as
+duas variáveis (r = 0.9).
+
+\subsubsection{Tempo de sono e passos no dia}
+
+Quebrando as espectativas a quantidade de sono não afetou a quantidade
+de passos no dia desse grupo de usuários. É Necessário mais dados para
+que possamos elaborar uma explicação para esse fenfenômeno. Pois esse
+grupo de usuários podem fazer parte de uma categoria de pessoas que
+andar é parte crucial de sua rotina. Portanto, teriamos dados enviesados
+por estarmos ``olhando'' para apenas uma parcela de nossos clientes.
+
+\subsection{Recomendações}
+
+\begin{enumerate}
+    \def\labelenumi{\arabic{enumi}.}
+    \tightlist
+    \item
+          Coletar mais dados
+\end{enumerate}
+
+O conjunto de dados baseado nos rastreadores pessoais Fitbit fornece
+informações úteis sobre as preferências do usuário com as quais a
+empresa pode aprender. Entretanto, o conjunto de dados fornece uma baixa
+variação de usuários para que possamos entender o perfil dos nossos
+clientes, contendo, apenas um conjunto de 33 usuários. Portanto, os
+conjuntos de dados usados têm uma amostra pequena de dados e podem ser
+tendenciosos, pois não tínhamos nenhum detalhe demográfico dos usuários,
+e/ou dados categóricos. O nosso time de Dados recomenda a obtenção de
+mais dados para que possamos fundar nossas hypothesis com mais robustez.
+
+Como fazer: Seguindo as recomendações da
+\href{https://www.bndes.gov.br/wps/portal/site/home/transparencia/lgpd}{Lei
+    Geral de Proteção de Dados (LGPD)}.
+
+
+Podemos fazer esse processo de obtenção de mais dados pela inclusão de descontos para a compra adicional ou recompensa ao usuário por meio do aplicativo Fitbit por um tempo de uso mais longo para aqueles que aceitarem preencher os formulários e/ou conceder acesso aos seus dados de uso. Entre essas formas podemos, também, fazer a coleta dos cookies com o estilo de navegação dos nossos usuários.
+É de extremamente importância estarmos seguindo as recomendações de regras sobre o uso e concessão de dados pessoais presentes na \href{https://www.bndes.gov.br/wps/portal/site/home/transparencia/lgpd}{LGPD}.
+
+\section{Código Fonte}
+
+Todo código fonte desse projeto está presente nos seguintes repositórios públicos: \href{https://github.com/ARRETdaniel/22-2E_topicos_Especiais_em_IA_II_Sistemas_Inteligentes/tree/master/projectFinal}{GitHub}, \href{https://www.kaggle.com/code/arretdaniel/finalproject-fitbit-fitness-data}{Kaggle} sob a licença  \href{https://www.apache.org/licenses/LICENSE-2.0}{APACHE} versão 2.0.
+% Add a bibliography block to the postdoc
